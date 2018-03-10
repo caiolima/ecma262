@@ -3774,7 +3774,7 @@
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.`</emu-grammar> is the MV of |DecimalDigits|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits</emu-grammar> is the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| times 10<sup>-_n_</sup>), where _n_ is the mathematical value of the number of code points in the second |DecimalDigits|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits</emu-grammar> is the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| times 10<sub>𝕧</sub><sup>-<sub>𝕧</sub>_n_</sup>), where _n_ is the mathematical value of the number of code points in the second |DecimalDigits|.
             </li>
             <li>
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.
@@ -10124,7 +10124,7 @@
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.`</emu-grammar> is the MV of |DecimalIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits</emu-grammar> is the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>), where _n_ is the mathematical value of the number of code points in |DecimalDigits|.
+            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits</emu-grammar> is the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sub>𝕧</sub><sup>-<sub>𝕧</sub>_n_</sup>), where _n_ is the mathematical value of the number of code points in |DecimalDigits|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` ExponentPart</emu-grammar> is the MV of |DecimalIntegerLiteral| &times; 10<sub>𝕧</sub><sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.
@@ -10157,7 +10157,7 @@
             The MV of <emu-grammar>DecimalDigits :: DecimalDigit</emu-grammar> is the MV of |DecimalDigit|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalDigits :: DecimalDigits DecimalDigit</emu-grammar> is (the MV of |DecimalDigits| &times; 10) plus the MV of |DecimalDigit|.
+            The MV of <emu-grammar>DecimalDigits :: DecimalDigits DecimalDigit</emu-grammar> is (the MV of |DecimalDigits| &times; 10<sub>𝕧</sub>) plus the MV of |DecimalDigit|.
           </li>
           <li>
             The MV of <emu-grammar>ExponentPart :: ExponentIndicator SignedInteger</emu-grammar> is the MV of |SignedInteger|.
@@ -10582,13 +10582,13 @@
             The SV of <emu-grammar>NonEscapeCharacter :: SourceCharacter but not one of EscapeCharacter or LineTerminator</emu-grammar> is the UTF16Encoding of the code point value of |SourceCharacter|.
           </li>
           <li>
-            The SV of <emu-grammar>HexEscapeSequence :: `x` HexDigit HexDigit</emu-grammar> is the code unit whose value is (16 times the MV of the first |HexDigit|) plus the MV of the second |HexDigit|.
+            The SV of <emu-grammar>HexEscapeSequence :: `x` HexDigit HexDigit</emu-grammar> is the code unit whose value is (16<sub>𝕧</sub> times the MV of the first |HexDigit|) plus the MV of the second |HexDigit|.
           </li>
           <li>
             The SV of <emu-grammar>UnicodeEscapeSequence :: `u` Hex4Digits</emu-grammar> is the SV of |Hex4Digits|.
           </li>
           <li>
-            The SV of <emu-grammar>Hex4Digits :: HexDigit HexDigit HexDigit HexDigit</emu-grammar> is the code unit whose value is (0x1000 times the MV of the first |HexDigit|) plus (0x100 times the MV of the second |HexDigit|) plus (0x10 times the MV of the third |HexDigit|) plus the MV of the fourth |HexDigit|.
+            The SV of <emu-grammar>Hex4Digits :: HexDigit HexDigit HexDigit HexDigit</emu-grammar> is the code unit whose value is (0x1000<sub>𝕧</sub> times the MV of the first |HexDigit|) plus (0x100<sub>𝕧</sub> times the MV of the second |HexDigit|) plus (0x10<sub>𝕧</sub> times the MV of the third |HexDigit|) plus the MV of the fourth |HexDigit|.
           </li>
           <li>
             The SV of <emu-grammar>UnicodeEscapeSequence :: `u{` CodePoint `}`</emu-grammar> is the UTF16Encoding of the MV of |CodePoint|.

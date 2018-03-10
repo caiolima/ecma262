@@ -29493,7 +29493,7 @@ THH:mm:ss.sss
         <emu-grammar>DecimalEscape :: NonZeroDigit DecimalDigits</emu-grammar>
         <emu-alg>
           1. Let _n_ be the mathematical integer number of code points in |DecimalDigits|.
-          1. Return (the Number value of the MV of |NonZeroDigit| &times; 10<sup>_n_</sup>) plus the Number value of the MV of |DecimalDigits|.
+          1. Return the Number value of (the MV of |NonZeroDigit| &times;<sub>𝕧</sub> 10<sub>𝕧</sub><sup>_n_</sup> plus the MV of |DecimalDigits|).
         </emu-alg>
         <p>The definitions of &ldquo;the MV of |NonZeroDigit|&rdquo; and &ldquo;the MV of |DecimalDigits|&rdquo; are in <emu-xref href="#sec-literals-numeric-literals"></emu-xref>.</p>
       </emu-clause>

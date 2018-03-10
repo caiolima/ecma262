@@ -3774,7 +3774,7 @@
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.`</emu-grammar> is the MV of |DecimalDigits|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits</emu-grammar> is the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| times 10<sup>-_n_</sup>), where _n_ is the number of code points in the second |DecimalDigits|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits</emu-grammar> is the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| times 10<sup>-_n_</sup>), where _n_ is the mathematical value of the number of code points in the second |DecimalDigits|.
             </li>
             <li>
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.
@@ -3783,10 +3783,10 @@
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits ExponentPart</emu-grammar> is (the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| &times;<sub>𝕧</sub> 10<sub>𝕧</sub><sup>-<sub>𝕧</sub>_n_</sup>)) times 10<sub>𝕧</sub><sup>_e_</sup>, where _n_ is the mathematical value of the number of code points in the second |DecimalDigits| and _e_ is the MV of |ExponentPart|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>-<sub>𝕧</sub>_n_</sup>, where _n_ is the number of code points in |DecimalDigits|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>-<sub>𝕧</sub>_n_</sup>, where _n_ is the mathematical value of the number of code points in |DecimalDigits|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>_e_-<sub>𝕧</sub>_n_</sup>, where _n_ is the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>𝕧</sub><sup>_e_-<sub>𝕧</sub>_n_</sup>, where _n_ is the mathematical value of the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
             </li>
             <li>
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits</emu-grammar> is the MV of |DecimalDigits|.
@@ -10124,7 +10124,7 @@
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.`</emu-grammar> is the MV of |DecimalIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits</emu-grammar> is the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>), where _n_ is the number of code points in |DecimalDigits|.
+            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits</emu-grammar> is the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>), where _n_ is the mathematical value of the number of code points in |DecimalDigits|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` ExponentPart</emu-grammar> is the MV of |DecimalIntegerLiteral| &times; 10<sub>𝕧</sub><sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.

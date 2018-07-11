@@ -29700,11 +29700,11 @@ THH:mm:ss.sss
         </emu-alg>
         <emu-grammar>RegExpUnicodeEscapeSequence :: `u` Hex4Digits</emu-grammar>
         <emu-alg>
-          1. Return the MV of |Hex4Digits|.
+          1. Return the Number value for the MV of |Hex4Digits|.
         </emu-alg>
         <emu-grammar>RegExpUnicodeEscapeSequence :: `u{` CodePoint `}`</emu-grammar>
         <emu-alg>
-          1. Return the MV of |CodePoint|.
+          1. Return the Number value for the MV of |CodePoint|.
         </emu-alg>
         <emu-grammar>
           LeadSurrogate :: Hex4Digits
@@ -29714,7 +29714,7 @@ THH:mm:ss.sss
           NonSurrogate :: Hex4Digits
         </emu-grammar>
         <emu-alg>
-          1. Return the MV of |HexDigits|.
+          1. Return the Number value for the MV of |HexDigits|.
         </emu-alg>
         <emu-grammar>CharacterEscape :: IdentityEscape</emu-grammar>
         <emu-alg>

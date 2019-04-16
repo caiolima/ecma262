@@ -3462,6 +3462,7 @@
   <emu-clause id="sec-type-conversion">
     <h1>Type Conversion</h1>
     <p>The ECMAScript language implicitly performs automatic type conversion as needed. To clarify the semantics of certain constructs it is useful to define a set of conversion abstract operations. The conversion abstract operations are polymorphic; they can accept a value of any ECMAScript language type. But no other specification types are used with these operations.</p>
+    <p>The BigInt type has no implicit conversions in the ECMAScript language; programmers must call BigInt explicitly to convert values from other types.</p>
 
     <emu-clause id="sec-toprimitive" aoid="ToPrimitive" oldids="table-9">
       <h1>ToPrimitive ( _input_ [ , _PreferredType_ ] )</h1>
@@ -3569,6 +3570,14 @@
           </tr>
           <tr>
             <td>
+              BigInt
+            </td>
+            <td>
+              Return *false* if _argument_ is *0n*; otherwise return *true*.
+            </td>
+          </tr>
+          <tr>
+            <td>
               Object
             </td>
             <td>
@@ -3644,6 +3653,14 @@
           </tr>
           <tr>
             <td>
+              BigInt
+            </td>
+            <td>
+              Throw a *TypeError* exception
+            </td>
+          </tr>
+          <tr>
+            <td>
               Object
             </td>
             <td>
@@ -3712,6 +3729,9 @@
             </li>
             <li>
               `Infinity` and `-Infinity` are recognized as a |StringNumericLiteral| but not as a |NumericLiteral|.
+            </li>
+            <li>
+              A |StringNumericLiteral| may not include a |BigIntLiteralSuffix|.
             </li>
           </ul>
         </emu-note>
@@ -4000,6 +4020,14 @@
           </tr>
           <tr>
             <td>
+              BigInt
+            </td>
+            <td>
+              See <emu-xref href="#sec-tostring-applied-to-the-bigint-type"></emu-xref>.
+            </td>
+          </tr>
+          <tr>
+            <td>
               Object
             </td>
             <td>
@@ -4076,6 +4104,15 @@
             <a href="http://netlib.sandia.gov/fp/g_fmt.c">http://netlib.sandia.gov/fp/g_fmt.c</a> and may also be found at the various `netlib` mirror sites.</p>
         </emu-note>
       </emu-clause>
+
+      <emu-clause id="sec-tostring-applied-to-the-bigint-type" aoid="ToString Applied to the BigInt Type">
+        <h1>ToString Applied to the BigInt Type</h1>
+        <p>The abstract operation ToString converts a BigInt _i_ to String format as follows:</p>
+        <emu-alg>
+          1. If _i_ is less than zero, return the string-concatenation of the String `"-"` and ToString(-_i_).
+          1. Return the String value consisting of the code units of the digits of the decimal representation of _i_.
+        </emu-alg>
+      </emu-clause>
     </emu-clause>
 
     <emu-clause id="sec-toobject" aoid="ToObject">
@@ -4142,6 +4179,14 @@
           </tr>
           <tr>
             <td>
+              BigInt
+            </td>
+            <td>
+              Return a new BigInt object whose [[BigIntData]] internal slot is set to _argument_. See <a href="#sec-bigint-objects">BigInt Objects</a> for a description of BigInt objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
               Object
             </td>
             <td>
@@ -4199,6 +4244,16 @@
           1. Let _index_ be ! ToLength(_integerIndex_).
           1. If SameValueZero(_integerIndex_, _index_) is *false*, throw a *RangeError* exception.
         1. Return _index_.
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-tonumeric" aoid="ToNumeric">
+      <h1>ToNumeric ( _value_ )</h1>
+      <p>The abstract operation ToNumeric returns _value_ converted to a numeric value of type Number or BigInt. This abstract operation functions as follows:</p>
+      <emu-alg>
+        1. Let _primValue_ be ? ToPrimitive(_value_, hint Number).
+        1. If Type(_primValue_) is BigInt, return _primValue_.
+        1. Return ToNumber(_primValue_).
       </emu-alg>
     </emu-clause>
   </emu-clause>

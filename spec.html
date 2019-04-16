@@ -12897,8 +12897,8 @@
         <emu-grammar>UpdateExpression : LeftHandSideExpression `++`</emu-grammar>
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
-          1. Let _oldValue_ be ? ToNumber(? GetValue(_lhs_)).
-          1. Let _newValue_ be the result of adding the value 1 to _oldValue_, using the same rules as for the `+` operator (see <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>).
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
+          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -12913,8 +12913,8 @@
         <emu-grammar>UpdateExpression : LeftHandSideExpression `--`</emu-grammar>
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
-          1. Let _oldValue_ be ? ToNumber(? GetValue(_lhs_)).
-          1. Let _newValue_ be the result of subtracting the value 1 from _oldValue_, using the same rules as for the `-` operator (see <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>).
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
+          1. Let _newValue_ be ? Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -12929,8 +12929,8 @@
         <emu-grammar>UpdateExpression : `++` UnaryExpression</emu-grammar>
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
-          1. Let _oldValue_ be ? ToNumber(? GetValue(_expr_)).
-          1. Let _newValue_ be the result of adding the value 1 to _oldValue_, using the same rules as for the `+` operator (see <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>).
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
+          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_expr_, _newValue_).
           1. Return _newValue_.
         </emu-alg>
@@ -12945,8 +12945,8 @@
         <emu-grammar>UpdateExpression : `--` UnaryExpression</emu-grammar>
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
-          1. Let _oldValue_ be ? ToNumber(? GetValue(_expr_)).
-          1. Let _newValue_ be the result of subtracting the value 1 from _oldValue_, using the same rules as for the `-` operator (see <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>).
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
+          1. Let _newValue_ be ? Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_expr_, _newValue_).
           1. Return _newValue_.
         </emu-alg>
@@ -13148,6 +13148,14 @@
             </tr>
             <tr>
               <td>
+                BigInt
+              </td>
+              <td>
+                `"bigint"`
+              </td>
+            </tr>
+            <tr>
+              <td>
                 Object (does not implement [[Call]])
               </td>
               <td>
@@ -13196,9 +13204,9 @@
         <emu-grammar>UnaryExpression : `-` UnaryExpression</emu-grammar>
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
-          1. Let _oldValue_ be ? ToNumber(? GetValue(_expr_)).
-          1. If _oldValue_ is *NaN*, return *NaN*.
-          1. Return the result of negating _oldValue_; that is, compute a Number with the same magnitude but opposite sign.
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
+          1. Let _T_ be Type(_oldValue_).
+          1. Return ? _T_::unaryMinus(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13211,8 +13219,9 @@
         <emu-grammar>UnaryExpression : `~` UnaryExpression</emu-grammar>
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
-          1. Let _oldValue_ be ? ToInt32(? GetValue(_expr_)).
-          1. Return the result of applying bitwise complement to _oldValue_. The result is a signed 32-bit integer.
+          1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
+          1. Let _T_ be Type(_oldValue_).
+          1. Return ? _T_::bitwiseNOT(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13277,9 +13286,10 @@
         1. Let _leftValue_ be ? GetValue(_left_).
         1. Let _right_ be the result of evaluating |ExponentiationExpression|.
         1. Let _rightValue_ be ? GetValue(_right_).
-        1. Let _base_ be ? ToNumber(_leftValue_).
-        1. Let _exponent_ be ? ToNumber(_rightValue_).
-        1. Return the result of <emu-xref href="#sec-applying-the-exp-operator" title>Applying the ** operator</emu-xref> with _base_ and _exponent_ as specified in <emu-xref href="#sec-applying-the-exp-operator"></emu-xref>.
+        1. Let _base_ be ? ToNumeric(_leftValue_).
+        1. Let _exponent_ be ? ToNumeric(_rightValue_).
+        1. If Type(_base_) is different from Type(_exponent_), throw a *TypeError* exception.
+        1. Return ? Type(_base_)::exponentiate(_base_, _exponent_).
       </emu-alg>
     </emu-clause>
 
@@ -13357,9 +13367,13 @@
         1. Let _leftValue_ be ? GetValue(_left_).
         1. Let _right_ be the result of evaluating |ExponentiationExpression|.
         1. Let _rightValue_ be ? GetValue(_right_).
-        1. Let _lnum_ be ? ToNumber(_leftValue_).
-        1. Let _rnum_ be ? ToNumber(_rightValue_).
-        1. Return the result of applying the |MultiplicativeOperator| (`*`, `/`, or `%`) to _lnum_ and _rnum_ as specified in <emu-xref href="#sec-applying-the-mul-operator"></emu-xref>, <emu-xref href="#sec-applying-the-div-operator"></emu-xref>, or <emu-xref href="#sec-applying-the-mod-operator"></emu-xref>.
+        1. Let _lnum_ be ? ToNumeric(_leftValue_).
+        1. Let _rnum_ be ? ToNumeric(_rightValue_).
+        1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+        1. Let _T_ be Type(_lnum_).
+        1. If |MultiplicativeOperator| is `*`, return _T_::multiply(_lnum_, _rnum_).
+        1. If |MultiplicativeOperator| is `/`, return _T_::divide(_lnum_, _rnum_).
+        1. Otherwise, |MultiplicativeOperator| is `%`; return _T_::remainder(_lnum_, _rnum_).
       </emu-alg>
 
       <emu-clause id="sec-applying-the-mul-operator">
@@ -13510,9 +13524,11 @@
             1. Let _lstr_ be ? ToString(_lprim_).
             1. Let _rstr_ be ? ToString(_rprim_).
             1. Return the string-concatenation of _lstr_ and _rstr_.
-          1. Let _lnum_ be ? ToNumber(_lprim_).
-          1. Let _rnum_ be ? ToNumber(_rprim_).
-          1. Return the result of applying the addition operation to _lnum_ and _rnum_. See the Note below <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
+          1. Let _lnum_ be ? ToNumeric(_lprim_).
+          1. Let _rnum_ be ? ToNumeric(_rprim_).
+          1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+          1. Let _T_ be Type(_lnum_).
+          1. Return _T_::add(_lnum_, _rnum_).
         </emu-alg>
         <emu-note>
           <p>No hint is provided in the calls to ToPrimitive in steps 5 and 6. All standard objects except Date objects handle the absence of a hint as if the hint Number were given; Date objects handle the absence of a hint as if the hint String were given. Exotic objects may handle the absence of a hint in some other manner.</p>
@@ -13534,9 +13550,11 @@
           1. Let _lval_ be ? GetValue(_lref_).
           1. Let _rref_ be the result of evaluating |MultiplicativeExpression|.
           1. Let _rval_ be ? GetValue(_rref_).
-          1. Let _lnum_ be ? ToNumber(_lval_).
-          1. Let _rnum_ be ? ToNumber(_rval_).
-          1. Return the result of applying the subtraction operation to _lnum_ and _rnum_. See the note below <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
+          1. Let _lnum_ be ? ToNumeric(_lval_).
+          1. Let _rnum_ be ? ToNumeric(_rval_).
+          1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+          1. Let _T_ be Type(_lnum_).
+          1. Return _T_::subtract(_lnum_, _rnum_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13631,10 +13649,11 @@
           1. Let _lval_ be ? GetValue(_lref_).
           1. Let _rref_ be the result of evaluating |AdditiveExpression|.
           1. Let _rval_ be ? GetValue(_rref_).
-          1. Let _lnum_ be ? ToInt32(_lval_).
-          1. Let _rnum_ be ? ToUint32(_rval_).
-          1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
-          1. Return the result of left shifting _lnum_ by _shiftCount_ bits. The result is a signed 32-bit integer.
+          1. Let _lnum_ be ? ToNumeric(_lval_).
+          1. Let _rnum_ be ? ToNumeric(_rval_).
+          1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+          1. Let _T_ be Type(_lnum_).
+          1. Return _T_::leftShift(_lnum_, _rnum_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13653,10 +13672,11 @@
           1. Let _lval_ be ? GetValue(_lref_).
           1. Let _rref_ be the result of evaluating |AdditiveExpression|.
           1. Let _rval_ be ? GetValue(_rref_).
-          1. Let _lnum_ be ? ToInt32(_lval_).
-          1. Let _rnum_ be ? ToUint32(_rval_).
-          1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
-          1. Return the result of performing a sign-extending right shift of _lnum_ by _shiftCount_ bits. The most significant bit is propagated. The result is a signed 32-bit integer.
+          1. Let _lnum_ be ? ToNumeric(_lval_).
+          1. Let _rnum_ be ? ToNumeric(_rval_).
+          1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+          1. Let _T_ be Type(_lnum_).
+          1. Return _T_::signedRightShift(_lnum_, _rnum_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13675,10 +13695,11 @@
           1. Let _lval_ be ? GetValue(_lref_).
           1. Let _rref_ be the result of evaluating |AdditiveExpression|.
           1. Let _rval_ be ? GetValue(_rref_).
-          1. Let _lnum_ be ? ToUint32(_lval_).
-          1. Let _rnum_ be ? ToUint32(_rval_).
-          1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
-          1. Return the result of performing a zero-filling right shift of _lnum_ by _shiftCount_ bits. Vacated bits are filled with zero. The result is an unsigned 32-bit integer.
+          1. Let _lnum_ be ? ToNumeric(_lval_).
+          1. Let _rnum_ be ? ToNumeric(_rval_).
+          1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+          1. Let _T_ be Type(_lnum_).
+          1. Return _T_::unsignedRightShift(_lnum_, _rnum_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13994,9 +14015,13 @@
         1. Let _lval_ be ? GetValue(_lref_).
         1. Let _rref_ be the result of evaluating _B_.
         1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _lnum_ be ? ToInt32(_lval_).
-        1. Let _rnum_ be ? ToInt32(_rval_).
-        1. Return the result of applying the bitwise operator @ to _lnum_ and _rnum_. The result is a signed 32-bit integer.
+        1. Let _lnum_ be ? ToNumeric(_lval_).
+        1. Let _rnum_ be ? ToNumeric(_rval_).
+        1. If Type(_lnum_) is different from Type(_rnum_), throw a *TypeError* exception.
+        1. Let _T_ be Type(_lnum_).
+        1. If @ is `&amp;`, return _T_::bitwiseAND(_lnum_, _rnum_).
+        1. If @ is `|`, return _T_::bitwiseOR(_lnum_, _rnum_).
+        1. Otherwise, @ is `^`; return _T_::bitwiseXOR(_lnum_, _rnum_).
       </emu-alg>
     </emu-clause>
   </emu-clause>

@@ -9986,9 +9986,17 @@
       <emu-grammar type="definition">
         NumericLiteral ::
           DecimalLiteral
+          DecimalIntegerLiteral BigIntLiteralSuffix
+          NumericLiteralBase
+          NumericLiteralBase BigIntLiteralSuffix
+        
+        NumericLiteralBase ::
           BinaryIntegerLiteral
           OctalIntegerLiteral
           HexIntegerLiteral
+
+        BigIntLiteralSuffix ::
+          `n`
 
         DecimalLiteral ::
           DecimalIntegerLiteral `.` DecimalDigits? ExponentPart?
@@ -10221,6 +10229,23 @@
           </li>
         </ul>
       </emu-clause>
+
+      <emu-clause id="sec-numeric-literal-static-semantics-bigint-value">
+        <h1>Static Semantics: BigInt Value</h1>
+        <emu-grammar>NumericLiteral :: NumericLiteralBase BigIntLiteralSuffix</emu-grammar>
+        <ul>
+          <li>
+          Let the value of |NumericLiteral| be the MV of |NumericLiteralBase| represented as BigInt.
+          </li>
+        </ul>
+        <emu-grammar>NumericLiteral :: DecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
+        <ul>
+          <li>
+            Let the value of |NumericLiteral| be the MV of |DecimalIntegerLiteral| represented as BigInt.
+          </li>
+        </ul>
+      </emu-clause>
+
     </emu-clause>
 
     <emu-clause id="sec-literals-string-literals">

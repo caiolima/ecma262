@@ -871,13 +871,13 @@
         <li><em>Mathematical value</em>: Arbitrary real numbers, used for specific situations.</li>
       </ul>
 
-      <p>In the language of this specification, numerical values and operations (including addition, subtraction, negation, multiplication, addition, and comparison) are distinguished among different numeric kinds using subscripts. The subscript <sub><dfn id="𝔽">𝔽</dfn></sub> refers to Numbers, and the subscript <sub><dfn id="ℝ">ℝ</dfn></sub> refers to mathematical values. A subscript is used following each numeric value and operation.</p>
+      <p>In the language of this specification, numerical values and operations (including addition, subtraction, negation, multiplication, division, and comparison) are distinguished among different numeric kinds using subscripts. The subscript <sub><dfn id="𝔽">𝔽</dfn></sub> refers to Numbers, and the subscript <sub><dfn id="ℝ">ℝ</dfn></sub> refers to mathematical values. A subscript is used following each numeric value and operation.</p>
       <p>For brevity, the <sub>𝔽</sub> subscript can be omitted on Number values--a numeric value with no subscript is interpreted to be a Number. An operation with no subscript is interpreted to be a Number operation, unless one of the parameters has a particular subscript, in which case the operation adopts that subscript. For example, 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> is a statement about mathematical values, and 1 + 2 = 3 is a statement about Numbers.</p>
       <p>In general, when this specification refers to a numerical value, such as in the phrase, "the length of _y_" or "the integer represented by the four hexadecimal digits ...", without explicitly specifying a numeric kind, the phrase refers to a Number. Phrases which refer to a mathematical value are explicitly annotated as such; for example, "the mathematical value of the number of code points in ...".</p>
       <p>It is not defined to mix Numbers and mathematical values in either arithmetic or comparison operations, and any such undefined operation would be an editorial error in this specification text.</p>
       <p>The Number value 0, alternatively written 0<sub>𝔽</sub>, is defined as the double-precision floating point positive zero value. In certain contexts, it may also be written as +0 for clarity.</p>
       <p>This specification denotes most numeric values in base 10; it also uses numeric values of the form 0x followed by digits 0-9 or A-F as base-16 values.</p>
-      <p>In certain contexts, an operation is specified which is generic between Numbers and mathematical values. In these cases, the subscript can be a variable; _t_ is often used for this purpose, for example 5<sub>_t_</sub> &times; 10<sub>_t_</sub> =<sub>_t_</sub> 50<sub>_t_</sub> for any _t_ ranging over ℝ and 𝔽, since the values involved are within the range where the semantics coincide.</p>
+      <p>In certain contexts, an operation is specified which is generic between Numbers and mathematical values. In these cases, the subscript can be a variable; _t_ is often used for this purpose, for example 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> for any _t_ ranging over ℝ and 𝔽, since the values involved are within the range where the semantics coincide.</p>
       <p>Conversions between mathematical values and numbers are never implicit, and always explicit in this document. A conversion from a mathematical value to a Number is denoted as "the Number value for _x_", and is defined in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>. A conversion from a Number to a mathematical value is denoted as "the <dfn id="mathematical-value">mathematical value</dfn> of _x_", or ℝ(_x_). Note that the mathematical value of non-finite values is not defined, and the mathematical value of *+0* and *-0* is the mathematical value 0<sub>ℝ</sub>.</p>
       <p>When the term <dfn id="integer">integer</dfn> is used in this specification, it refers to a Number value whose mathematical value is in the set of integers, unless otherwise stated: when the term <dfn id="mathematical integer">mathematical integer</dfn> is used in this specification, it refers to a mathematical value which is in the set of integers. As shorthand, integer<sub>_t_</sub> can be used to refer to either of the two, as determined by _t_.</p>
       <p>The mathematical function <emu-eqn id="eqn-abs" aoid="abs">abs<sub>_t_</sub>(_x_)</emu-eqn> produces the absolute value of _x_, which is <emu-eqn>-<sub>_t_</sub>_x_</emu-eqn> if _x_ &lt;<sub>_t_</sub> 0<sub>_t_</sub> and otherwise is _x_ itself.</p>
@@ -885,7 +885,7 @@
       <p>The notation &ldquo;<emu-eqn id="eqn-modulo" aoid="modulo">_x_ modulo<sub>_t_</sub> _y_</emu-eqn>&rdquo; (_y_ must be finite and nonzero) computes a value _k_ of the same sign as _y_ (or zero) such that <emu-eqn>abs<sub>_t_</sub>(_k_) &lt;<sub>_t_</sub> abs<sub>_t_</sub>(_y_) and _x_-<sub>_t_</sub>_k_ = _q_ &times;<sub>_t_</sub> _y_</emu-eqn> for some integer<sub>_t_</sub> _q_.</p>
       <p>The mathematical function <emu-eqn id="eqn-floor" aoid="floor">floor<sub>_t_</sub>(_x_)</emu-eqn> produces the largest integer<sub>_t_</sub> (closest to positive infinity) that is not larger than _x_.</p>
       <emu-note>
-        <p><emu-eqn>floor<sub>_t_</sub>(_x_) = _x_-(_x_ modulo<sub>_t_</sub> 1<sub>_t_</sub>)</emu-eqn>.</p>
+        <p><emu-eqn>floor<sub>_t_</sub>(_x_) = _x_ -<sub>_t_</sub> (_x_ modulo<sub>_t_</sub> 1<sub>_t_</sub>)</emu-eqn>.</p>
       </emu-note>
     </emu-clause>
   </emu-clause>
@@ -3783,13 +3783,13 @@
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>ℝ</sub><sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits ExponentPart</emu-grammar> is (the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>-<sub>ℝ</sub>_n_</sup>)) times 10<sub>ℝ</sub><sup>_e_</sup>, where _n_ is the mathematical value of the number of code points in the second |DecimalDigits| and _e_ is the MV of |ExponentPart|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits `.` DecimalDigits ExponentPart</emu-grammar> is (the MV of the first |DecimalDigits| plus (the MV of the second |DecimalDigits| times 10<sub>ℝ</sub><sup>-<sub>ℝ</sub>_n_</sup>)) times 10<sub>ℝ</sub><sup>_e_</sup>, where _n_ is the mathematical value of the number of code points in the second |DecimalDigits| and _e_ is the MV of |ExponentPart|.
             </li>
             <li>
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits</emu-grammar> is the MV of |DecimalDigits| times 10<sub>ℝ</sub><sup>-<sub>ℝ</sub>_n_</sup>, where _n_ is the mathematical value of the number of code points in |DecimalDigits|.
             </li>
             <li>
-              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>ℝ</sub><sup>_e_-<sub>ℝ</sub>_n_</sup>, where _n_ is the mathematical value of the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
+              The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| times 10<sub>ℝ</sub><sup>_e_ -<sub>ℝ</sub> _n_</sup>, where _n_ is the mathematical value of the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
             </li>
             <li>
               The MV of <emu-grammar>StrUnsignedDecimalLiteral ::: DecimalDigits</emu-grammar> is the MV of |DecimalDigits|.
@@ -4042,7 +4042,7 @@
           1. If _m_ is *+0* or *-0*, return the String `"0"`.
           1. If _m_ is less than zero, return the string-concatenation of `"-"` and ! NumberToString(-_m_).
           1. If _m_ is *+&infin;*, return the String `"Infinity"`.
-          1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_n_) -<sub>ℝ</sub> ℝ(_k_)</sup> is _m_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10<sub>ℝ</sub>, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
+          1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _m_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10<sub>ℝ</sub>, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
           1. If _k_ &le; _n_ &le; 21, return the string-concatenation of:
             * the code units of the _k_ digits of the decimal representation of _s_ (in order, with no leading zeroes)
             * _n_ - _k_ occurrences of the code unit 0x0030 (DIGIT ZERO)
@@ -4082,7 +4082,7 @@
         <emu-note>
           <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step 5 be used as a guideline:</p>
           <emu-alg>
-            5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_n_) -<sub>ℝ</sub> ℝ(_k_)</sup> is _m_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which ℝ(_s_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_n_) -<sub>ℝ</sub> ℝ(_k_)</sup> is closest in value to ℝ(_m_). If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10<sub>ℝ</sub>.
+            5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _m_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is closest in value to ℝ(_m_). If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10<sub>ℝ</sub>.
           </emu-alg>
         </emu-note>
         <emu-note>
@@ -25771,9 +25771,9 @@
             1. Let _e_ be 0.
           1. Else,
             1. If _fractionDigits_ is not *undefined*, then
-              1. Let _e_ and _n_ be integers such that 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_ + 1</sup> and for which ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_) -<sub>ℝ</sub> ℝ(_n_)</sup> - ℝ(_x_) is as close to zero as possible. If there are two such sets of _e_ and _n_, pick the _e_ and _n_ for which ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_) -<sub>ℝ</sub> ℝ(_f_)</sup> is larger.
+              1. Let _e_ and _n_ be integers such that 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_ + 1</sup> and for which ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_n_)</sup> - ℝ(_x_) is as close to zero as possible. If there are two such sets of _e_ and _n_, pick the _e_ and _n_ for which ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_f_)</sup> is larger.
             1. Else,
-              1. Let _e_, _n_, and _f_ be integers such that _f_ &ge; 0, 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_ + 1</sup>, the Number value for ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_f_)</sup> is _x_, and _f_ is as small as possible. Note that the decimal representation of _n_ has _f_ + 1<sub>ℝ</sub> digits, _n_ is not divisible by 10, and the least significant digit of _n_ is not necessarily uniquely determined by these criteria.
+              1. Let _e_, _n_, and _f_ be integers such that _f_ &ge; 0, 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_ + 1</sup>, the Number value for ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_f_)</sup> is _x_, and _f_ is as small as possible. Note that the decimal representation of _n_ has _f_ + 1<sub>ℝ</sub> digits, _n_ is not divisible by 10, and the least significant digit of _n_ is not necessarily uniquely determined by these criteria.
             1. Let _m_ be the String value consisting of the digits of the decimal representation of _n_ (in order, with no leading zeroes).
           1. If _f_ &ne; 0, then
             1. Let _a_ be the first code unit of _m_, and let _b_ be the remaining _f_ code units of _m_.
@@ -25794,7 +25794,7 @@
         <emu-note>
           <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step 10.b.i be used as a guideline:</p>
           <emu-alg type="i">
-            1. Let _e_, _n_, and _f_ be integers such that _f_ &ge; 0, 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_+1</sup>, the Number value for ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_)-<sub>ℝ</sub>ℝ(_f_)</sup> is _x_, and _f_ is as small as possible. If there are multiple possibilities for _n_, choose the value of _n_ for which ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_)-<sub>ℝ</sub>ℝ(_f_)</sup> is closest in value to _x_. If there are two such possible values of _n_, choose the one that is even.
+            1. Let _e_, _n_, and _f_ be integers such that _f_ &ge; 0, 10<sup>_f_</sup> &le; _n_ &lt; 10<sup>_f_ + 1</sup>, the Number value for ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_f_)</sup> is _x_, and _f_ is as small as possible. If there are multiple possibilities for _n_, choose the value of _n_ for which ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_f_)</sup> is closest in value to _x_. If there are two such possible values of _n_, choose the one that is even.
           </emu-alg>
         </emu-note>
       </emu-clause>
@@ -25818,7 +25818,7 @@
           1. If _x_ &ge; 10<sup>21</sup>, then
             1. Let _m_ be ! ToString(_x_).
           1. Else,
-            1. Let _n_ be an integer for which ℝ(_n_) &divide;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_f_)</sup> - ℝ(_x_) is as close to zero as possible. If there are two such _n_, pick the larger _n_.
+            1. Let _n_ be an integer for which ℝ(_n_) &divide; 10<sub>ℝ</sub><sup>ℝ(_f_)</sup> - ℝ(_x_) is as close to zero as possible. If there are two such _n_, pick the larger _n_.
             1. If _n_ = 0, let _m_ be the String `"0"`. Otherwise, let _m_ be the String value consisting of the digits of the decimal representation of _n_ (in order, with no leading zeroes).
             1. If _f_ &ne; 0, then
               1. Let _k_ be the length of _m_.
@@ -25864,7 +25864,7 @@
             1. Let _m_ be the String value consisting of _p_ occurrences of the code unit 0x0030 (DIGIT ZERO).
             1. Let _e_ be 0.
           1. Else,
-            1. Let _e_ and _n_ be integers such that 10<sup>_p_ - 1</sup> &le; _n_ &lt; 10<sup>_p_</sup> and for which ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_p_) + 1<sub>ℝ</sub></sup> - ℝ(_x_) is as close to zero as possible. If there are two such sets of _e_ and _n_, pick the _e_ and _n_ for which ℝ(_n_) &times;<sub>ℝ</sub> 10<sub>ℝ</sub><sup>ℝ(_e_) -<sub>ℝ</sub> ℝ(_p_) + 1<sub>ℝ</sub></sup> is larger.
+            1. Let _e_ and _n_ be integers such that 10<sup>_p_ - 1</sup> &le; _n_ &lt; 10<sup>_p_</sup> and for which ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_p_) + 1<sub>ℝ</sub></sup> - ℝ(_x_) is as close to zero as possible. If there are two such sets of _e_ and _n_, pick the _e_ and _n_ for which ℝ(_n_) &times; 10<sub>ℝ</sub><sup>ℝ(_e_) - ℝ(_p_) + 1<sub>ℝ</sub></sup> is larger.
             1. Let _m_ be the String value consisting of the digits of the decimal representation of _n_ (in order, with no leading zeroes).
             1. If _e_ &lt; -6 or _e_ &ge; _p_, then
               1. Assert: _e_ &ne; 0.

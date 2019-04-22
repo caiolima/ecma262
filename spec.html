@@ -10758,19 +10758,19 @@
 
       <emu-clause id="sec-static-semantics-mv">
         <h1>Static Semantics: MV</h1>
-        <p>A numeric literal stands for a value of the Number type. This value is determined in two steps: first, a mathematical value (MV) is derived from the literal; second, this mathematical value is rounded as described below.</p>
+        <p>A numeric literal stands for a value of the Number type or the BigInt type.</p>
         <ul>
           <li>
             The MV of <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar> is the MV of |DecimalLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteral :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
+            The MV of <emu-grammar>NumericLiteralBase :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteral :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
+            The MV of <emu-grammar>NumericLiteralBase :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteral :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
+            The MV of <emu-grammar>NumericLiteralBase :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.`</emu-grammar> is the MV of |DecimalIntegerLiteral|.
@@ -10908,6 +10908,10 @@
             The MV of <emu-grammar>HexDigits :: HexDigits HexDigit</emu-grammar> is (the MV of |HexDigits| &times; 16) plus the MV of |HexDigit|.
           </li>
         </ul>
+      </emu-clause>
+
+      <emu-clause id="sec-numeric-literal-static-semantics-number-value">
+        <h1>Static Semantics: Number Value</h1>
         <p>Once the exact MV for a numeric literal has been determined, it is then rounded to a value of the Number type. If the MV is 0, then the rounded value is *+0*; otherwise, the rounded value must be the Number value for the MV (as specified in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>), unless the literal is a |DecimalLiteral| and the literal has more than 20 significant digits, in which case the Number value may be either the Number value for the MV of a literal produced by replacing each significant digit after the 20th with a `0` digit or the Number value for the MV of a literal produced by replacing each significant digit after the 20th with a `0` digit and then incrementing the literal at the 20th significant digit position. A digit is <em>significant</em> if it is not part of an |ExponentPart| and</p>
         <ul>
           <li>
@@ -10917,6 +10921,12 @@
             there is a nonzero digit to its left and there is a nonzero digit, not in the |ExponentPart|, to its right.
           </li>
         </ul>
+
+        <emu-grammar>NumericLiteral :: NumericLiteralBase</emu-grammar>
+        <p>The MV is rounded to a value of the Number type.</p>
+
+        <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar>
+        <p>The MV is rounded to a value of the Number type.</p>
       </emu-clause>
 
       <emu-clause id="sec-numeric-literal-static-semantics-bigint-value">

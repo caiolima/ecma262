@@ -1590,8 +1590,8 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-bitwise-op">
-          <h1>BitwiseOp ( _op_, _x_, _y_ )</h1>
+        <emu-clause id="sec-bigintbitwiseop" aoid="BigIntBitwiseOp">
+          <h1>BigIntBitwiseOp ( _op_, _x_, _y_ )</h1>
           <emu-alg>
             1. Let _result_ be *0n*.
             1. Let _shift_ be 0.
@@ -1611,21 +1611,21 @@
         <emu-clause id="sec-numeric-types-bigint-bitwiseAND">
           <h1>BigInt::bitwiseAND ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`&amp;`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`&amp;`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseXOR">
           <h1>BigInt::bitwiseXOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`^`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`^`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseOR">
           <h1>BigInt::bitwiseOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`|`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`|`, _x_, _y_).
           </emu-alg>
         </emu-clause>
       </emu-clause>

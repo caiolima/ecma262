@@ -4706,7 +4706,7 @@
               BigInt
             </td>
             <td>
-              See <emu-xref href="#sec-tostring-applied-to-the-bigint-type"></emu-xref>.
+              Return BigIntToString(_argument_).
             </td>
           </tr>
           <tr>
@@ -4788,9 +4788,9 @@
         </emu-note>
       </emu-clause>
 
-      <emu-clause id="sec-tostring-applied-to-the-bigint-type" aoid="ToString Applied to the BigInt Type">
-        <h1>ToString Applied to the BigInt Type</h1>
-        <p>The abstract operation ToString converts a BigInt _i_ to String format as follows:</p>
+      <emu-clause id="sec-biginttostring" aoid="BigIntToString">
+        <h1>BigIntToString ( _i_ )</h1>
+        <p>The abstract operation BigIntToString converts a BigInt _i_ to String format as follows:</p>
         <emu-alg>
           1. If _i_ is less than zero, return the string-concatenation of the String `"-"` and ToString(-_i_).
           1. Return the String value consisting of the code units of the digits of the decimal representation of _i_.
@@ -26868,7 +26868,7 @@
           1. Else, let _radixNumber_ be ? ToInteger(_radix_).
           1. If _radixNumber_ &lt; 2 or _radixNumber_ &gt; 36, throw a *RangeError* exception.
           1. If _radixNumber_ = 10, return ! ToString(_x_).
-          1. Return the String representation of this Number value using the radix specified by _radixNumber_. Letters `a`-`z` are used for digits with values 10 through 35. The precise algorithm is implementation-dependent, however the algorithm should be a generalization of that specified in <emu-xref href="#sec-tostring-applied-to-the-bigint-type"></emu-xref>.
+          1. Return the String representation of this Number value using the radix specified by _radixNumber_. Letters `a`-`z` are used for digits with values 10 through 35. The precise algorithm is implementation-dependent, however the algorithm should be a generalization of that specified in <emu-xref href="#sec-biginttostring"></emu-xref>.
         </emu-alg>
         <p>The `toString` function is not generic; it throws a *TypeError* exception if its *this* value is not a BigInt or a BigInt object. Therefore, it cannot be transferred to other kinds of objects for use as a method.</p>
       </emu-clause>

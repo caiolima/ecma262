@@ -10784,10 +10784,10 @@
         NumericLiteral ::
           DecimalLiteral
           DecimalIntegerLiteral BigIntLiteralSuffix
-          NumericLiteralBase
-          NumericLiteralBase BigIntLiteralSuffix
+          NonDecimalIntegerLiteral
+          NonDecimalIntegerLiteral BigIntLiteralSuffix
 
-        NumericLiteralBase ::
+        NonDecimalIntegerLiteral ::
           BinaryIntegerLiteral
           OctalIntegerLiteral
           HexIntegerLiteral
@@ -10872,13 +10872,13 @@
             The MV of <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar> is the MV of |DecimalLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.`</emu-grammar> is the MV of |DecimalIntegerLiteral|.
@@ -11030,7 +11030,7 @@
           </li>
         </ul>
 
-        <emu-grammar>NumericLiteral :: NumericLiteralBase</emu-grammar>
+        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral</emu-grammar>
         <p>The MV is rounded to a value of the Number type.</p>
 
         <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar>
@@ -11039,10 +11039,10 @@
 
       <emu-clause id="sec-numeric-literal-static-semantics-bigint-value">
         <h1>Static Semantics: BigInt Value</h1>
-        <emu-grammar>NumericLiteral :: NumericLiteralBase BigIntLiteralSuffix</emu-grammar>
+        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
         <ul>
           <li>
-          Let the value of |NumericLiteral| be the MV of |NumericLiteralBase| represented as BigInt.
+          Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
           </li>
         </ul>
         <emu-grammar>NumericLiteral :: DecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>

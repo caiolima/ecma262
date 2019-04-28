@@ -26793,8 +26793,14 @@
 
     <emu-clause id="sec-properties-of-the-bigint-prototype-object">
       <h1>Properties of the BigInt Prototype Object</h1>
-      <p>The BigInt prototype object is the intrinsic object <dfn>%BigIntPrototype%</dfn>. The BigInt prototype object is an ordinary object. The BigInt prototype is not a BigInt object; it does not have a [[BigIntData]] internal slot.</p>
-      <p>The value of the [[Prototype]] internal slot of the BigInt prototype object is the intrinsic object %ObjectPrototype%.</p>
+      <p>The BigInt prototype object:</p>
+      <ul>
+        <li>is the intrinsic object <dfn>%BigIntPrototype%</dfn>.</li>
+        <li>is an ordinary object.</li>
+        <li>is not a BigInt object; it does not have a [[BigIntData]] internal slot.</li>
+        <li>has a [[Prototype]] internal slot whose value is the intrinsic object %ObjectPrototype%.</li>
+      </ul>
+
       <p>The abstract operation thisBigIntValue(_value_) performs the following steps:</p>
       <emu-alg>
         1. If Type(_value_) is BigInt, return _value_.

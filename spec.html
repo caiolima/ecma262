@@ -1498,13 +1498,13 @@
 
         <emu-clause id="sec-numeric-types-bigint-unaryMinus">
           <h1>BigInt::unaryMinus ( _x_ )</h1>
-          <p>The abstract operation BigInt::unaryMinus with an argument _x_ of BigInt type returns the result of negating _x_.</p>
+          <p>The abstract operation BigInt::unaryMinus with an argument _x_ of type BigInt returns the result of negating _x_.</p>
           <emu-note>There is only one *0n* value; `-0n` is the same as *0n*.</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseNOT">
           <h1>BigInt::bitwiseNOT ( _x_ )</h1>
-          <p>The abstract operation BigInt::bitwiseNOT with an argument _x_ of BigInt type returns the one's complement of _x_; that is, -_x_ - 1.</p>
+          <p>The abstract operation BigInt::bitwiseNOT with an argument _x_ of type BigInt returns the one's complement of _x_; that is, -_x_ - 1.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-exponentiate">
@@ -1518,7 +1518,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-multiply">
           <h1>BigInt::multiply ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of BigInt type returns a BigInt representing the result of multiplying _x_ and _y_.</p>
+          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the result of multiplying _x_ and _y_.</p>
           <emu-note>Even if the result has a much larger bit width than the input, the exact mathematical answer is given.</emu-note>
         </emu-clause>
 
@@ -1544,17 +1544,17 @@
 
         <emu-clause id="sec-numeric-types-bigint-add">
           <h1>BigInt::add ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of BigInt type returns a BigInt representing the sum of _x_ and _y_.</p>
+          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the sum of _x_ and _y_.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-subtract">
           <h1>BigInt::subtract ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::subtract with two arguments _x_ and _y_ of BigInt type returns the BigInt representing the difference _x_ minus _y_.</p>
+          <p>The abstract operation BigInt::subtract with two arguments _x_ and _y_ of type BigInt returns the BigInt representing the difference _x_ minus _y_.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-leftShift">
           <h1>BigInt::leftShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of BigInt:</p>
+          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of type BigInt:</p>
           <emu-alg>
             1. If _y_ &lt; 0, then
               1. Return a BigInt representing _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
@@ -1581,17 +1581,17 @@
 
         <emu-clause id="sec-numeric-types-bigint-lessThan">
           <h1>BigInt::lessThan ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::lessThan with two arguments _x_ and _y_ of BigInt type returns *true* if _x_ is less than _y_ and *false* otherwise.</p>
+          <p>The abstract operation BigInt::lessThan with two arguments _x_ and _y_ of type BigInt returns *true* if _x_ is less than _y_ and *false* otherwise.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-equal">
           <h1>BigInt::equal ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::equal with two arguments _x_ and _y_ of BigInt type returns *true* if _x_ and _y_ have the same mathematical integer value and *false* otherwise.</p>
+          <p>The abstract operation BigInt::equal with two arguments _x_ and _y_ of type BigInt returns *true* if _x_ and _y_ have the same mathematical integer value and *false* otherwise.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-sameValue">
           <h1>BigInt::sameValue ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of BigInt type:</p>
+          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of type BigInt:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>
@@ -1599,7 +1599,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-sameValueZero">
           <h1>BigInt::sameValueZero ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of BigInt type:</p>
+          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of type BigInt:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>

@@ -1555,7 +1555,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-leftShift">
           <h1>BigInt::leftShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of type BigInt:</p>
+          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. If _y_ &lt; *0n*, then
               1. Return a BigInt representing _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
@@ -1566,7 +1566,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-signedRightShift">
           <h1>BigInt::signedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::signedRightShift with arguments _x_ and _y_ of type BigInt:</p>
+          <p>The abstract operation BigInt::signedRightShift with arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::leftShift(_x_, -_y_).
           </emu-alg>
@@ -1574,7 +1574,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-unsignedRightShift">
           <h1>BigInt::unsignedRightShift ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::unsignedRightShift with two arguments _x_ and _y_ of type BigInt:</p>
+          <p>The abstract operation BigInt::unsignedRightShift with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Throw a *TypeError* exception.
           </emu-alg>
@@ -1592,7 +1592,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-sameValue">
           <h1>BigInt::sameValue ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of type BigInt:</p>
+          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>
@@ -1600,7 +1600,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-sameValueZero">
           <h1>BigInt::sameValueZero ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of type BigInt:</p>
+          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>

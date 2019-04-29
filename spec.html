@@ -1113,7 +1113,7 @@
 
     <emu-clause id="sec-numeric-types">
       <h1>Numeric Types</h1>
-      <p>ECMAScript has two built-in numeric types: Number and BigInt. In this specification, every numeric type _T_ contains a multiplicative identity value denoted _T_::unit. The specification types also have the following abstract operations, likewise denoted _T_::<i>op</i> for a given operation with specification name <i>op</i>. Unless noted otherwise, argument and result types are all _T_.</p>
+      <p>ECMAScript has two built-in numeric types: Number and BigInt. In this specification, every numeric type _T_ contains a multiplicative identity value denoted _T_::unit. The specification types also have the following abstract operations, likewise denoted _T_::<i>op</i> for a given operation with specification name <i>op</i>. All argument types are _T_. The "Result" column shows the return type, along with an indication if it is possible for some invocations of the operation to return an abrupt completion.</p>
       <emu-table id="table-numeric-type-ops" caption="Numeric Type Operations">
         <table>
           <tbody>
@@ -1122,7 +1122,13 @@
               Invocation Synopsis
             </th>
             <th>
-              Value and Purpose
+              Example source
+            </th>
+            <th>
+              Invoked by the Evaluation semantics of ...
+            </th>
+            <th>
+              Result
             </th>
           </tr>
           <tr>
@@ -1130,7 +1136,13 @@
               _T_::unaryMinus(x)
             </td>
             <td>
-              A specification function invoked when applying the unary minus operator. Called by the semantics of the <emu-xref href="#sec-unary-minus-operator">unary - operator</emu-xref>.
+              `-x`
+            </td>
+            <td>
+              <emu-xref href="#sec-unary-minus-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1138,7 +1150,13 @@
               _T_::bitwiseNOT(x)
             </td>
             <td>
-              A specification function invoked when applying the bitwise NOT operator. Called by the semantics of the <emu-xref href="#sec-bitwise-not-operator">bitwise NOT operator</emu-xref> for `~x`.
+              `~x`
+            </td>
+            <td>
+              <emu-xref href="#sec-bitwise-not-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1146,7 +1164,14 @@
               _T_::exponentiate(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the exponentiation operator. Called by the semantics of the <emu-xref href="#sec-exp-operator">exponentiation operator</emu-xref> for `x ** y`.
+              `x&nbsp;**&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-exp-operator" title></emu-xref>
+              and <emu-xref href="#sec-math.pow" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1154,7 +1179,13 @@
               _T_::multiply(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the multiplication operator. Called by the semantics of the <emu-xref href="#sec-applying-the-mul-operator">`*` operator</emu-xref> for `x * y`.
+              `x&nbsp;*&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1162,7 +1193,13 @@
               _T_::divide(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the division operator. Called by the semantics of the <emu-xref href="#sec-applying-the-div-operator">`/` operator</emu-xref> for `x / y`.
+              `x&nbsp;/&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1170,7 +1207,13 @@
               _T_::remainder(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the truncating remainder ("mod") operator. Called by the semantics of the <emu-xref href="#sec-applying-the-mod-operator">`%` operator</emu-xref> for `x % y`.
+              `x&nbsp;%&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1178,7 +1221,15 @@
               _T_::add(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the addition operator. Called by the semantics of the <emu-xref href="#sec-addition-operator-plus">`+` operator</emu-xref> for `x + y`.
+              `x ++`<br>`++ x`<br>`x&nbsp;+&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-postfix-increment-operator" title></emu-xref>,
+              <emu-xref href="#sec-prefix-increment-operator" title></emu-xref>,
+              and <emu-xref href="#sec-addition-operator-plus" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1186,7 +1237,15 @@
               _T_::subtract(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the subtraction operator. Called by the semantics of the <emu-xref href="#sec-subtraction-operator-minus">`-` operator</emu-xref> for `x - y`.
+              `x --`<br>`-- x`<br>`x&nbsp;-&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-postfix-decrement-operator" title></emu-xref>,
+              <emu-xref href="#sec-prefix-decrement-operator" title></emu-xref>,
+              and <emu-xref href="#sec-subtraction-operator-minus" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1194,7 +1253,13 @@
               _T_::leftShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the left shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-left-shift-operator">`&lt;&lt;` operator</emu-xref> for `x &lt;&lt; y`.
+              `x&nbsp;&lt;&lt;&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-left-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1202,7 +1267,13 @@
               _T_::signedRightShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the right shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-signed-right-shift-operator">`>>` operator</emu-xref> for `x >> y`.
+              `x&nbsp;>>&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-signed-right-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1210,7 +1281,13 @@
               _T_::unsignedRightShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the right shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-unsigned-right-shift-operator">`>>>` operator</emu-xref> for `x >>> y`.
+              `x&nbsp;>>>&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-unsigned-right-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *TypeError*
             </td>
           </tr>
           <tr>
@@ -1218,7 +1295,14 @@
               _T_::lessThan(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying one of the four partial-order <emu-xref href="#sec-relational-operators">relational operators</emu-xref>. The return value must be *false*, *true*, or *undefined* (for unordered inputs). Called by the <emu-xref href="#sec-abstract-relational-comparison">Abstract Relational Comparison</emu-xref> algorithm for `x &lt; y`, `x > y`, `x &lt;= y`, and `x >= y`.
+              `x&nbsp;&lt;&nbsp;y`<br>`x&nbsp;>&nbsp;y`<br>`x&nbsp;&lt;=&nbsp;y`<br>`x&nbsp;>=&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-relational-operators" title></emu-xref>,
+              via <emu-xref href="#sec-abstract-relational-comparison" title></emu-xref>
+            </td>
+            <td>
+              Boolean or *undefined* (for unordered inputs)
             </td>
           </tr>
           <tr>
@@ -1226,7 +1310,14 @@
               _T_::equal(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-equality-operators">equality operators</emu-xref>. The return value must be *false* or *true*. Called by the <emu-xref href="#sec-strict-equality-comparison">Strict Equality Comparison</emu-xref> algorithm for `x == y`, `x != y`, `x === y`, and `x !== y`.
+              `x&nbsp;==&nbsp;y`<br>`x&nbsp;!=&nbsp;y`<br>`x&nbsp;===&nbsp;y`<br>`x&nbsp;!==&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-equality-operators" title></emu-xref>,
+              via <emu-xref href="#sec-strict-equality-comparison" title></emu-xref>
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1234,7 +1325,14 @@
               _T_::sameValue(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-samevalue">abstract operation SameValue</emu-xref>. The return value must be *false* or *true*. Called from Object internal methods to test exact value equality. May not throw an exception.
+            </td>
+            <td>
+              Object internal methods,
+              via <emu-xref href="#sec-samevalue" title></emu-xref>,
+              to test exact value equality
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1242,7 +1340,14 @@
               _T_::sameValueZero(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-samevaluezero">abstract operation SameValueZero</emu-xref>. The return value must be *false* or *true*. Called from Array, Map, and Set methods to test value equality ignoring differences among members of the zero cohort (e.g., *-0* and *+0*). May not throw an exception.
+            </td>
+            <td>
+              Array, Map, and Set methods,
+              via <emu-xref href="#sec-samevaluezero" title></emu-xref>,
+              to test value equality ignoring differences among members of the zero cohort (e.g., *-0* and *+0*)
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1250,7 +1355,13 @@
               _T_::bitwiseAND(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise AND operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x &amp; y`.
+              `x&nbsp;&amp;&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1258,7 +1369,13 @@
               _T_::bitwiseXOR(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise XOR operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x ^ y`.
+              `x&nbsp;^&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1266,7 +1383,13 @@
               _T_::bitwiseOR(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise OR operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x | y`.
+              `x&nbsp;|&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           </tbody>

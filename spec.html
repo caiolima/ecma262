@@ -1429,7 +1429,6 @@
 
         <emu-clause id="sec-numeric-types-number-unaryMinus">
           <h1>Number::unaryMinus ( _x_ )</h1>
-
           <emu-alg>
             1. If _x_ is *NaN*, return *NaN*.
             1. Return the result of negating _x_; that is, compute a Number with the same magnitude but opposite sign.
@@ -1438,7 +1437,6 @@
 
         <emu-clause id="sec-numeric-types-number-bitwiseNOT">
           <h1>Number::bitwiseNOT ( _x_ )</h1>
-
           <emu-alg>
             1. Let _oldValue_ be ? ToInt32(_x_).
             1. Return the result of applying bitwise complement to _oldValue_. The result is a signed 32-bit integer.
@@ -1447,7 +1445,6 @@
 
         <emu-clause id="sec-numeric-types-number-exponentiate">
           <h1>Number::exponentiate ( _base_, _exponent_ )</h1>
-
           <emu-alg>
             1. Return the result of <emu-xref href="#sec-applying-the-exp-operator" title></emu-xref> with _base_ and _exponent_ as specified in <emu-xref href="#sec-applying-the-exp-operator"></emu-xref>.
           </emu-alg>
@@ -1455,7 +1452,6 @@
 
         <emu-clause id="sec-numeric-types-number-multiply">
           <h1>Number::multiply ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return the result of <emu-xref href="#sec-applying-the-mul-operator" title></emu-xref> to _x_ and _y_ as specified in <emu-xref href="#sec-applying-the-mul-operator"></emu-xref>.
           </emu-alg>
@@ -1477,7 +1473,6 @@
 
         <emu-clause id="sec-numeric-types-number-add">
           <h1>Number::add ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return the result of applying the addition operation to _x_ and _y_. See the Note on <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
           </emu-alg>
@@ -1485,7 +1480,6 @@
 
         <emu-clause id="sec-numeric-types-number-subtract">
           <h1>Number::subtract ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return the result of applying the subtraction operation to _x_ and _y_. See the Note on <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
           </emu-alg>
@@ -1493,7 +1487,6 @@
 
         <emu-clause id="sec-numeric-types-number-leftShift">
           <h1>Number::leftShift ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Let _lnum_ be ? ToInt32(_x_).
             1. Let _rnum_ be ? ToUint32(_y_).
@@ -1504,7 +1497,6 @@
 
         <emu-clause id="sec-numeric-types-number-signedRightShift">
           <h1>Number::signedRightShift ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Let _lnum_ be ? ToInt32(_x_).
             1. Let _rnum_ be ? ToUint32(_y_).
@@ -1515,7 +1507,6 @@
 
         <emu-clause id="sec-numeric-types-number-unsignedRightShift">
           <h1>Number::unsignedRightShift ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Let _lnum_ be ? ToInt32(_x_).
             1. Let _rnum_ be ? ToUint32(_y_).
@@ -1526,7 +1517,6 @@
 
         <emu-clause id="sec-numeric-types-number-lessThan">
           <h1>Number::lessThan ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. If _x_ is *NaN*, return *undefined*.
             1. If _y_ is *NaN*, return *undefined*.
@@ -1543,7 +1533,6 @@
 
         <emu-clause id="sec-numeric-types-number-equal">
           <h1>Number::equal ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. If _x_ is *NaN*, return *false*.
             1. If _y_ is *NaN*, return *false*.
@@ -1556,7 +1545,6 @@
 
         <emu-clause id="sec-numeric-types-number-sameValue">
           <h1>Number::sameValue ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
             1. If _x_ is *+0* and _y_ is *-0*, return *false*.
@@ -1568,7 +1556,6 @@
 
         <emu-clause id="sec-numeric-types-number-sameValueZero">
           <h1>Number::sameValueZero ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
             1. If _x_ is *+0* and _y_ is *-0*, return *true*.
@@ -1580,7 +1567,6 @@
 
         <emu-clause id="sec-number-bitwise-op">
           <h1>NumberBitwiseOp ( _op_, _x_, _y_ )</h1>
-
           <emu-alg>
             1. Let _lnum_ be ? ToInt32(_x_).
             1. Let _rnum_ be ? ToUint32(_y_).
@@ -1590,7 +1576,6 @@
 
         <emu-clause id="sec-numeric-types-number-bitwiseAND">
           <h1>Number::bitwiseAND ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return NumberBitwiseOp(`&amp;`, _x_, _y_).
           </emu-alg>
@@ -1598,7 +1583,6 @@
 
         <emu-clause id="sec-numeric-types-number-bitwiseXOR">
           <h1>Number::bitwiseXOR ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return NumberBitwiseOp(`^`, _x_, _y_).
           </emu-alg>
@@ -1606,7 +1590,6 @@
 
         <emu-clause id="sec-numeric-types-number-bitwiseOR">
           <h1>Number::bitwiseOR ( _x_, _y_ )</h1>
-
           <emu-alg>
             1. Return NumberBitwiseOp(`|`, _x_, _y_).
           </emu-alg>

@@ -1439,7 +1439,7 @@
         <emu-clause id="sec-numeric-types-number-bitwiseNOT">
           <h1>Number::bitwiseNOT ( _x_ )</h1>
           <emu-alg>
-            1. Let _oldValue_ be ? ToInt32(_x_).
+            1. Let _oldValue_ be ! ToInt32(_x_).
             1. Return the result of applying bitwise complement to _oldValue_. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
@@ -1489,8 +1489,8 @@
         <emu-clause id="sec-numeric-types-number-leftShift">
           <h1>Number::leftShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of left shifting _lnum_ by _shiftCount_ bits. The result is a signed 32-bit integer.
           </emu-alg>
@@ -1499,8 +1499,8 @@
         <emu-clause id="sec-numeric-types-number-signedRightShift">
           <h1>Number::signedRightShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of performing a sign-extending right shift of _lnum_ by _shiftCount_ bits. The most significant bit is propagated. The result is a signed 32-bit integer.
           </emu-alg>
@@ -1509,8 +1509,8 @@
         <emu-clause id="sec-numeric-types-number-unsignedRightShift">
           <h1>Number::unsignedRightShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of performing a zero-filling right shift of _lnum_ by _shiftCount_ bits. Vacated bits are filled with zero. The result is an unsigned 32-bit integer.
           </emu-alg>
@@ -1569,8 +1569,8 @@
         <emu-clause id="sec-number-bitwise-op">
           <h1>NumberBitwiseOp ( _op_, _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Return the result of applying the bitwise operator _op_ to _lnum_ and _rnum_. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
@@ -13739,7 +13739,7 @@
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -13755,7 +13755,7 @@
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -13771,7 +13771,7 @@
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_expr_, _newValue_).
           1. Return _newValue_.
         </emu-alg>
@@ -14048,7 +14048,7 @@
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
           1. Let _T_ be Type(_oldValue_).
-          1. Return ? _T_::unaryMinus(_oldValue_).
+          1. Return ! _T_::unaryMinus(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -14063,7 +14063,7 @@
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
           1. Let _T_ be Type(_oldValue_).
-          1. Return ? _T_::bitwiseNOT(_oldValue_).
+          1. Return ! _T_::bitwiseNOT(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>

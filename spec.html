@@ -1097,7 +1097,7 @@
 
     <emu-clause id="sec-numeric-types">
       <h1>Numeric Types</h1>
-      <p>ECMAScript has two built-in numeric types: Number and BigInt. In this specification, every numeric type _T_ contains a multiplicative identity value denoted _T_::unit. The specification types also have the following abstract operations, likewise denoted _T_::<i>op</i> for a given operation with specification name <i>op</i>. Unless noted otherwise, argument and result types are all _T_.</p>
+      <p>ECMAScript has two built-in numeric types: Number and BigInt. In this specification, every numeric type _T_ contains a multiplicative identity value denoted _T_::unit. The specification types also have the following abstract operations, likewise denoted _T_::<i>op</i> for a given operation with specification name <i>op</i>. All argument types are _T_. The "Result" column shows the return type, along with an indication if it is possible for some invocations of the operation to return an abrupt completion.</p>
       <emu-table id="table-numeric-type-ops" caption="Numeric Type Operations">
         <table>
           <tbody>
@@ -1106,7 +1106,13 @@
               Invocation Synopsis
             </th>
             <th>
-              Value and Purpose
+              Example source
+            </th>
+            <th>
+              Invoked by the Evaluation semantics of ...
+            </th>
+            <th>
+              Result
             </th>
           </tr>
           <tr>
@@ -1114,7 +1120,13 @@
               _T_::unaryMinus(x)
             </td>
             <td>
-              A specification function invoked when applying the unary minus operator. Called by the semantics of the <emu-xref href="#sec-unary-minus-operator">unary - operator</emu-xref>.
+              `-x`
+            </td>
+            <td>
+              <emu-xref href="#sec-unary-minus-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1122,7 +1134,13 @@
               _T_::bitwiseNOT(x)
             </td>
             <td>
-              A specification function invoked when applying the bitwise NOT operator. Called by the semantics of the <emu-xref href="#sec-bitwise-not-operator">bitwise NOT operator</emu-xref> for `~x`.
+              `~x`
+            </td>
+            <td>
+              <emu-xref href="#sec-bitwise-not-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1130,7 +1148,14 @@
               _T_::exponentiate(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the exponentiation operator. Called by the semantics of the <emu-xref href="#sec-exp-operator">exponentiation operator</emu-xref> for `x ** y`.
+              `x&nbsp;**&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-exp-operator" title></emu-xref>
+              and <emu-xref href="#sec-math.pow" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1138,7 +1163,13 @@
               _T_::multiply(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the multiplication operator. Called by the semantics of the <emu-xref href="#sec-applying-the-mul-operator">`*` operator</emu-xref> for `x * y`.
+              `x&nbsp;*&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1146,7 +1177,13 @@
               _T_::divide(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the division operator. Called by the semantics of the <emu-xref href="#sec-applying-the-div-operator">`/` operator</emu-xref> for `x / y`.
+              `x&nbsp;/&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1154,7 +1191,13 @@
               _T_::remainder(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the truncating remainder ("mod") operator. Called by the semantics of the <emu-xref href="#sec-applying-the-mod-operator">`%` operator</emu-xref> for `x % y`.
+              `x&nbsp;%&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-multiplicative-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *RangeError*
             </td>
           </tr>
           <tr>
@@ -1162,7 +1205,15 @@
               _T_::add(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the addition operator. Called by the semantics of the <emu-xref href="#sec-addition-operator-plus">`+` operator</emu-xref> for `x + y`.
+              `x ++`<br>`++ x`<br>`x&nbsp;+&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-postfix-increment-operator" title></emu-xref>,
+              <emu-xref href="#sec-prefix-increment-operator" title></emu-xref>,
+              and <emu-xref href="#sec-addition-operator-plus" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1170,7 +1221,15 @@
               _T_::subtract(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the subtraction operator. Called by the semantics of the <emu-xref href="#sec-subtraction-operator-minus">`-` operator</emu-xref> for `x - y`.
+              `x --`<br>`-- x`<br>`x&nbsp;-&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-postfix-decrement-operator" title></emu-xref>,
+              <emu-xref href="#sec-prefix-decrement-operator" title></emu-xref>,
+              and <emu-xref href="#sec-subtraction-operator-minus" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1178,7 +1237,13 @@
               _T_::leftShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the left shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-left-shift-operator">`<<` operator</emu-xref> for `x << y`.
+              `x&nbsp;&lt;&lt;&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-left-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1186,7 +1251,13 @@
               _T_::signedRightShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the right shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-signed-right-shift-operator">`>>` operator</emu-xref> for `x >> y`.
+              `x&nbsp;>>&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-signed-right-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1194,7 +1265,13 @@
               _T_::unsignedRightShift(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying the right shift operator to two operands, both of type _T_. Called by the semantics of the <emu-xref href="#sec-unsigned-right-shift-operator">`>>>` operator</emu-xref> for `x >>> y`.
+              `x&nbsp;>>>&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-unsigned-right-shift-operator" title></emu-xref>
+            </td>
+            <td>
+              _T_, may throw *TypeError*
             </td>
           </tr>
           <tr>
@@ -1202,7 +1279,14 @@
               _T_::lessThan(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying one of the four partial-order <emu-xref href="#sec-relational-operators">relational operators</emu-xref>. The return value must be *false*, *true*, or *undefined* (for unordered inputs). Called by the <emu-xref href="#sec-abstract-relational-comparison">Abstract Relational Comparison</emu-xref> algorithm for `x < y`, `x > y`, `x <= y`, and `x >= y`.
+              `x&nbsp;&lt;&nbsp;y`<br>`x&nbsp;>&nbsp;y`<br>`x&nbsp;&lt;=&nbsp;y`<br>`x&nbsp;>=&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-relational-operators" title></emu-xref>,
+              via <emu-xref href="#sec-abstract-relational-comparison" title></emu-xref>
+            </td>
+            <td>
+              Boolean or *undefined* (for unordered inputs)
             </td>
           </tr>
           <tr>
@@ -1210,7 +1294,14 @@
               _T_::equal(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-equality-operators">equality operators</emu-xref>. The return value must be *false* or *true*. Called by the <emu-xref href="#sec-strict-equality-comparison">Strict Equality Comparison</emu-xref> algorithm for `x == y`, `x != y`, `x === y`, and `x !== y`.
+              `x&nbsp;==&nbsp;y`<br>`x&nbsp;!=&nbsp;y`<br>`x&nbsp;===&nbsp;y`<br>`x&nbsp;!==&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-equality-operators" title></emu-xref>,
+              via <emu-xref href="#sec-strict-equality-comparison" title></emu-xref>
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1218,7 +1309,14 @@
               _T_::sameValue(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-samevalue">abstract operation SameValue</emu-xref>. The return value must be *false* or *true*. Called from Object internal methods to test exact value equality. May not throw an exception.
+            </td>
+            <td>
+              Object internal methods,
+              via <emu-xref href="#sec-samevalue" title></emu-xref>,
+              to test exact value equality
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1226,7 +1324,14 @@
               _T_::sameValueZero(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-samevaluezero">abstract operation SameValueZero</emu-xref>. The return value must be *false* or *true*. Called from Array, Map, and Set methods to test value equality ignoring differences among members of the zero cohort (e.g., *-0* and *+0*). May not throw an exception.
+            </td>
+            <td>
+              Array, Map, and Set methods,
+              via <emu-xref href="#sec-samevaluezero" title></emu-xref>,
+              to test value equality ignoring differences among members of the zero cohort (e.g., *-0* and *+0*)
+            </td>
+            <td>
+              Boolean
             </td>
           </tr>
           <tr>
@@ -1234,7 +1339,13 @@
               _T_::bitwiseAND(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise AND operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x &amp; y`.
+              `x&nbsp;&amp;&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1242,7 +1353,13 @@
               _T_::bitwiseXOR(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise XOR operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x ^ y`.
+              `x&nbsp;^&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           <tr>
@@ -1250,7 +1367,13 @@
               _T_::bitwiseOR(x,&nbsp;y)
             </td>
             <td>
-              A specification function invoked when applying <emu-xref href="#sec-binary-bitwise-operators">binary bitwise OR operator</emu-xref>. Called by the <emu-xref href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">Binary Bitwise Operators</emu-xref> algorithm for `x | y`.
+              `x&nbsp;|&nbsp;y`
+            </td>
+            <td>
+              <emu-xref href="#sec-binary-bitwise-operators" title></emu-xref>
+            </td>
+            <td>
+              _T_
             </td>
           </tr>
           </tbody>
@@ -1290,8 +1413,7 @@
         <p>The Number::unit value is *1*.</p>
 
         <emu-clause id="sec-numeric-types-number-unaryMinus">
-          <h1>Number::unaryMinus (_x_)</h1>
-          
+          <h1>Number::unaryMinus ( _x_ )</h1>
           <emu-alg>
             1. If _x_ is *NaN*, return *NaN*.
             1. Return the result of negating _x_; that is, compute a Number with the same magnitude but opposite sign.
@@ -1299,96 +1421,87 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseNOT">
-          <h1>Number::bitwiseNOT (_x_)</h1>
-
+          <h1>Number::bitwiseNOT ( _x_ )</h1>
           <emu-alg>
-            1. Let _oldValue_ be ? ToInt32(? _x_).
+            1. Let _oldValue_ be ! ToInt32(_x_).
             1. Return the result of applying bitwise complement to _oldValue_. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-exponentiate">
-          <h1>Number::exponentiate (_base_, _exponent_)</h1>
-
+          <h1>Number::exponentiate ( _base_, _exponent_ )</h1>
           <emu-alg>
-            1. Return the result of <emu-xref href="#sec-applying-the-exp-operator" title>Applying the ** operator</emu-xref> with _base_ and _exponent_ as specified in <emu-xref href="#sec-applying-the-exp-operator"></emu-xref>.
+            1. Return the result of <emu-xref href="#sec-applying-the-exp-operator" title></emu-xref> with _base_ and _exponent_ as specified in <emu-xref href="#sec-applying-the-exp-operator"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-multiply">
-          <h1>Number::multiply (_x_, _y_)</h1>
-
+          <h1>Number::multiply ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return the result of <emu-xref href="#sec-applying-the-mul-operator" title>Applying the * operator</emu-xref> to _x_ and _y_ as specified in <emu-xref href="#sec-applying-the-mul-operator"></emu-xref>.
+            1. Return the result of <emu-xref href="#sec-applying-the-mul-operator" title></emu-xref> to _x_ and _y_ as specified in <emu-xref href="#sec-applying-the-mul-operator"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-divide">
-          <h1>Number::divide (_x_, _y_)</h1>
+          <h1>Number::divide ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return the result of <emu-xref href="#sec-applying-the-div-operator" title>Applying the / operator</emu-xref> to _x_ and _y_ as specified in <emu-xref href="#sec-applying-the-div-operator"></emu-xref>.
+            1. Return the result of <emu-xref href="#sec-applying-the-div-operator" title></emu-xref> to _x_ and _y_ as specified in <emu-xref href="#sec-applying-the-div-operator"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-remainder">
-          <h1>Number::remainder (_n_, _d_)</h1>
+          <h1>Number::remainder ( _n_, _d_ )</h1>
           <emu-alg>
-            1. Return the result of <emu-xref href="#sec-applying-the-mod-operator" title>Applying the % operator</emu-xref> to _n_ and _d_ as specified in <emu-xref href="#sec-applying-the-mod-operator"></emu-xref>..
+            1. Return the result of <emu-xref href="#sec-applying-the-mod-operator" title></emu-xref> to _n_ and _d_ as specified in <emu-xref href="#sec-applying-the-mod-operator"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-add">
-          <h1>Number::add (_x_, _y_)</h1>
-
+          <h1>Number::add ( _x_, _y_ )</h1>
           <emu-alg>
             1. Return the result of applying the addition operation to _x_ and _y_. See the Note on <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-subtract">
-          <h1>Number::subtract (_x_, _y_)</h1>
-
+          <h1>Number::subtract ( _x_, _y_ )</h1>
           <emu-alg>
             1. Return the result of applying the subtraction operation to _x_ and _y_. See the Note on <emu-xref href="#sec-applying-the-additive-operators-to-numbers"></emu-xref>.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-leftShift">
-          <h1>Number::leftShift (_x_, _y_)</h1>
-
+          <h1>Number::leftShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of left shifting _lnum_ by _shiftCount_ bits. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-signedRightShift">
-          <h1>Number::signedRightShift (_x_, _y_)</h1>
-
+          <h1>Number::signedRightShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of performing a sign-extending right shift of _lnum_ by _shiftCount_ bits. The most significant bit is propagated. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-unsignedRightShift">
-          <h1>Number::unsignedRightShift (_x_, _y_)</h1>
-
+          <h1>Number::unsignedRightShift ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Let _shiftCount_ be the result of masking out all but the least significant 5 bits of _rnum_, that is, compute _rnum_ &amp; 0x1F.
             1. Return the result of performing a zero-filling right shift of _lnum_ by _shiftCount_ bits. Vacated bits are filled with zero. The result is an unsigned 32-bit integer.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-lessThan">
-          <h1>Number::lessThan (_x_, _y_)</h1>
-
+          <h1>Number::lessThan ( _x_, _y_ )</h1>
           <emu-alg>
             1. If _x_ is *NaN*, return *undefined*.
             1. If _y_ is *NaN*, return *undefined*.
@@ -1399,13 +1512,12 @@
             1. If _y_ is *+&infin;*, return *true*.
             1. If _y_ is *-&infin;*, return *false*.
             1. If _x_ is *-&infin;*, return *true*.
-            1. If the mathematical value of _x_ is less than the mathematical value of _y_ &mdash;note that these mathematical values are both finite and not both zero&mdash;return *true*. Otherwise, return *false*.
+            1. If the mathematical value of _x_ is less than the mathematical value of _y_&mdash;note that these mathematical values are both finite and not both zero&mdash;return *true*. Otherwise, return *false*.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-equal">
-          <h1>Number::equal (_x_, _y_)</h1>
-
+          <h1>Number::equal ( _x_, _y_ )</h1>
           <emu-alg>
             1. If _x_ is *NaN*, return *false*.
             1. If _y_ is *NaN*, return *false*.
@@ -1417,8 +1529,7 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-sameValue">
-          <h1>Number::sameValue (_x_, _y_)</h1>
-
+          <h1>Number::sameValue ( _x_, _y_ )</h1>
           <emu-alg>
             1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
             1. If _x_ is *+0* and _y_ is *-0*, return *false*.
@@ -1429,8 +1540,7 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-sameValueZero">
-          <h1>Number::sameValueZero (_x_, _y_)</h1>
-
+          <h1>Number::sameValueZero ( _x_, _y_ )</h1>
           <emu-alg>
             1. If _x_ is *NaN* and _y_ is *NaN*, return *true*.
             1. If _x_ is *+0* and _y_ is *-0*, return *true*.
@@ -1440,35 +1550,31 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-number-bitwise-op">
-          <h1>NumberBitwiseOp(_op_, _x_, _y_)</h1>
-
+        <emu-clause id="sec-numberbitwiseop">
+          <h1>NumberBitwiseOp ( _op_, _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _lnum_ be ? ToInt32(_x_).
-            1. Let _rnum_ be ? ToUint32(_y_).
+            1. Let _lnum_ be ! ToInt32(_x_).
+            1. Let _rnum_ be ! ToUint32(_y_).
             1. Return the result of applying the bitwise operator _op_ to _lnum_ and _rnum_. The result is a signed 32-bit integer.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseAND">
-          <h1>Number::bitwiseAND (_x_, _y_)</h1>
-
+          <h1>Number::bitwiseAND ( _x_, _y_ )</h1>
           <emu-alg>
             1. Return NumberBitwiseOp(`&amp;`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseXOR">
-          <h1>Number::bitwiseXOR (_x_, _y_)</h1>
-
+          <h1>Number::bitwiseXOR ( _x_, _y_ )</h1>
           <emu-alg>
             1. Return NumberBitwiseOp(`^`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-number-bitwiseOR">
-          <h1>Number::bitwiseOR (_x_, _y_)</h1>
-
+          <h1>Number::bitwiseOR ( _x_, _y_ )</h1>
           <emu-alg>
             1. Return NumberBitwiseOp(`|`, _x_, _y_).
           </emu-alg>
@@ -1482,33 +1588,33 @@
         <p>The BigInt::unit value is *1n*.</p>
 
         <emu-clause id="sec-numeric-types-bigint-unaryMinus">
-          <h1>BigInt::unaryMinus (_x_)</h1>
-          <p>The abstract operation BigInt::unaryMinus with an argument _x_ of BigInt type returns the result of negating _x_.</p>
+          <h1>BigInt::unaryMinus ( _x_ )</h1>
+          <p>The abstract operation BigInt::unaryMinus with an argument _x_ of type BigInt returns the result of negating _x_.</p>
           <emu-note>There is only one *0n* value; `-0n` is the same as *0n*.</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseNOT">
-          <h1>BigInt::bitwiseNOT (_x_)</h1>
-          <p>The abstract operation BigInt::bitwiseNOT with an argument _x_ of BigInt type returns the one's complement of _x_; that is, -_x_ - 1.</p>
+          <h1>BigInt::bitwiseNOT ( _x_ )</h1>
+          <p>The abstract operation BigInt::bitwiseNOT with an argument _x_ of type BigInt returns the one's complement of _x_; that is, -_x_ - 1.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-exponentiate">
-          <h1>BigInt::exponentiate (_base_, _exponent_)</h1>
+          <h1>BigInt::exponentiate ( _base_, _exponent_ )</h1>
           <emu-alg>
-            1. If _exponent_ &lt; 0, throw a *RangeError* exception.
+            1. If _exponent_ &lt; *0n*, throw a *RangeError* exception.
             1. If _base_ is *0n* and _exponent_ is *0n*, return *1n*.
             1. Return a BigInt representing the mathematical value of _base_ raised to the power _exponent_.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-multiply">
-          <h1>BigInt::multiply (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of BigInt type returns a BigInt representing the result of multiplying _x_ and _y_.</p>
+          <h1>BigInt::multiply ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the result of multiplying _x_ and _y_.</p>
           <emu-note>Even if the result has a much larger bit width than the input, the exact mathematical answer is given.</emu-note>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-divide">
-          <h1>BigInt::divide (_x_, _y_)</h1>
+          <h1>BigInt::divide ( _x_, _y_ )</h1>
           <emu-alg>
             1. If _y_ is *0n*, throw a *RangeError* exception.
             1. Let _quotient_ be the mathematical value of _x_ divided by _y_.
@@ -1517,7 +1623,7 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-remainder">
-          <h1>BigInt::remainder (_n_, _d_)</h1>
+          <h1>BigInt::remainder ( _n_, _d_ )</h1>
           <emu-alg>
             1. If _d_ is *0n*, throw a *RangeError* exception.
             1. If _n_ is *0n*, return *0n*.
@@ -1528,20 +1634,20 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-add">
-          <h1>BigInt::add (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of BigInt type returns a BigInt representing the sum of _x_ and _y_.</p>
+          <h1>BigInt::add ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the sum of _x_ and _y_.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-subtract">
-          <h1>BigInt::subtract (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::subtract with two arguments _x_ and _y_ of BigInt type returns the BigInt representing the difference _x_ minus _y_.</p>
+          <h1>BigInt::subtract ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::subtract with two arguments _x_ and _y_ of type BigInt returns the BigInt representing the difference _x_ minus _y_.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-leftShift">
-          <h1>BigInt::leftShift (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of BigInt:</p>
+          <h1>BigInt::leftShift ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
-            1. If _y_ &lt; 0, then
+            1. If _y_ &lt; *0n*, then
               1. Return a BigInt representing _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
             1. Return a BigInt representing _x_ &times; 2<sup>_y_</sup>.
           </emu-alg>
@@ -1549,51 +1655,51 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-signedRightShift">
-          <h1>BigInt::signedRightShift (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::signedRightShift with arguments _x_ and _y_ of type BigInt:</p>
+          <h1>BigInt::signedRightShift ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::signedRightShift with arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::leftShift(_x_, -_y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-unsignedRightShift">
-          <h1>BigInt::unsignedRightShift (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::unsignedRightShift with two arguments _x_ and _y_ of type BigInt:</p>
+          <h1>BigInt::unsignedRightShift ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::unsignedRightShift with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Throw a *TypeError* exception.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-lessThan">
-          <h1>BigInt::lessThan (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::lessThan with two arguments _x_ and _y_ of BigInt type returns *true* if _x_ is less than _y_ and *false* otherwise.</p>
+          <h1>BigInt::lessThan ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::lessThan with two arguments _x_ and _y_ of type BigInt returns *true* if _x_ is less than _y_ and *false* otherwise.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-equal">
-          <h1>BigInt::equal (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::equal with two arguments _x_ and _y_ of BigInt type returns *true* if _x_ and _y_ have the same mathematical integer value and *false* otherwise.</p>
+          <h1>BigInt::equal ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::equal with two arguments _x_ and _y_ of type BigInt returns *true* if _x_ and _y_ have the same mathematical integer value and *false* otherwise.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-sameValue">
-          <h1>BigInt::sameValue (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of BigInt type:</p>
+          <h1>BigInt::sameValue ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::sameValue with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-sameValueZero">
-          <h1>BigInt::sameValueZero (_x_, _y_)</h1>
-          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of BigInt type:</p>
+          <h1>BigInt::sameValueZero ( _x_, _y_ )</h1>
+          <p>The abstract operation BigInt::sameValueZero with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. Return BigInt::equal(_x_, _y_).
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-bitwise-op">
-          <h1>BitwiseOp(_op_, _x_, _y_)</h1>
+        <emu-clause id="sec-bigintbitwiseop" aoid="BigIntBitwiseOp">
+          <h1>BigIntBitwiseOp ( _op_, _x_, _y_ )</h1>
           <emu-alg>
-            1. Let _result_ be 0.
+            1. Let _result_ be *0n*.
             1. Let _shift_ be 0.
             1. Repeat, until (_x_ = 0 or _x_ = -1) and (_y_ = 0 or _y_ = -1),
               1. Let _xDigit_ be _x_ modulo 2.
@@ -1609,23 +1715,23 @@
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseAND">
-          <h1>BigInt::bitwiseAND (_x_, _y_)</h1>
+          <h1>BigInt::bitwiseAND ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`&amp;`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`&amp;`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseXOR">
-          <h1>BigInt::bitwiseXOR (_x_, _y_)</h1>
+          <h1>BigInt::bitwiseXOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`^`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`^`, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseOR">
-          <h1>BigInt::bitwiseOR (_x_, _y_)</h1>
+          <h1>BigInt::bitwiseOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BitwiseOp(`|`, _x_, _y_).
+            1. Return BigIntBitwiseOp(`|`, _x_, _y_).
           </emu-alg>
         </emu-clause>
       </emu-clause>
@@ -4099,6 +4205,16 @@
       </emu-table>
     </emu-clause>
 
+    <emu-clause id="sec-tonumeric" aoid="ToNumeric">
+      <h1>ToNumeric ( _value_ )</h1>
+      <p>The abstract operation ToNumeric returns _value_ converted to a numeric value of type Number or BigInt. This abstract operation functions as follows:</p>
+      <emu-alg>
+        1. Let _primValue_ be ? ToPrimitive(_value_, hint Number).
+        1. If Type(_primValue_) is BigInt, return _primValue_.
+        1. Return ToNumber(_primValue_).
+      </emu-alg>
+    </emu-clause>
+
     <emu-clause id="sec-tonumber" aoid="ToNumber">
       <h1>ToNumber ( _argument_ )</h1>
       <p>The abstract operation ToNumber converts _argument_ to a value of type Number according to <emu-xref href="#table-11"></emu-xref>:</p>
@@ -4241,7 +4357,7 @@
               `Infinity` and `-Infinity` are recognized as a |StringNumericLiteral| but not as a |NumericLiteral|.
             </li>
             <li>
-              A |StringNumericLiteral| may not include a |BigIntLiteralSuffix|.
+              A |StringNumericLiteral| cannot include a |BigIntLiteralSuffix|.
             </li>
           </ul>
         </emu-note>
@@ -4465,317 +4581,6 @@
       </emu-note>
     </emu-clause>
 
-    <emu-clause id="sec-tostring" aoid="ToString">
-      <h1>ToString ( _argument_ )</h1>
-      <p>The abstract operation ToString converts _argument_ to a value of type String according to <emu-xref href="#table-12"></emu-xref>:</p>
-      <emu-table id="table-12" caption="ToString Conversions">
-        <table>
-          <tbody>
-          <tr>
-            <th>
-              Argument Type
-            </th>
-            <th>
-              Result
-            </th>
-          </tr>
-          <tr>
-            <td>
-              Undefined
-            </td>
-            <td>
-              Return `"undefined"`.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Null
-            </td>
-            <td>
-              Return `"null"`.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Boolean
-            </td>
-            <td>
-              <p>If _argument_ is *true*, return `"true"`.</p>
-              <p>If _argument_ is *false*, return `"false"`.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Number
-            </td>
-            <td>
-              Return NumberToString(_argument_).
-            </td>
-          </tr>
-          <tr>
-            <td>
-              String
-            </td>
-            <td>
-              Return _argument_.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Symbol
-            </td>
-            <td>
-              Throw a *TypeError* exception.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              BigInt
-            </td>
-            <td>
-              See <emu-xref href="#sec-tostring-applied-to-the-bigint-type"></emu-xref>.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Object
-            </td>
-            <td>
-              <p>Apply the following steps:</p>
-              <emu-alg>
-                1. Let _primValue_ be ? ToPrimitive(_argument_, hint String).
-                1. Return ? ToString(_primValue_).
-              </emu-alg>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </emu-table>
-
-      <emu-clause id="sec-tostring-applied-to-the-number-type" aoid="NumberToString">
-        <h1>NumberToString ( _m_ )</h1>
-        <p>The abstract operation NumberToString converts a Number _m_ to String format as follows:</p>
-        <emu-alg>
-          1. If _m_ is *NaN*, return the String `"NaN"`.
-          1. If _m_ is *+0* or *-0*, return the String `"0"`.
-          1. If _m_ is less than zero, return the string-concatenation of `"-"` and ! NumberToString(-_m_).
-          1. If _m_ is *+&infin;*, return the String `"Infinity"`.
-          1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _m_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
-          1. If _k_ &le; _n_ &le; 21, return the string-concatenation of:
-            * the code units of the _k_ digits of the decimal representation of _s_ (in order, with no leading zeroes)
-            * _n_ - _k_ occurrences of the code unit 0x0030 (DIGIT ZERO)
-          1. If 0 &lt; _n_ &le; 21, return the string-concatenation of:
-            * the code units of the most significant _n_ digits of the decimal representation of _s_
-            * the code unit 0x002E (FULL STOP)
-            * the code units of the remaining _k_ - _n_ digits of the decimal representation of _s_
-          1. If -6 &lt; _n_ &le; 0, return the string-concatenation of:
-            * the code unit 0x0030 (DIGIT ZERO)
-            * the code unit 0x002E (FULL STOP)
-            * -_n_ occurrences of the code unit 0x0030 (DIGIT ZERO)
-            * the code units of the _k_ digits of the decimal representation of _s_
-          1. Otherwise, if _k_ = 1, return the string-concatenation of:
-            * the code unit of the single digit of _s_
-            * the code unit 0x0065 (LATIN SMALL LETTER E)
-            * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
-            * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
-          1. Return the string-concatenation of:
-            * the code units of the most significant digit of the decimal representation of _s_
-            * the code unit 0x002E (FULL STOP)
-            * the code units of the remaining _k_ - 1 digits of the decimal representation of _s_
-            * the code unit 0x0065 (LATIN SMALL LETTER E)
-            * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
-            * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
-        </emu-alg>
-        <emu-note>
-          <p>The following observations may be useful as guidelines for implementations, but are not part of the normative requirements of this Standard:</p>
-          <ul>
-            <li>
-              If x is any Number value other than *-0*, then ToNumber(ToString(x)) is exactly the same Number value as x.
-            </li>
-            <li>
-              The least significant digit of s is not always uniquely determined by the requirements listed in step 5.
-            </li>
-          </ul>
-        </emu-note>
-        <emu-note>
-          <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step 5 be used as a guideline:</p>
-          <emu-alg>
-            5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _m_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which _s_ &times; 10<sup>_n_ - _k_</sup> is closest in value to _m_. If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10.
-          </emu-alg>
-        </emu-note>
-        <emu-note>
-          <p>Implementers of ECMAScript may find useful the paper and code written by David M. Gay for binary-to-decimal conversion of floating-point numbers:</p>
-          <p>Gay, David M. Correctly Rounded Binary-Decimal and Decimal-Binary Conversions. Numerical Analysis, Manuscript 90-10. AT&amp;T Bell Laboratories (Murray Hill, New Jersey). November 30, 1990. Available as
-            <br>
-            <a href="http://ampl.com/REFS/abstracts.html#rounding">http://ampl.com/REFS/abstracts.html#rounding</a>. Associated code available as
-            <br>
-            <a href="http://netlib.sandia.gov/fp/dtoa.c">http://netlib.sandia.gov/fp/dtoa.c</a> and as
-            <br>
-            <a href="http://netlib.sandia.gov/fp/g_fmt.c">http://netlib.sandia.gov/fp/g_fmt.c</a> and may also be found at the various `netlib` mirror sites.</p>
-        </emu-note>
-      </emu-clause>
-
-      <emu-clause id="sec-tostring-applied-to-the-bigint-type" aoid="ToString Applied to the BigInt Type">
-        <h1>ToString Applied to the BigInt Type</h1>
-        <p>The abstract operation ToString converts a BigInt _i_ to String format as follows:</p>
-        <emu-alg>
-          1. If _i_ is less than zero, return the string-concatenation of the String `"-"` and ToString(-_i_).
-          1. Return the String value consisting of the code units of the digits of the decimal representation of _i_.
-        </emu-alg>
-      </emu-clause>
-    </emu-clause>
-
-    <emu-clause id="sec-toobject" aoid="ToObject">
-      <h1>ToObject ( _argument_ )</h1>
-      <p>The abstract operation ToObject converts _argument_ to a value of type Object according to <emu-xref href="#table-13"></emu-xref>:</p>
-      <emu-table id="table-13" caption="ToObject Conversions">
-        <table>
-          <tbody>
-          <tr>
-            <th>
-              Argument Type
-            </th>
-            <th>
-              Result
-            </th>
-          </tr>
-          <tr>
-            <td>
-              Undefined
-            </td>
-            <td>
-              Throw a *TypeError* exception.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Null
-            </td>
-            <td>
-              Throw a *TypeError* exception.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Boolean
-            </td>
-            <td>
-              Return a new Boolean object whose [[BooleanData]] internal slot is set to _argument_. See <emu-xref href="#sec-boolean-objects"></emu-xref> for a description of Boolean objects.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Number
-            </td>
-            <td>
-              Return a new Number object whose [[NumberData]] internal slot is set to _argument_. See <emu-xref href="#sec-number-objects"></emu-xref> for a description of Number objects.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              String
-            </td>
-            <td>
-              Return a new String object whose [[StringData]] internal slot is set to _argument_. See <emu-xref href="#sec-string-objects"></emu-xref> for a description of String objects.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Symbol
-            </td>
-            <td>
-              Return a new Symbol object whose [[SymbolData]] internal slot is set to _argument_. See <emu-xref href="#sec-symbol-objects"></emu-xref> for a description of Symbol objects.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              BigInt
-            </td>
-            <td>
-              Return a new BigInt object whose [[BigIntData]] internal slot is set to _argument_. See <a href="#sec-bigint-objects">BigInt Objects</a> for a description of BigInt objects.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Object
-            </td>
-            <td>
-              Return _argument_.
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </emu-table>
-    </emu-clause>
-
-    <emu-clause id="sec-topropertykey" aoid="ToPropertyKey">
-      <h1>ToPropertyKey ( _argument_ )</h1>
-      <p>The abstract operation ToPropertyKey converts _argument_ to a value that can be used as a property key by performing the following steps:</p>
-      <emu-alg>
-        1. Let _key_ be ? ToPrimitive(_argument_, hint String).
-        1. If Type(_key_) is Symbol, then
-          1. Return _key_.
-        1. Return ! ToString(_key_).
-      </emu-alg>
-    </emu-clause>
-
-    <emu-clause id="sec-tolength" aoid="ToLength">
-      <h1>ToLength ( _argument_ )</h1>
-      <p>The abstract operation ToLength converts _argument_ to an integer suitable for use as the length of an array-like object. It performs the following steps:</p>
-      <emu-alg>
-        1. Let _len_ be ? ToInteger(_argument_).
-        1. If _len_ &le; *+0*, return *+0*.
-        1. Return min(_len_, 2<sup>53</sup> - 1).
-      </emu-alg>
-    </emu-clause>
-
-    <emu-clause id="sec-canonicalnumericindexstring" aoid="CanonicalNumericIndexString">
-      <h1>CanonicalNumericIndexString ( _argument_ )</h1>
-      <p>The abstract operation CanonicalNumericIndexString returns _argument_ converted to a numeric value if it is a String representation of a Number that would be produced by ToString, or the string `"-0"`. Otherwise, it returns *undefined*. This abstract operation functions as follows:</p>
-      <emu-alg>
-        1. Assert: Type(_argument_) is String.
-        1. If _argument_ is `"-0"`, return *-0*.
-        1. Let _n_ be ! ToNumber(_argument_).
-        1. If SameValue(! ToString(_n_), _argument_) is *false*, return *undefined*.
-        1. Return _n_.
-      </emu-alg>
-      <p>A <em>canonical numeric string</em> is any String value for which the CanonicalNumericIndexString abstract operation does not return *undefined*.</p>
-    </emu-clause>
-
-    <emu-clause id="sec-toindex" aoid="ToIndex">
-      <h1>ToIndex ( _value_ )</h1>
-      <p>The abstract operation ToIndex returns _value_ argument converted to a numeric value if it is a valid integer index value. This abstract operation functions as follows:</p>
-      <emu-alg>
-        1. If _value_ is *undefined*, then
-          1. Let _index_ be 0.
-        1. Else,
-          1. Let _integerIndex_ be ? ToInteger(_value_).
-          1. If _integerIndex_ &lt; 0, throw a *RangeError* exception.
-          1. Let _index_ be ! ToLength(_integerIndex_).
-          1. If SameValueZero(_integerIndex_, _index_) is *false*, throw a *RangeError* exception.
-        1. Return _index_.
-      </emu-alg>
-    </emu-clause>
-
-    <emu-clause id="sec-tonumeric" aoid="ToNumeric">
-      <h1>ToNumeric ( _value_ )</h1>
-      <p>The abstract operation ToNumeric returns _value_ converted to a numeric value of type Number or BigInt. This abstract operation functions as follows:</p>
-      <emu-alg>
-        1. Let _primValue_ be ? ToPrimitive(_value_, hint Number).
-        1. If Type(_primValue_) is BigInt, return _primValue_.
-        1. Return ToNumber(_primValue_).
-      </emu-alg>
-    </emu-clause>
-
-    <emu-clause id="sec-string-to-bigint" aoid="StringToBigInt">
-      <h1>StringToBigInt ( _argument_ )</h1>
-      <p>Apply the algorithm in <emu-xref href="#sec-tonumber-applied-to-the-string-type"></emu-xref> with the following changes:</p>
-      <ul>
-        <li>Replace the |StrUnsignedDecimalLiteral| production with |DecimalDigits| to not allow *Infinity*, decimal points, or exponents.</li>
-        <li>If the MV is *NaN*, return *NaN*, otherwise return the BigInt which exactly corresponds to the MV, rather than rounding to a Number.</li>
-      </ul>
-    </emu-clause>
-
     <emu-clause id="sec-to-bigint" aoid="ToBigInt">
       <h1>ToBigInt ( _argument_ )</h1>
       <p>The abstract operation ToBigInt converts its argument _argument_ to a BigInt value, or throws if an implicit conversion from Number would be required.</p>
@@ -4859,6 +4664,15 @@
       </emu-table>
     </emu-clause>
 
+    <emu-clause id="sec-string-to-bigint" aoid="StringToBigInt">
+      <h1>StringToBigInt ( _argument_ )</h1>
+      <p>Apply the algorithm in <emu-xref href="#sec-tonumber-applied-to-the-string-type"></emu-xref> with the following changes:</p>
+      <ul>
+        <li>Replace the |StrUnsignedDecimalLiteral| production with |DecimalDigits| to not allow *Infinity*, decimal points, or exponents.</li>
+        <li>If the MV is *NaN*, return *NaN*, otherwise return the BigInt which exactly corresponds to the MV, rather than rounding to a Number.</li>
+      </ul>
+    </emu-clause>
+
     <emu-clause id="sec-to-big-int64" aoid="ToBigInt64">
       <h1>ToBigInt64 ( _argument_ )</h1>
       <p>The abstract operation ToBigInt64 converts _argument_ to one of 2<sup>64</sup> integer values in the range -2<sup>63</sup> through 2<sup>63</sup>-1, inclusive. This abstract operation functions as follows:</p>
@@ -4876,6 +4690,298 @@
         1. Let _n_ be ? ToBigInt(_argument_).
         1. Let _int64bit_ be _n_ modulo 2<sup>64</sup>.
         1. Return _int64bit_.
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-tostring" aoid="ToString">
+      <h1>ToString ( _argument_ )</h1>
+      <p>The abstract operation ToString converts _argument_ to a value of type String according to <emu-xref href="#table-12"></emu-xref>:</p>
+      <emu-table id="table-12" caption="ToString Conversions">
+        <table>
+          <tbody>
+          <tr>
+            <th>
+              Argument Type
+            </th>
+            <th>
+              Result
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Undefined
+            </td>
+            <td>
+              Return `"undefined"`.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Null
+            </td>
+            <td>
+              Return `"null"`.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Boolean
+            </td>
+            <td>
+              <p>If _argument_ is *true*, return `"true"`.</p>
+              <p>If _argument_ is *false*, return `"false"`.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Number
+            </td>
+            <td>
+              Return NumberToString(_argument_).
+            </td>
+          </tr>
+          <tr>
+            <td>
+              String
+            </td>
+            <td>
+              Return _argument_.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Symbol
+            </td>
+            <td>
+              Throw a *TypeError* exception.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              BigInt
+            </td>
+            <td>
+              Return BigIntToString(_argument_).
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Object
+            </td>
+            <td>
+              <p>Apply the following steps:</p>
+              <emu-alg>
+                1. Let _primValue_ be ? ToPrimitive(_argument_, hint String).
+                1. Return ? ToString(_primValue_).
+              </emu-alg>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </emu-table>
+
+      <emu-clause id="sec-tostring-applied-to-the-number-type" aoid="NumberToString">
+        <h1>NumberToString ( _m_ )</h1>
+        <p>The abstract operation NumberToString converts a Number _m_ to String format as follows:</p>
+        <emu-alg>
+          1. If _m_ is *NaN*, return the String `"NaN"`.
+          1. If _m_ is *+0* or *-0*, return the String `"0"`.
+          1. If _m_ is less than zero, return the string-concatenation of `"-"` and ! NumberToString(-_m_).
+          1. If _m_ is *+&infin;*, return the String `"Infinity"`.
+          1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _m_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
+          1. If _k_ &le; _n_ &le; 21, return the string-concatenation of:
+            * the code units of the _k_ digits of the decimal representation of _s_ (in order, with no leading zeroes)
+            * _n_ - _k_ occurrences of the code unit 0x0030 (DIGIT ZERO)
+          1. If 0 &lt; _n_ &le; 21, return the string-concatenation of:
+            * the code units of the most significant _n_ digits of the decimal representation of _s_
+            * the code unit 0x002E (FULL STOP)
+            * the code units of the remaining _k_ - _n_ digits of the decimal representation of _s_
+          1. If -6 &lt; _n_ &le; 0, return the string-concatenation of:
+            * the code unit 0x0030 (DIGIT ZERO)
+            * the code unit 0x002E (FULL STOP)
+            * -_n_ occurrences of the code unit 0x0030 (DIGIT ZERO)
+            * the code units of the _k_ digits of the decimal representation of _s_
+          1. Otherwise, if _k_ = 1, return the string-concatenation of:
+            * the code unit of the single digit of _s_
+            * the code unit 0x0065 (LATIN SMALL LETTER E)
+            * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
+            * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
+          1. Return the string-concatenation of:
+            * the code units of the most significant digit of the decimal representation of _s_
+            * the code unit 0x002E (FULL STOP)
+            * the code units of the remaining _k_ - 1 digits of the decimal representation of _s_
+            * the code unit 0x0065 (LATIN SMALL LETTER E)
+            * the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS) according to whether _n_ - 1 is positive or negative
+            * the code units of the decimal representation of the integer abs(_n_ - 1) (with no leading zeroes)
+        </emu-alg>
+        <emu-note>
+          <p>The following observations may be useful as guidelines for implementations, but are not part of the normative requirements of this Standard:</p>
+          <ul>
+            <li>
+              If x is any Number value other than *-0*, then ToNumber(ToString(x)) is exactly the same Number value as x.
+            </li>
+            <li>
+              The least significant digit of s is not always uniquely determined by the requirements listed in step 5.
+            </li>
+          </ul>
+        </emu-note>
+        <emu-note>
+          <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step 5 be used as a guideline:</p>
+          <emu-alg>
+            5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _m_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which _s_ &times; 10<sup>_n_ - _k_</sup> is closest in value to _m_. If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10.
+          </emu-alg>
+        </emu-note>
+        <emu-note>
+          <p>Implementers of ECMAScript may find useful the paper and code written by David M. Gay for binary-to-decimal conversion of floating-point numbers:</p>
+          <p>Gay, David M. Correctly Rounded Binary-Decimal and Decimal-Binary Conversions. Numerical Analysis, Manuscript 90-10. AT&amp;T Bell Laboratories (Murray Hill, New Jersey). November 30, 1990. Available as
+            <br>
+            <a href="http://ampl.com/REFS/abstracts.html#rounding">http://ampl.com/REFS/abstracts.html#rounding</a>. Associated code available as
+            <br>
+            <a href="http://netlib.sandia.gov/fp/dtoa.c">http://netlib.sandia.gov/fp/dtoa.c</a> and as
+            <br>
+            <a href="http://netlib.sandia.gov/fp/g_fmt.c">http://netlib.sandia.gov/fp/g_fmt.c</a> and may also be found at the various `netlib` mirror sites.</p>
+        </emu-note>
+      </emu-clause>
+
+      <emu-clause id="sec-biginttostring" aoid="BigIntToString">
+        <h1>BigIntToString ( _i_ )</h1>
+        <p>The abstract operation BigIntToString converts a BigInt _i_ to String format as follows:</p>
+        <emu-alg>
+          1. If _i_ is less than zero, return the string-concatenation of the String `"-"` and ToString(-_i_).
+          1. Return the String value consisting of the code units of the digits of the decimal representation of _i_.
+        </emu-alg>
+      </emu-clause>
+    </emu-clause>
+
+    <emu-clause id="sec-toobject" aoid="ToObject">
+      <h1>ToObject ( _argument_ )</h1>
+      <p>The abstract operation ToObject converts _argument_ to a value of type Object according to <emu-xref href="#table-13"></emu-xref>:</p>
+      <emu-table id="table-13" caption="ToObject Conversions">
+        <table>
+          <tbody>
+          <tr>
+            <th>
+              Argument Type
+            </th>
+            <th>
+              Result
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Undefined
+            </td>
+            <td>
+              Throw a *TypeError* exception.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Null
+            </td>
+            <td>
+              Throw a *TypeError* exception.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Boolean
+            </td>
+            <td>
+              Return a new Boolean object whose [[BooleanData]] internal slot is set to _argument_. See <emu-xref href="#sec-boolean-objects"></emu-xref> for a description of Boolean objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Number
+            </td>
+            <td>
+              Return a new Number object whose [[NumberData]] internal slot is set to _argument_. See <emu-xref href="#sec-number-objects"></emu-xref> for a description of Number objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              String
+            </td>
+            <td>
+              Return a new String object whose [[StringData]] internal slot is set to _argument_. See <emu-xref href="#sec-string-objects"></emu-xref> for a description of String objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Symbol
+            </td>
+            <td>
+              Return a new Symbol object whose [[SymbolData]] internal slot is set to _argument_. See <emu-xref href="#sec-symbol-objects"></emu-xref> for a description of Symbol objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              BigInt
+            </td>
+            <td>
+              Return a new BigInt object whose [[BigIntData]] internal slot is set to _argument_. See <emu-xref href="#sec-bigint-objects"></emu-xref> for a description of BigInt objects.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Object
+            </td>
+            <td>
+              Return _argument_.
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </emu-table>
+    </emu-clause>
+
+    <emu-clause id="sec-topropertykey" aoid="ToPropertyKey">
+      <h1>ToPropertyKey ( _argument_ )</h1>
+      <p>The abstract operation ToPropertyKey converts _argument_ to a value that can be used as a property key by performing the following steps:</p>
+      <emu-alg>
+        1. Let _key_ be ? ToPrimitive(_argument_, hint String).
+        1. If Type(_key_) is Symbol, then
+          1. Return _key_.
+        1. Return ! ToString(_key_).
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-tolength" aoid="ToLength">
+      <h1>ToLength ( _argument_ )</h1>
+      <p>The abstract operation ToLength converts _argument_ to an integer suitable for use as the length of an array-like object. It performs the following steps:</p>
+      <emu-alg>
+        1. Let _len_ be ? ToInteger(_argument_).
+        1. If _len_ &le; *+0*, return *+0*.
+        1. Return min(_len_, 2<sup>53</sup> - 1).
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-canonicalnumericindexstring" aoid="CanonicalNumericIndexString">
+      <h1>CanonicalNumericIndexString ( _argument_ )</h1>
+      <p>The abstract operation CanonicalNumericIndexString returns _argument_ converted to a numeric value if it is a String representation of a Number that would be produced by ToString, or the string `"-0"`. Otherwise, it returns *undefined*. This abstract operation functions as follows:</p>
+      <emu-alg>
+        1. Assert: Type(_argument_) is String.
+        1. If _argument_ is `"-0"`, return *-0*.
+        1. Let _n_ be ! ToNumber(_argument_).
+        1. If SameValue(! ToString(_n_), _argument_) is *false*, return *undefined*.
+        1. Return _n_.
+      </emu-alg>
+      <p>A <em>canonical numeric string</em> is any String value for which the CanonicalNumericIndexString abstract operation does not return *undefined*.</p>
+    </emu-clause>
+
+    <emu-clause id="sec-toindex" aoid="ToIndex">
+      <h1>ToIndex ( _value_ )</h1>
+      <p>The abstract operation ToIndex returns _value_ argument converted to a numeric value if it is a valid integer index value. This abstract operation functions as follows:</p>
+      <emu-alg>
+        1. If _value_ is *undefined*, then
+          1. Let _index_ be 0.
+        1. Else,
+          1. Let _integerIndex_ be ? ToInteger(_value_).
+          1. If _integerIndex_ &lt; 0, throw a *RangeError* exception.
+          1. Let _index_ be ! ToLength(_integerIndex_).
+          1. If SameValueZero(_integerIndex_, _index_) is *false*, throw a *RangeError* exception.
+        1. Return _index_.
       </emu-alg>
     </emu-clause>
   </emu-clause>
@@ -10676,10 +10782,10 @@
         NumericLiteral ::
           DecimalLiteral
           DecimalIntegerLiteral BigIntLiteralSuffix
-          NumericLiteralBase
-          NumericLiteralBase BigIntLiteralSuffix
-        
-        NumericLiteralBase ::
+          NonDecimalIntegerLiteral
+          NonDecimalIntegerLiteral BigIntLiteralSuffix
+
+        NonDecimalIntegerLiteral ::
           BinaryIntegerLiteral
           OctalIntegerLiteral
           HexIntegerLiteral
@@ -10764,13 +10870,13 @@
             The MV of <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar> is the MV of |DecimalLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: BinaryIntegerLiteral</emu-grammar> is the MV of |BinaryIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: OctalIntegerLiteral</emu-grammar> is the MV of |OctalIntegerLiteral|.
           </li>
           <li>
-            The MV of <emu-grammar>NumericLiteralBase :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
+            The MV of <emu-grammar>NonDecimalIntegerLiteral :: HexIntegerLiteral</emu-grammar> is the MV of |HexIntegerLiteral|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.`</emu-grammar> is the MV of |DecimalIntegerLiteral|.
@@ -10922,7 +11028,7 @@
           </li>
         </ul>
 
-        <emu-grammar>NumericLiteral :: NumericLiteralBase</emu-grammar>
+        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral</emu-grammar>
         <p>The MV is rounded to a value of the Number type.</p>
 
         <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar>
@@ -10931,10 +11037,10 @@
 
       <emu-clause id="sec-numeric-literal-static-semantics-bigint-value">
         <h1>Static Semantics: BigInt Value</h1>
-        <emu-grammar>NumericLiteral :: NumericLiteralBase BigIntLiteralSuffix</emu-grammar>
+        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
         <ul>
           <li>
-          Let the value of |NumericLiteral| be the MV of |NumericLiteralBase| represented as BigInt.
+          Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
           </li>
         </ul>
         <emu-grammar>NumericLiteral :: DecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
@@ -13536,7 +13642,7 @@
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -13552,7 +13658,7 @@
         <emu-alg>
           1. Let _lhs_ be the result of evaluating |LeftHandSideExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_lhs_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::subtract(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_lhs_, _newValue_).
           1. Return _oldValue_.
         </emu-alg>
@@ -13568,7 +13674,7 @@
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
-          1. Let _newValue_ be ? Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
+          1. Let _newValue_ be ! Type(_oldvalue_)::add(_oldValue_, Type(_oldValue_)::unit).
           1. Perform ? PutValue(_expr_, _newValue_).
           1. Return _newValue_.
         </emu-alg>
@@ -13844,7 +13950,7 @@
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
           1. Let _T_ be Type(_oldValue_).
-          1. Return ? _T_::unaryMinus(_oldValue_).
+          1. Return ! _T_::unaryMinus(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -13859,7 +13965,7 @@
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
           1. Let _oldValue_ be ? ToNumeric(? GetValue(_expr_)).
           1. Let _T_ be Type(_oldValue_).
-          1. Return ? _T_::bitwiseNOT(_oldValue_).
+          1. Return ! _T_::bitwiseNOT(_oldValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -26627,32 +26733,12 @@
   </emu-clause>
 
   <emu-clause id="sec-bigint-objects">
-  <h1>BigInt Objects</h1>
+    <h1>BigInt Objects</h1>
     <emu-clause id="sec-bigint-constructor">
       <h1>The BigInt Constructor</h1>
       <p>The BigInt constructor is the <dfn>%BigInt%</dfn> intrinsic object and the initial value of the `BigInt` property of the global object. When `BigInt` is called as a function, it performs a type conversion.</p>
 
       <p>The `BigInt` constructor is not intended to be used with the `new` operator or to be subclassed. It may be used as the value of an `extends` clause of a class definition but a `super` call to the `BigInt` constructor will cause an exception.</p>
-
-      <emu-clause id="sec-is-integer" aoid="IsInteger">
-        <h1>IsInteger ( _number_ )</h1>
-        <emu-alg>
-          1. Assert: Type(_number_) is Number.
-          1. If _number_ is *NaN*, *+&infin;*, or *-&infin;*, return *false*.
-          1. Let _integer_ be ! ToInteger(_number_).
-          1. If ! SameValueZero(_integer_, _number_) is *false*, return *false*.
-          1. Otherwise, return *true*.
-        </emu-alg>
-      </emu-clause>
-
-      <emu-clause id="sec-number-to-bigint" aoid="NumberToBigInt">
-        <h1>NumberToBigInt ( _number_ )</h1>
-        <emu-alg>
-          1. Assert: Type(_number_) is Number.
-          1. If IsInteger(_number_) is *false*, throw a *RangeError* exception.
-          1. Return a BigInt representing the mathematical value of _number_.
-        </emu-alg>
-      </emu-clause>
 
       <emu-clause id="sec-bigint-constructor-number-value">
         <h1>BigInt ( _value_ )</h1>
@@ -26663,6 +26749,15 @@
           1. If Type(_prim_) is Number, return ? NumberToBigInt(_prim_).
           1. Otherwise, return ? ToBigInt(_value_).
         </emu-alg>
+
+        <emu-clause id="sec-number-to-bigint" aoid="NumberToBigInt">
+          <h1>Runtime Semantics: NumberToBigInt ( _number_ )</h1>
+          <emu-alg>
+            1. Assert: Type(_number_) is Number.
+            1. If IsInteger(_number_) is *false*, throw a *RangeError* exception.
+            1. Return a BigInt representing the mathematical value of _number_.
+          </emu-alg>
+        </emu-clause>
       </emu-clause>
     </emu-clause>
 
@@ -26671,18 +26766,6 @@
       <p>The value of the [[Prototype]] internal slot of the BigInt constructor is the intrinsic object %FunctionPrototype%.</p>
       <p>The BigInt constructor has the following properties:</p>
 
-      <!-- es6num="20.1.2.2" -->
-      <emu-clause id="sec-bigint.asuintn">
-        <h1>BigInt.asUintN ( _bits_, _bigint_ )</h1>
-        <p>When the `BigInt.asUintN` function is called with two arguments _bits_ and _bigint_, the following steps are taken:</p>
-        <emu-alg>
-          1. Let _bits_ be ? ToIndex(_bits_).
-          1. Let _bigint_ be ? ToBigInt(_bigint_).
-          1. Return a BigInt representing _bigint_ modulo 2<sup>_bits_</sup>.
-        </emu-alg>
-      </emu-clause>
-
-      <!-- es6num="20.1.2.3" -->
       <emu-clause id="sec-bigint.asintn">
         <h1>BigInt.asIntN ( _bits_, _bigint_ )</h1>
         <p>When the `BigInt.asIntN` is called with two arguments _bits_ and _bigint_, the following steps are taken:</p>
@@ -26691,6 +26774,16 @@
           1. Let _bigint_ be ? ToBigInt(_bigint_).
           1. Let _mod_ be a BigInt representing _bigint_ modulo 2<sup>_bits_</sup>.
           1. If _mod_ &ge; 2<sup>_bits_ - 1</sup>, return _mod_ - 2<sup>_bits_</sup>; otherwise, return _mod_.
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-bigint.asuintn">
+        <h1>BigInt.asUintN ( _bits_, _bigint_ )</h1>
+        <p>When the `BigInt.asUintN` function is called with two arguments _bits_ and _bigint_, the following steps are taken:</p>
+        <emu-alg>
+          1. Let _bits_ be ? ToIndex(_bits_).
+          1. Let _bigint_ be ? ToBigInt(_bigint_).
+          1. Return a BigInt representing _bigint_ modulo 2<sup>_bits_</sup>.
         </emu-alg>
       </emu-clause>
 
@@ -26703,9 +26796,15 @@
 
     <emu-clause id="sec-properties-of-the-bigint-prototype-object">
       <h1>Properties of the BigInt Prototype Object</h1>
-      <p>The BigInt prototype object is the intrinsic object <dfn>%BigIntPrototype%</dfn>. The BigInt prototype object is an ordinary object. The BigInt prototype is not a BigInt object; it does not have a [[BigIntData]] internal slot.</p>
-      <p>The value of the [[Prototype]] internal slot of the BigInt prototype object is the intrinsic object %ObjectPrototype%.</p>
-      <p>The abstract operation thisBigIntValue(_value_) performs the following steps:</p>
+      <p>The BigInt prototype object:</p>
+      <ul>
+        <li>is the intrinsic object <dfn>%BigIntPrototype%</dfn>.</li>
+        <li>is an ordinary object.</li>
+        <li>is not a BigInt object; it does not have a [[BigIntData]] internal slot.</li>
+        <li>has a [[Prototype]] internal slot whose value is the intrinsic object %ObjectPrototype%.</li>
+      </ul>
+
+      <p>The abstract operation <dfn id="sec-thisbigintvalue" aoid="thisBigIntValue">thisBigIntValue</dfn>(_value_) performs the following steps:</p>
       <emu-alg>
         1. If Type(_value_) is BigInt, return _value_.
         1. If Type(_value_) is Object and _value_ has a [[BigIntData]] internal slot, then
@@ -26715,13 +26814,11 @@
       </emu-alg>
       <p>The phrase &ldquo;this BigInt value&rdquo; within the specification of a method refers to the result returned by calling the abstract operation thisBigIntValue with the *this* value of the method invocation passed as the argument.</p>
 
-      <!-- es6num="20.1.3.1" -->
       <emu-clause id="sec-bigint.prototype.constructor">
         <h1>BigInt.prototype.constructor</h1>
         <p>The initial value of `BigInt.prototype.constructor` is the intrinsic object %BigInt%.</p>
       </emu-clause>
 
-      <!-- es6num="20.1.3.4" -->
       <emu-clause id="sec-bigint.prototype.tolocalestring">
         <h1>BigInt.prototype.toLocaleString ( [ _reserved1_ [ , _reserved2_ ] ] )</h1>
         <p>An ECMAScript implementation that includes the ECMA-402 Internationalization API must implement the `BigInt.prototype.toLocaleString` method as specified in the ECMA-402 specification. If an ECMAScript implementation does not include the ECMA-402 API the following specification of the `toLocaleString` method is used.</p>
@@ -26729,7 +26826,6 @@
         <p>The meanings of the optional parameters to this method are defined in the ECMA-402 specification; implementations that do not include ECMA-402 support must not use those parameter positions for anything else.</p>
       </emu-clause>
 
-      <!-- es6num="20.1.3.6" -->
       <emu-clause id="sec-bigint.prototype.tostring">
         <h1>BigInt.prototype.toString ( [ _radix_ ] )</h1>
         <emu-note>
@@ -26743,12 +26839,11 @@
           1. Else, let _radixNumber_ be ? ToInteger(_radix_).
           1. If _radixNumber_ &lt; 2 or _radixNumber_ &gt; 36, throw a *RangeError* exception.
           1. If _radixNumber_ = 10, return ! ToString(_x_).
-          1. Return the String representation of this Number value using the radix specified by _radixNumber_. Letters `a`-`z` are used for digits with values 10 through 35. The precise algorithm is implementation-dependent, however the algorithm should be a generalization of that specified in <emu-xref href="#sec-tostring-applied-to-the-bigint-type"></emu-xref>.
+          1. Return the String representation of this Number value using the radix specified by _radixNumber_. Letters `a`-`z` are used for digits with values 10 through 35. The precise algorithm is implementation-dependent, however the algorithm should be a generalization of that specified in <emu-xref href="#sec-biginttostring"></emu-xref>.
         </emu-alg>
         <p>The `toString` function is not generic; it throws a *TypeError* exception if its *this* value is not a BigInt or a BigInt object. Therefore, it cannot be transferred to other kinds of objects for use as a method.</p>
       </emu-clause>
 
-      <!-- es6num="20.1.3.7" -->
       <emu-clause id="sec-bigint.prototype.valueof">
         <h1>BigInt.prototype.valueOf ( )</h1>
         <emu-alg>
@@ -26756,7 +26851,7 @@
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-bigint-@@tostringtag">
+      <emu-clause id="sec-bigint.prototype-@@tostringtag">
         <h1>BigInt.prototype [ @@toStringTag ]</h1>
         <p>The initial value of the @@toStringTag property is the String value `"BigInt"`.</p>
         <p>This property has the attributes { [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }.</p>
@@ -36653,6 +36748,26 @@ THH:mm:ss.sss
         <p>The initial value of `DataView.prototype.constructor` is the intrinsic object %DataView%.</p>
       </emu-clause>
 
+      <emu-clause id="sec-dataview.prototype.getbigint64">
+        <h1>DataView.prototype.getBigInt64 ( _byteOffset_ [ , _littleEndian_ ] )</h1>
+        <p>When the `getBigInt64` method is called with argument _byteOffset_ and optional argument _littleEndian_, the following steps are taken:</p>
+        <emu-alg>
+          1. Let _v_ be the *this* value.
+          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
+          1. Return ? GetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigInt64"`).
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-dataview.prototype.getbituint64">
+        <h1>DataView.prototype.getBigUint64 ( _byteOffset_ [ , _littleEndian_ ] )</h1>
+        <p>When the `getBigUint64` method is called with argument _byteOffset_ and optional argument _littleEndian_, the following steps are taken:</p>
+        <emu-alg>
+          1. Let _v_ be the *this* value.
+          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
+          1. Return ? GetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigUint64"`).
+        </emu-alg>
+      </emu-clause>
+
       <emu-clause id="sec-dataview.prototype.getfloat32">
         <h1>DataView.prototype.getFloat32 ( _byteOffset_ [ , _littleEndian_ ] )</h1>
         <p>When the `getFloat32` method is called with argument _byteOffset_ and optional argument _littleEndian_, the following steps are taken:</p>
@@ -36731,6 +36846,26 @@ THH:mm:ss.sss
         </emu-alg>
       </emu-clause>
 
+      <emu-clause id="sec-dataview.prototype.setbigint64">
+        <h1>DataView.prototype.setBigInt64 ( _byteOffset_, _value_ [ , _littleEndian_ ] )</h1>
+        <p>When the `setBigInt64` method is called with arguments _byteOffset_ and _value_ and optional argument _littleEndian_, the following steps are taken:</p>
+        <emu-alg>
+          1. Let _v_ be the *this* value.
+          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
+          1. Return ? SetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigInt64"`, _value_).
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-dataview.prototype.setbiguint64">
+        <h1>DataView.prototype.setBigUint64 ( _byteOffset_, _value_ [ , _littleEndian_ ] )</h1>
+        <p>When the `setBigUint64` method is called with arguments _byteOffset_ and _value_ and optional argument _littleEndian_, the following steps are taken:</p>
+        <emu-alg>
+          1. Let _v_ be the *this* value.
+          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
+          1. Return ? SetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigUint64"`, _value_).
+        </emu-alg>
+      </emu-clause>
+
       <emu-clause id="sec-dataview.prototype.setfloat32">
         <h1>DataView.prototype.setFloat32 ( _byteOffset_, _value_ [ , _littleEndian_ ] )</h1>
         <p>When the `setFloat32` method is called with arguments _byteOffset_ and _value_ and optional argument _littleEndian_, the following steps are taken:</p>
@@ -36806,46 +36941,6 @@ THH:mm:ss.sss
           1. Let _v_ be the *this* value.
           1. If _littleEndian_ is not present, set _littleEndian_ to *false*.
           1. Return ? SetViewValue(_v_, _byteOffset_, _littleEndian_, `"Uint32"`, _value_).
-        </emu-alg>
-      </emu-clause>
-
-      <emu-clause id="sec-dataview.prototype.getbigint64">
-        <h1>DataView.prototype.getBigInt64 ( _byteOffset_ [ , _littleEndian_ ] )</h1>
-        <p>When the `getBigInt64` method is called with argument _byteOffset_ and optional argument _littleEndian_, the following steps are taken:</p>
-        <emu-alg>
-          1. Let _v_ be the *this* value.
-          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
-          1. Return ? GetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigInt64"`).
-        </emu-alg>
-      </emu-clause>
-
-      <emu-clause id="sec-dataview.prototype.getbituint64">
-        <h1>DataView.prototype.getBigUint64 ( _byteOffset_ [ , _littleEndian_ ] )</h1>
-        <p>When the `getBigUint64` method is called with argument _byteOffset_ and optional argument _littleEndian_, the following steps are taken:</p>
-        <emu-alg>
-          1. Let _v_ be the *this* value.
-          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
-          1. Return ? GetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigUint64"`).
-        </emu-alg>
-      </emu-clause>
-
-      <emu-clause id="sec-dataview.prototype.setbigint64">
-        <h1>DataView.prototype.setBigInt64 ( _byteOffset_, _value_ [ , _littleEndian_ ] )</h1>
-        <p>When the `setBigInt64` method is called with arguments _byteOffset_ and _value_, the following steps are taken:</p>
-        <emu-alg>
-          1. Let _v_ be the *this* value.
-          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
-          1. Return ? SetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigInt64"`, _value_).
-        </emu-alg>
-      </emu-clause>
-
-      <emu-clause id="sec-dataview.prototype.setbiguint64">
-        <h1>DataView.prototype.setBigUint64 ( _byteOffset_, _value_ [ , _littleEndian_ ] )</h1>
-        <p>When the `setBigUint64` method is called with arguments _byteOffset_ and _value_, the following steps are taken:</p>
-        <emu-alg>
-          1. Let _v_ be the *this* value.
-          1. If _littleEndian_ is not present, let _littleEndian_ be *undefined*.
-          1. Return ? SetViewValue(_v_, _byteOffset_, _littleEndian_, `"BigUint64"`, _value_).
         </emu-alg>
       </emu-clause>
 
@@ -37078,10 +37173,10 @@ THH:mm:ss.sss
         1. Let _buffer_ be ? ValidateSharedIntegerTypedArray(_typedArray_).
         1. Let _i_ be ? ValidateAtomicAccess(_typedArray_, _index_).
         1. Let _arrayTypeName_ be _typedArray_.[[TypedArrayName]].
-        1. If _arrayTypeName_ is `"BigUint64Array"` or `"BigInt64Array"`,
+        1. If _arrayTypeName_ is `"BigUint64Array"` or `"BigInt64Array"`, then
           1. Let _expected_ be ? ToBigInt(_expectedValue_).
           1. Let _replacement_ be ? ToBigInt(_replacementValue_).
-        1. Otherwise,
+        1. Else,
           1. Let _expected_ be ? ToInteger(_expectedValue_).
           1. Let _replacement_ be ? ToInteger(_replacementValue_).
         1. Let _elementType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
@@ -40671,6 +40766,8 @@ THH:mm:ss.sss
     <emu-prodref name=NullLiteral></emu-prodref>
     <emu-prodref name=BooleanLiteral></emu-prodref>
     <emu-prodref name=NumericLiteral></emu-prodref>
+    <emu-prodref name=NonDecimalIntegerLiteral></emu-prodref>
+    <emu-prodref name=BigIntLiteralSuffix></emu-prodref>
     <emu-prodref name=DecimalLiteral></emu-prodref>
     <emu-prodref name=DecimalIntegerLiteral></emu-prodref>
     <emu-prodref name=DecimalDigits></emu-prodref>
@@ -41023,9 +41120,9 @@ THH:mm:ss.sss
       <emu-grammar type="definition">
         NumericLiteral ::
           DecimalLiteral
-          BinaryIntegerLiteral
-          OctalIntegerLiteral
-          HexIntegerLiteral
+          DecimalIntegerLiteral BigIntLiteralSuffix
+          NonDecimalIntegerLiteral
+          NonDecimalIntegerLiteral BigIntLiteralSuffix
           LegacyOctalIntegerLiteral
 
         LegacyOctalIntegerLiteral ::

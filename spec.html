@@ -1415,32 +1415,32 @@
         <p>The first and subsequent editions of ECMAScript have provided, for certain operators, implicit numeric conversions that could lose precision or truncate. These legacy implicit conversions are maintained for backward compatibility, but not provided for BigInt in order to minimize opportunity for programmer error, and to leave open the option of generalized <em>value types</em> in a future edition.</p>
       </emu-note>
 
-<emu-clause id="sec-ecmascript-language-types-number-type">
-    <h1>The Number Type</h1>
-    <p>The Number type has exactly 18437736874454810627<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> + 3<sub>ℝ</sub></emu-eqn>) values, representing the double-precision 64-bit format IEEE 754-2008 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) distinct &ldquo;Not-a-Number&rdquo; values of the IEEE Standard are represented in ECMAScript as a single special *NaN* value. (Note that the *NaN* value is produced by the program expression `NaN`.) In some implementations, external code might be able to detect a difference between various Not-a-Number values, but such behaviour is implementation-dependent; to ECMAScript code, all *NaN* values are indistinguishable from each other.</p>
-    <emu-note>
-        <p>The bit pattern that might be observed in an ArrayBuffer (see <emu-xref href="#sec-arraybuffer-objects"></emu-xref>) or a SharedArrayBuffer (see <emu-xref href="#sec-sharedarraybuffer-objects"></emu-xref>) after a Number value has been stored into it is not necessarily the same as the internal representation of that Number value used by the ECMAScript implementation.</p>
-    </emu-note>
-    <p>There are two other special values, called *positive Infinity* and *negative Infinity*. For brevity, these values are also referred to for expository purposes by the symbols *+&infin;* and *-&infin;*, respectively. (Note that these two infinite Number values are produced by the program expressions `+Infinity` (or simply `Infinity`) and `-Infinity`.)</p>
-    <p>The other 18437736874454810624<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup></emu-eqn>) values are called the finite numbers. Half of these are positive numbers and half are negative numbers; for every finite positive Number value there is a corresponding negative value having the same magnitude.</p>
-    <p>Note that there is both a *positive zero* and a *negative zero*. For brevity, these values are also referred to for expository purposes by the symbols *+0* and *-0*, respectively. (Note that these two different zero Number values are produced by the program expressions `+0` (or simply `0`) and `-0`.)</p>
-    <p>The 18437736874454810622<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) finite nonzero values are of two kinds:</p>
-    <p>18428729675200069632<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>54<sub>ℝ</sub></sup></emu-eqn>) of them are normalized, having the form</p>
-    <div class="math-display">
-        _s_ &times; _m_ &times; 2<sup>_e_</sup>
-    </div>
-    <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> but not less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is a mathematical integer ranging from -1074<sub>ℝ</sub> to 971<sub>ℝ</sub>, inclusive.</p>
-    <p>The remaining 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) values are denormalized, having the form</p>
-    <div class="math-display">
-        _s_ &times; _m_ &times; 2<sup>_e_</sup>
-    </div>
-    <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is -1074<sub>ℝ</sub>.</p>
-    <p>Note that all the positive and negative mathematical integers whose magnitude is no greater than 2<sup>53</sup> are representable in the Number type (indeed, the mathematical integer 0 has two representations, *+0* and *-0*).</p>
-    <p>A finite number has an <em>odd significand</em> if it is nonzero and the mathematical integer _m_ used to express it (in one of the two forms shown above) is odd. Otherwise, it has an <em>even significand</em>.</p>
-    <p>In this specification, the phrase &ldquo;the <dfn id="number-value">Number value</dfn> for _x_&rdquo; where _x_ represents an exact real mathematical quantity (which might even be an irrational number such as &pi;) means a Number value chosen in the following manner. Consider the set of all finite values of the Number type, with *-0* removed and with two additional values added to it that are not representable in the Number type, namely 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> (which is <emu-eqn>+1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>) and <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> (which is <emu-eqn>-1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>). Choose the member of this set that is closest in value to _x_. If two values of the set are equally close, then the one with an even significand is chosen; for this purpose, the two extra values 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> and <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> are considered to have even significands. Finally, if 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> was chosen, replace it with *+&infin;*; if <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> was chosen, replace it with *-&infin;*; if *+0* was chosen, replace it with *-0* if and only if _x_ is less than zero; any other chosen value is used unchanged. The result is the Number value for _x_. (This procedure corresponds exactly to the behaviour of the IEEE 754-2008 roundTiesToEven mode.)</p>
-    <p>Some ECMAScript operators deal only with integers in specific ranges such as <emu-eqn>-2<sup>31</sup></emu-eqn> through <emu-eqn>2<sup>31</sup> - 1</emu-eqn>, inclusive, or in the range 0 through <emu-eqn>2<sup>16</sup> - 1</emu-eqn>, inclusive. These operators accept any value of the Number type but first convert each such value to an integer value in the expected range. See the descriptions of the numeric conversion operations in <emu-xref href="#sec-type-conversion"></emu-xref>.</p>
-</emu-clause>
-<p>The Number::unit value is *1*.</p>
+      <emu-clause id="sec-ecmascript-language-types-number-type">
+        <h1>The Number Type</h1>
+        <p>The Number type has exactly 18437736874454810627<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> + 3<sub>ℝ</sub></emu-eqn>) values, representing the double-precision 64-bit format IEEE 754-2008 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) distinct &ldquo;Not-a-Number&rdquo; values of the IEEE Standard are represented in ECMAScript as a single special *NaN* value. (Note that the *NaN* value is produced by the program expression `NaN`.) In some implementations, external code might be able to detect a difference between various Not-a-Number values, but such behaviour is implementation-dependent; to ECMAScript code, all *NaN* values are indistinguishable from each other.</p>
+        <emu-note>
+            <p>The bit pattern that might be observed in an ArrayBuffer (see <emu-xref href="#sec-arraybuffer-objects"></emu-xref>) or a SharedArrayBuffer (see <emu-xref href="#sec-sharedarraybuffer-objects"></emu-xref>) after a Number value has been stored into it is not necessarily the same as the internal representation of that Number value used by the ECMAScript implementation.</p>
+        </emu-note>
+        <p>There are two other special values, called *positive Infinity* and *negative Infinity*. For brevity, these values are also referred to for expository purposes by the symbols *+&infin;* and *-&infin;*, respectively. (Note that these two infinite Number values are produced by the program expressions `+Infinity` (or simply `Infinity`) and `-Infinity`.)</p>
+        <p>The other 18437736874454810624<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup></emu-eqn>) values are called the finite numbers. Half of these are positive numbers and half are negative numbers; for every finite positive Number value there is a corresponding negative value having the same magnitude.</p>
+        <p>Note that there is both a *positive zero* and a *negative zero*. For brevity, these values are also referred to for expository purposes by the symbols *+0* and *-0*, respectively. (Note that these two different zero Number values are produced by the program expressions `+0` (or simply `0`) and `-0`.)</p>
+        <p>The 18437736874454810622<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) finite nonzero values are of two kinds:</p>
+        <p>18428729675200069632<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>54<sub>ℝ</sub></sup></emu-eqn>) of them are normalized, having the form</p>
+        <div class="math-display">
+            _s_ &times; _m_ &times; 2<sup>_e_</sup>
+        </div>
+        <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> but not less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is a mathematical integer ranging from -1074<sub>ℝ</sub> to 971<sub>ℝ</sub>, inclusive.</p>
+        <p>The remaining 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) values are denormalized, having the form</p>
+        <div class="math-display">
+            _s_ &times; _m_ &times; 2<sup>_e_</sup>
+        </div>
+        <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is -1074<sub>ℝ</sub>.</p>
+        <p>Note that all the positive and negative mathematical integers whose magnitude is no greater than 2<sup>53</sup> are representable in the Number type (indeed, the mathematical integer 0 has two representations, *+0* and *-0*).</p>
+        <p>A finite number has an <em>odd significand</em> if it is nonzero and the mathematical integer _m_ used to express it (in one of the two forms shown above) is odd. Otherwise, it has an <em>even significand</em>.</p>
+        <p>In this specification, the phrase &ldquo;the <dfn id="number-value">Number value</dfn> for _x_&rdquo; where _x_ represents an exact real mathematical quantity (which might even be an irrational number such as &pi;) means a Number value chosen in the following manner. Consider the set of all finite values of the Number type, with *-0* removed and with two additional values added to it that are not representable in the Number type, namely 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> (which is <emu-eqn>+1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>) and <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> (which is <emu-eqn>-1<sub>ℝ</sub> &times; 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> &times; 2<sub>ℝ</sub><sup>971<sub>ℝ</sub></sup></emu-eqn>). Choose the member of this set that is closest in value to _x_. If two values of the set are equally close, then the one with an even significand is chosen; for this purpose, the two extra values 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> and <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> are considered to have even significands. Finally, if 2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup> was chosen, replace it with *+&infin;*; if <emu-eqn>-2<sub>ℝ</sub><sup>1024<sub>ℝ</sub></sup></emu-eqn> was chosen, replace it with *-&infin;*; if *+0* was chosen, replace it with *-0* if and only if _x_ is less than zero; any other chosen value is used unchanged. The result is the Number value for _x_. (This procedure corresponds exactly to the behaviour of the IEEE 754-2008 roundTiesToEven mode.)</p>
+        <p>Some ECMAScript operators deal only with integers in specific ranges such as <emu-eqn>-2<sup>31</sup></emu-eqn> through <emu-eqn>2<sup>31</sup> - 1</emu-eqn>, inclusive, or in the range 0 through <emu-eqn>2<sup>16</sup> - 1</emu-eqn>, inclusive. These operators accept any value of the Number type but first convert each such value to an integer value in the expected range. See the descriptions of the numeric conversion operations in <emu-xref href="#sec-type-conversion"></emu-xref>.</p>
+
+        <p>The Number::unit value is *1*.</p>
 
         <emu-clause id="sec-numeric-types-number-unaryMinus">
           <h1>Number::unaryMinus ( _x_ )</h1>
@@ -5008,7 +5008,6 @@
           </tbody>
         </table>
       </emu-table>
-<<<<<<< HEAD
 
       <emu-clause id="sec-tostring-applied-to-the-number-type" aoid="NumberToString">
         <h1>NumberToString ( _m_ )</h1>
@@ -5081,8 +5080,6 @@
           1. Return the String value consisting of the code units of the digits of the decimal representation of _i_.
         </emu-alg>
       </emu-clause>
-=======
->>>>>>> Add ::toString() as a numeric type operation.
     </emu-clause>
 
     <emu-clause id="sec-toobject" aoid="ToObject">

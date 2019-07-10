@@ -1805,8 +1805,10 @@
 
         <emu-clause id="sec-numeric-types-bigint-unaryMinus">
           <h1>BigInt::unaryMinus ( _x_ )</h1>
-          <p>The abstract operation BigInt::unaryMinus with an argument _x_ of type BigInt returns the result of negating _x_.</p>
-          <emu-note>There is only one *0n* value; `-0n` is the same as *0n*.</emu-note>
+          <emu-alg>
+            1. If _x_ is *0n*, return *0n*.
+            1. Return a BigInt representing the mathematical value of negating _x_.
+          </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseNOT">
@@ -34821,17 +34823,17 @@ THH:mm:ss.sss
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-is-compatible-typed-array-type" aoid="IsCompatibleTypedArrayType">
-          <h1>IsCompatibleTypedArrayType ( _type_ , _otherType_ )</h1>
-          <p>The abstract operation IsCompatibleTypedArrayType checks if _type_ and _otherType_ are compatible:</p>
+        <emu-clause id="sec-is-copyable-typed-array-types" aoid="IsCopyableTypedArrayTypes">
+          <h1>IsCopyableTypedArrayTypes ( _type_ , _otherType_ )</h1>
+          <p>The abstract operation IsCopyableTypedArrayTypes checks if it is possible to copy elements between TypedArray of types _type_ and _otherType_ :</p>
           <emu-alg>
-            1. Assert: _type_ is one of the values of constructors name in <emu-xref href="#table-49"></emu-xref>.
-            1. Assert: _otherType_ is one of the values of constructors name in <emu-xref href="#table-49"></emu-xref>.
-            1. If _type_ is `"BigInt64Array"` or `"BigUint64Array"`, then
-              1. If _otherType_ is `"BigInt64Array"` or `"BigUint64Array"`, return *true*.
+            1. Assert: _type_ is one of String values of column Element Type in <emu-xref href="#table-49"></emu-xref>.
+            1. Assert: _otherType_ is one of String values of column Element Type in <emu-xref href="#table-49"></emu-xref>.
+            1. If _type_ is `"BigInt64"` or `"BigUint64"`, then
+              1. If _otherType_ is `"BigInt64"` or `"BigUint64"`, return *true*.
               1. Return *false*.
-            1. Else if _otherType_ is `"BigInt64Array"` or `"BigUint64Array"`, then
-              1. If _type_ is `"BigInt64Array"` or `"BigUint64Array"`, return *true*.
+            1. Else if _otherType_ is `"BigInt64"` or `"BigUint64"`, then
+              1. If _type_ is `"BigInt64"` or `"BigUint64"`, return *true*.
               1. Return *false*.
             1. Return *true*.
           </emu-alg>
@@ -34862,7 +34864,7 @@ THH:mm:ss.sss
             1. Let _srcLength_ be _typedArray_.[[ArrayLength]].
             1. Let _srcByteOffset_ be _typedArray_.[[ByteOffset]].
             1. If _srcLength_ + _targetOffset_ &gt; _targetLength_, throw a *RangeError* exception.
-            1. If IsCompatibleTypedArrayType(_targetName_, _srcName_) is *false*, throw a *TypeError* exception.
+            1. If IsCopyableTypedArrayTypes(_targetType_, _srcType_) is *false*, throw a *TypeError* exception.
             1. If both IsSharedArrayBuffer(_srcBuffer_) and IsSharedArrayBuffer(_targetBuffer_) are *true*, then
               1. If _srcBuffer_.[[ArrayBufferData]] and _targetBuffer_.[[ArrayBufferData]] are the same Shared Data Block values, let _same_ be *true*; else let _same_ be *false*.
             1. Else, let _same_ be SameValue(_srcBuffer_, _targetBuffer_).
@@ -35147,7 +35149,7 @@ THH:mm:ss.sss
           1. Else,
             1. Let _data_ be ? AllocateArrayBuffer(_bufferConstructor_, _byteLength_).
             1. If IsDetachedBuffer(_srcData_) is *true*, throw a *TypeError* exception.
-            1. If IsCompatibleTypedArrayType(_srcName_, _constructorName_) is *false*, throw a *TypeError* exception.
+            1. If IsCopyableTypedArrayTypes(_srcType_, _elementType_) is *false*, throw a *TypeError* exception.
             1. Let _srcByteIndex_ be _srcByteOffset_.
             1. Let _targetByteIndex_ be 0.
             1. Let _count_ be _elementLength_.
@@ -35253,7 +35255,9 @@ THH:mm:ss.sss
           1. Let _constructor_ be ? SpeciesConstructor(_exemplar_, _defaultConstructor_).
           1. Let _result_ be ? TypedArrayCreate(_constructor_, _argumentList_).
           1. Assert: _result_ has a [[TypedArrayName]] internal slot.
-          1. If IsCompatibleTypedArrayType(_result_.[[TypedArrayName]], _exemplar_.[[TypedArrayName]]) is *false*, throw a *TypeError* exception.
+          1. Let _resultType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _result_.[[TypedArrayName]].
+          1. Let _exemplarType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _exemplar_.[[TypedArrayName]].
+          1. If IsCopyableTypedArrayTypes(_resultType_, _exemplarType_) is *false*, throw a *TypeError* exception.
           1. Return _result_.
         </emu-alg>
       </emu-clause>
@@ -36397,7 +36401,11 @@ THH:mm:ss.sss
           1. If IsSharedArrayBuffer(_arrayBuffer_) is *true*, then
             1. Let _execution_ be the [[CandidateExecution]] field of the surrounding agent's Agent Record.
             1. Let _eventList_ be the [[EventList]] field of the element in _execution_.[[EventsRecords]] whose [[AgentSignifier]] is AgentSignifier().
-            1. If _isTypedArray_ is *true* and _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, or if _type_ is `"BigInt64"` or `"BigUint64"` and _order_ is not `"Init"` or `"Unordered"`, let _noTear_ be *true*; otherwise let _noTear_ be *false*.
+            1. If _isTypedArray_ is *true* and _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, then
+              1. Let _noTear_ be *true*.
+            1. Else if _isTypedArray_ is *true* and _type_ is `"BigInt64"` or `"BigUint64"` and _order_ is not `"Init"` or `"Unordered"`, then
+              1. Let _noTear_ be *true*.
+            1. Else let _noTear_ be *false*
             1. Let _rawValue_ be a List of length _elementSize_ of nondeterministically chosen byte values.
             1. NOTE: In implementations, _rawValue_ is the result of a non-atomic or atomic read instruction on the underlying hardware. The nondeterminism is a semantic prescription of the memory model to describe observable behaviour of hardware with weak consistency.
             1. Let _readEvent_ be ReadSharedMemory { [[Order]]: _order_, [[NoTear]]: _noTear_, [[Block]]: _block_, [[ByteIndex]]: _byteIndex_, [[ElementSize]]: _elementSize_ }.
@@ -36444,7 +36452,12 @@ THH:mm:ss.sss
           1. If IsSharedArrayBuffer(_arrayBuffer_) is *true*, then
             1. Let _execution_ be the [[CandidateExecution]] field of the surrounding agent's Agent Record.
             1. Let _eventList_ be the [[EventList]] field of the element in _execution_.[[EventsRecords]] whose [[AgentSignifier]] is AgentSignifier().
-            1. If _isTypedArray_ is *true* and _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, or if _type_ is `"BigInt64"` or `"BigUint64"` and _order_ is not `"Init"` or `"Unordered"`, let _noTear_ be *true*; otherwise let _noTear_ be *false*.
+            1. If _isTypedArray_ is *true* and _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, then
+              1. Let _noTear_ be *true*.
+            1. Else if _isTypedArray_ is *true* and _type_ is `"BigInt64"` or `"BigUint64"` and _order_ is not `"Init"` or `"Unordered"`, then
+              1. Let _noTear_ be *true*.
+            1. Else
+              1. Let _noTear_ be *false*.
             1. Append WriteSharedMemory { [[Order]]: _order_, [[NoTear]]: _noTear_, [[Block]]: _block_, [[ByteIndex]]: _byteIndex_, [[ElementSize]]: _elementSize_, [[Payload]]: _rawBytes_ } to _eventList_.
           1. Else, store the individual bytes of _rawBytes_ into _block_, in order, starting at _block_[_byteIndex_].
           1. Return NormalCompletion(*undefined*).

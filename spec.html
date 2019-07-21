@@ -57,7 +57,8 @@
     <li>Issues: <a href="https://github.com/tc39/ecma262/issues">All Issues</a>, <a href="https://github.com/tc39/ecma262/issues/new">File a New Issue</a></li>
     <li>Pull Requests: <a href="https://github.com/tc39/ecma262/pulls">All Pull Requests</a>, <a href="https://github.com/tc39/ecma262/pulls/new">Create a New Pull Request</a></li>
     <li>Test Suite: <a href="https://github.com/tc39/test262">Test262</a></li>
-    <li>Editors:
+    <li>
+      Editors:
       <ul>
         <li><a href="mailto:brian.terlson at microsoft dot com">Brian Terlson</a> (<a href="https://twitter.com/bterlson">@bterlson</a>)</li>
         <li><a href="mailto:bradley.meck at gmail dot com">Bradley Farias</a> (<a href="https://twitter.com/bradleymeck">@bradleymeck</a>)</li>
@@ -65,7 +66,7 @@
       </ul>
     </li>
     <li>
-      <p>Community:</p>
+      Community:
       <ul>
         <li>Discourse: <a href="https://es.discourse.group">https://es.discourse.group</a></li>
         <li>IRC: <a href="ircs://irc.freenode.net:6667">#tc39</a> on <a href="https://freenode.net/kb/answer/chat">freenode</a></li>
@@ -119,7 +120,7 @@
 <emu-clause id="sec-normative-references">
   <h1>Normative References</h1>
   <p>The following referenced documents are indispensable for the application of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-  <p>ISO/IEC 10646 <i>Information Technology &ndash; Universal Multiple-Octet Coded Character Set (UCS) plus Amendment 1:2005, Amendment 2:2006, Amendment 3:2008, and Amendment 4:2008</i>, plus additional amendments and corrigenda, or successor</p>
+  <p>ISO/IEC 10646 <i>Information Technology &mdash; Universal Multiple-Octet Coded Character Set (UCS) plus Amendment 1:2005, Amendment 2:2006, Amendment 3:2008, and Amendment 4:2008</i>, plus additional amendments and corrigenda, or successor</p>
   <p>ECMA-402, <i>ECMAScript 2015 Internationalization API Specification</i>.
     <br>
     <a href="https://ecma-international.org/publications/standards/Ecma-402.htm">https://ecma-international.org/publications/standards/Ecma-402.htm</a></p>
@@ -136,7 +137,7 @@
   <p>ECMAScript was originally designed to be a <em>Web scripting language</em>, providing a mechanism to enliven Web pages in browsers and to perform server computation as part of a Web-based client-server architecture. ECMAScript is now used to provide core scripting capabilities for a variety of host environments. Therefore the core language is specified in this document apart from any particular host environment.</p>
   <p>ECMAScript usage has moved beyond simple scripting and it is now used for the full spectrum of programming tasks in many different environments and scales. As the usage of ECMAScript has expanded, so have the features and facilities it provides. ECMAScript is now a fully featured general-purpose programming language.</p>
   <p>Some of the facilities of ECMAScript are similar to those used in other programming languages; in particular C, Java&trade;, Self, and Scheme as described in:</p>
-  <p>ISO/IEC 9899:1996, <i>Programming Languages &ndash; C</i>.</p>
+  <p>ISO/IEC 9899:1996, <i>Programming Languages &mdash; C</i>.</p>
   <p>Gosling, James, Bill Joy and Guy Steele. <i>The Java<sup>&trade;</sup> Language Specification</i>. Addison Wesley Publishing Co., 1996.</p>
   <p>Ungar, David, and Smith, Randall B. Self: The Power of Simplicity. <i>OOPSLA '87 Conference Proceedings</i>, pp. 227-241, Orlando, FL, October 1987.</p>
   <p><i>IEEE Standard for the Scheme Programming Language</i>. IEEE Std 1178-1990.</p>
@@ -724,7 +725,7 @@
       <p>When an algorithm is associated with a production alternative, the alternative is typically shown without any &ldquo;[ ]&rdquo; grammar annotations. Such annotations should only affect the syntactic recognition of the alternative and have no effect on the associated semantics for the alternative.</p>
       <p>Syntax-directed operations are invoked with a parse node and, optionally, other parameters by using the conventions on steps 1, 3, and 4 in the following algorithm:</p>
       <emu-alg>
-        1. Let _status_ be the result of performing SyntaxDirectedOperation of |SomeNonTerminal|.
+        1. Let _status_ be SyntaxDirectedOperation of |SomeNonTerminal|.
         2. Let _someParseNode_ be the parse of some source text.
         2. Perform SyntaxDirectedOperation of _someParseNode_.
         2. Perform SyntaxDirectedOperation of _someParseNode_ passing `"value"` as the argument.
@@ -872,10 +873,10 @@
       </ul>
 
       <p>In the language of this specification, numerical values and operations (including addition, subtraction, negation, multiplication, division, and comparison) are distinguished among different numeric kinds using subscripts. The subscript <sub><dfn id="𝔽">𝔽</dfn></sub> refers to Numbers, and the subscript <sub><dfn id="ℝ">ℝ</dfn></sub> refers to mathematical values. A subscript is used following each numeric value and operation.</p>
-      <p>For brevity, the <sub>𝔽</sub> subscript can be omitted on Number values--a numeric value with no subscript is interpreted to be a Number. An operation with no subscript is interpreted to be a Number operation, unless one of the parameters has a particular subscript, in which case the operation adopts that subscript. For example, 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> is a statement about mathematical values, and 1 + 2 = 3 is a statement about Numbers.</p>
+      <p>For brevity, the <sub>𝔽</sub> subscript can be omitted on Number values&mdash;a numeric value with no subscript is interpreted to be a Number. An operation with no subscript is interpreted to be a Number operation, unless one of the parameters has a particular subscript, in which case the operation adopts that subscript. For example, 1<sub>ℝ</sub> + 2<sub>ℝ</sub> = 3<sub>ℝ</sub> is a statement about mathematical values, and 1 + 2 = 3 is a statement about Numbers.</p>
       <p>In general, when this specification refers to a numerical value, such as in the phrase, "the length of _y_" or "the integer represented by the four hexadecimal digits ...", without explicitly specifying a numeric kind, the phrase refers to a Number. Phrases which refer to a mathematical value are explicitly annotated as such; for example, "the mathematical value of the number of code points in ...".</p>
       <p>It is not defined to mix Numbers and mathematical values in either arithmetic or comparison operations, and any such undefined operation would be an editorial error in this specification text.</p>
-      <p>The Number value 0, alternatively written 0<sub>𝔽</sub>, is defined as the double-precision floating point positive zero value. In certain contexts, it may also be written as +0 for clarity.</p>
+      <p>The Number value 0, alternatively written 0<sub>𝔽</sub>, is defined as the double-precision floating point positive zero value. In certain contexts, it may also be written as *+0* for clarity.</p>
       <p>This specification denotes most numeric values in base 10; it also uses numeric values of the form 0x followed by digits 0-9 or A-F as base-16 values.</p>
       <p>In certain contexts, an operation is specified which is generic between Numbers and mathematical values. In these cases, the subscript can be a variable; _t_ is often used for this purpose, for example 5<sub>_t_</sub> &times; 10<sub>_t_</sub> = 50<sub>_t_</sub> for any _t_ ranging over ℝ and 𝔽, since the values involved are within the range where the semantics coincide.</p>
       <p>Conversions between mathematical values and numbers are never implicit, and always explicit in this document. A conversion from a mathematical value to a Number is denoted as "the Number value for _x_", and is defined in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>. A conversion from a Number to a mathematical value is denoted as "the <dfn id="mathematical-value">mathematical value</dfn> of _x_", or ℝ(_x_). Note that the mathematical value of non-finite values is not defined, and the mathematical value of *+0* and *-0* is the mathematical value 0<sub>ℝ</sub>.</p>
@@ -2105,8 +2106,8 @@
             </tbody>
           </table>
         </emu-table>
-        <p>If the initial values of a property's attributes are not explicitly specified by this specification, the default value defined in <emu-xref href="#table-4"></emu-xref> is used.</p>
-        <emu-table id="table-4" caption="Default Attribute Values">
+        <p>If the initial values of a property's attributes are not explicitly specified by this specification, the default value defined in <emu-xref href="#table-default-attribute-values"></emu-xref> is used.</p>
+        <emu-table id="table-default-attribute-values" caption="Default Attribute Values" oldids="table-4">
           <table>
             <tbody>
             <tr>
@@ -3403,6 +3404,16 @@
             </tr>
             <tr>
               <td>
+                %RegExpStringIteratorPrototype%
+              </td>
+              <td>
+              </td>
+              <td>
+                The prototype of RegExp String Iterator objects (<emu-xref href="#sec-regexp-string-iterator-objects"></emu-xref>)
+              </td>
+            </tr>
+            <tr>
+              <td>
                 %Set%
               </td>
               <td>
@@ -3862,10 +3873,10 @@
           1. Let _asyncContext_ be the running execution context.
           1. Let _promise_ be ? PromiseResolve(%Promise%, _value_).
           1. Let _stepsFulfilled_ be the algorithm steps defined in <emu-xref href="#await-fulfilled" title></emu-xref>.
-          1. Let _onFulfilled_ be CreateBuiltinFunction(_stepsFulfilled_, &laquo; [[AsyncContext]] &raquo;).
+          1. Let _onFulfilled_ be ! CreateBuiltinFunction(_stepsFulfilled_, &laquo; [[AsyncContext]] &raquo;).
           1. Set _onFulfilled_.[[AsyncContext]] to _asyncContext_.
           1. Let _stepsRejected_ be the algorithm steps defined in <emu-xref href="#await-rejected" title></emu-xref>.
-          1. Let _onRejected_ be CreateBuiltinFunction(_stepsRejected_, &laquo; [[AsyncContext]] &raquo;).
+          1. Let _onRejected_ be ! CreateBuiltinFunction(_stepsRejected_, &laquo; [[AsyncContext]] &raquo;).
           1. Set _onRejected_.[[AsyncContext]] to _asyncContext_.
           1. Perform ! PerformPromiseThen(_promise_, _onFulfilled_, _onRejected_).
           1. Remove _asyncContext_ from the execution context stack and restore the execution context that is at the top of the execution context stack as the running execution context.
@@ -4175,11 +4186,11 @@
           1. Let _desc_ be a new Property Descriptor that initially has no fields.
           1. Let _hasEnumerable_ be ? HasProperty(_Obj_, `"enumerable"`).
           1. If _hasEnumerable_ is *true*, then
-            1. Let _enumerable_ be ToBoolean(? Get(_Obj_, `"enumerable"`)).
+            1. Let _enumerable_ be ! ToBoolean(? Get(_Obj_, `"enumerable"`)).
             1. Set _desc_.[[Enumerable]] to _enumerable_.
           1. Let _hasConfigurable_ be ? HasProperty(_Obj_, `"configurable"`).
           1. If _hasConfigurable_ is *true*, then
-            1. Let _configurable_ be ToBoolean(? Get(_Obj_, `"configurable"`)).
+            1. Let _configurable_ be ! ToBoolean(? Get(_Obj_, `"configurable"`)).
             1. Set _desc_.[[Configurable]] to _configurable_.
           1. Let _hasValue_ be ? HasProperty(_Obj_, `"value"`).
           1. If _hasValue_ is *true*, then
@@ -4187,7 +4198,7 @@
             1. Set _desc_.[[Value]] to _value_.
           1. Let _hasWritable_ be ? HasProperty(_Obj_, `"writable"`).
           1. If _hasWritable_ is *true*, then
-            1. Let _writable_ be ToBoolean(? Get(_Obj_, `"writable"`)).
+            1. Let _writable_ be ! ToBoolean(? Get(_Obj_, `"writable"`)).
             1. Set _desc_.[[Writable]] to _writable_.
           1. Let _hasGet_ be ? HasProperty(_Obj_, `"get"`).
           1. If _hasGet_ is *true*, then
@@ -5373,7 +5384,7 @@
       <emu-alg>
         1. If Type(_argument_) is not Object, return *false*.
         1. Let _matcher_ be ? Get(_argument_, @@match).
-        1. If _matcher_ is not *undefined*, return ToBoolean(_matcher_).
+        1. If _matcher_ is not *undefined*, return ! ToBoolean(_matcher_).
         1. If _argument_ has a [[RegExpMatcher]] internal slot, return *true*.
         1. Return *false*.
       </emu-alg>
@@ -5744,13 +5755,29 @@
       </emu-alg>
     </emu-clause>
 
+    <emu-clause id="sec-lengthofarraylike" aoid="LengthOfArrayLike">
+      <h1>LengthOfArrayLike ( _obj_ )</h1>
+      <p>The abstract operation LengthOfArrayLike returns the value of the `"length"` property of an array-like object.</p>
+      <emu-alg>
+        1. Assert: Type(_obj_) is Object.
+        1. Return ? ToLength(? Get(_obj_, `"length"`)).
+      </emu-alg>
+      <p>An <dfn>array-like object</dfn> is any object for which this operation returns an integer rather than an abrupt completion.</p>
+      <emu-note>
+        Typically, an array-like object would also have some properties with integer index names. However, that is not a requirement of this definition.
+      </emu-note>
+      <emu-note>
+        Array objects and String objects are examples of array-like objects.
+      </emu-note>
+    </emu-clause>
+
     <emu-clause id="sec-createlistfromarraylike" aoid="CreateListFromArrayLike">
       <h1>CreateListFromArrayLike ( _obj_ [ , _elementTypes_ ] )</h1>
       <p>The abstract operation CreateListFromArrayLike is used to create a List value whose elements are provided by the indexed properties of an array-like object, _obj_. The optional argument _elementTypes_ is a List containing the names of ECMAScript Language Types that are allowed for element values of the List that is created. This abstract operation performs the following steps:</p>
       <emu-alg>
         1. If _elementTypes_ is not present, set _elementTypes_ to &laquo; Undefined, Null, Boolean, String, Symbol, Number, Object &raquo;.
         1. If Type(_obj_) is not Object, throw a *TypeError* exception.
-        1. Let _len_ be ? ToLength(? Get(_obj_, `"length"`)).
+        1. Let _len_ be ? LengthOfArrayLike(_obj_).
         1. Let _list_ be a new empty List.
         1. Let _index_ be 0.
         1. Repeat, while _index_ &lt; _len_
@@ -5819,13 +5846,13 @@
           1. If Type(_key_) is String, then
             1. Let _desc_ be ? _O_.[[GetOwnProperty]](_key_).
             1. If _desc_ is not *undefined* and _desc_.[[Enumerable]] is *true*, then
-              1. If _kind_ is *"key"*, append _key_ to _properties_.
+              1. If _kind_ is `"key"`, append _key_ to _properties_.
               1. Else,
                 1. Let _value_ be ? Get(_O_, _key_).
-                1. If _kind_ is *"value"*, append _value_ to _properties_.
+                1. If _kind_ is `"value"`, append _value_ to _properties_.
                 1. Else,
-                  1. Assert: _kind_ is *"key+value"*.
-                  1. Let _entry_ be CreateArrayFromList(&laquo; _key_, _value_ &raquo;).
+                  1. Assert: _kind_ is `"key+value"`.
+                  1. Let _entry_ be ! CreateArrayFromList(&laquo; _key_, _value_ &raquo;).
                   1. Append _entry_ to _properties_.
         1. Order the elements of _properties_ so they are in the same relative order as would be produced by the Iterator that would be returned if the EnumerateObjectProperties internal method were invoked with _O_.
         1. Return _properties_.
@@ -5897,7 +5924,7 @@
             1. If _method_ is *undefined*, then
               1. Let _syncMethod_ be ? GetMethod(_obj_, @@iterator).
               1. Let _syncIteratorRecord_ be ? GetIterator(_obj_, ~sync~, _syncMethod_).
-              1. Return ? CreateAsyncFromSyncIterator(_syncIteratorRecord_).
+              1. Return ! CreateAsyncFromSyncIterator(_syncIteratorRecord_).
           1. Otherwise, set _method_ to ? GetMethod(_obj_, @@iterator).
         1. Let _iterator_ be ? Call(_method_, _obj_).
         1. If Type(_iterator_) is not Object, throw a *TypeError* exception.
@@ -5925,7 +5952,7 @@
       <p>The abstract operation IteratorComplete with argument _iterResult_ performs the following steps:</p>
       <emu-alg>
         1. Assert: Type(_iterResult_) is Object.
-        1. Return ToBoolean(? Get(_iterResult_, `"done"`)).
+        1. Return ! ToBoolean(? Get(_iterResult_, `"done"`)).
       </emu-alg>
     </emu-clause>
 
@@ -6004,7 +6031,7 @@
         1. Set _iterator_.[[IteratedList]] to _list_.
         1. Set _iterator_.[[ListIteratorNextIndex]] to 0.
         1. Let _steps_ be the algorithm steps defined in <emu-xref href="#sec-listiterator-next" title></emu-xref>.
-        1. Let _next_ be CreateBuiltinFunction(_steps_, &laquo; &raquo;).
+        1. Let _next_ be ! CreateBuiltinFunction(_steps_, &laquo; &raquo;).
         1. Return Record { [[Iterator]]: _iterator_, [[NextMethod]]: _next_, [[Done]]: *false* }.
       </emu-alg>
       <emu-note>
@@ -6281,7 +6308,7 @@
             1. If the _withEnvironment_ flag of _envRec_ is *false*, return *true*.
             1. Let _unscopables_ be ? Get(_bindings_, @@unscopables).
             1. If Type(_unscopables_) is Object, then
-              1. Let _blocked_ be ToBoolean(? Get(_unscopables_, _N_)).
+              1. Let _blocked_ be ! ToBoolean(? Get(_unscopables_, _N_)).
               1. If _blocked_ is *true*, return *false*.
             1. Return *true*.
           </emu-alg>
@@ -7224,10 +7251,10 @@
         1. Let _objProto_ be ObjectCreate(*null*).
         1. Set _intrinsics_.[[%ObjectPrototype%]] to _objProto_.
         1. Let _throwerSteps_ be the algorithm steps specified in <emu-xref href="#sec-%throwtypeerror%"></emu-xref> for the %ThrowTypeError% function.
-        1. Let _thrower_ be CreateBuiltinFunction(_throwerSteps_, &laquo; &raquo;, _realmRec_, *null*).
+        1. Let _thrower_ be ! CreateBuiltinFunction(_throwerSteps_, &laquo; &raquo;, _realmRec_, *null*).
         1. Set _intrinsics_.[[%ThrowTypeError%]] to _thrower_.
         1. Let _noSteps_ be an empty sequence of algorithm steps.
-        1. Let _funcProto_ be CreateBuiltinFunction(_noSteps_, &laquo; &raquo;, _realmRec_, _objProto_).
+        1. Let _funcProto_ be ! CreateBuiltinFunction(_noSteps_, &laquo; &raquo;, _realmRec_, _objProto_).
         1. Set _intrinsics_.[[%FunctionPrototype%]] to _funcProto_.
         1. Call _thrower_.[[SetPrototypeOf]](_funcProto_).
         1. Perform AddRestrictedFunctionProperties(_funcProto_, _realmRec_).
@@ -7954,22 +7981,23 @@
             1. If _extensible_ is *false*, return *false*.
             1. Assert: _extensible_ is *true*.
             1. If IsGenericDescriptor(_Desc_) is *true* or IsDataDescriptor(_Desc_) is *true*, then
-              1. If _O_ is not *undefined*, create an own data property named _P_ of object _O_ whose [[Value]], [[Writable]], [[Enumerable]] and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its default value.
+              1. If _O_ is not *undefined*, create an own data property named _P_ of object _O_ whose [[Value]], [[Writable]], [[Enumerable]], and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its <emu-xref href="#table-default-attribute-values">default value</emu-xref>.
             1. Else,
               1. Assert: ! IsAccessorDescriptor(_Desc_) is *true*.
-              1. If _O_ is not *undefined*, create an own accessor property named _P_ of object _O_ whose [[Get]], [[Set]], [[Enumerable]] and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its default value.
+              1. If _O_ is not *undefined*, create an own accessor property named _P_ of object _O_ whose [[Get]], [[Set]], [[Enumerable]], and [[Configurable]] attribute values are described by _Desc_. If the value of an attribute field of _Desc_ is absent, the attribute of the newly created property is set to its <emu-xref href="#table-default-attribute-values">default value</emu-xref>.
             1. Return *true*.
           1. If every field in _Desc_ is absent, return *true*.
           1. If _current_.[[Configurable]] is *false*, then
             1. If _Desc_.[[Configurable]] is present and its value is *true*, return *false*.
-            1. If _Desc_.[[Enumerable]] is present and the [[Enumerable]] fields of _current_ and _Desc_ are the Boolean negation of each other, return *false*.
-          1. If IsGenericDescriptor(_Desc_) is *true*, no further validation is required.
-          1. Else if IsDataDescriptor(_current_) and IsDataDescriptor(_Desc_) have different results, then
+            1. If _Desc_.[[Enumerable]] is present and ! SameValue(_Desc_.[[Enumerable]], _current_.[[Enumerable]]) is *false*, return *false*.
+          1. If ! IsGenericDescriptor(_Desc_) is *true*, then
+            1. NOTE: No further validation is required.
+          1. Else if ! SameValue(! IsDataDescriptor(_current_), ! IsDataDescriptor(_Desc_)) is *false*, then
             1. If _current_.[[Configurable]] is *false*, return *false*.
             1. If IsDataDescriptor(_current_) is *true*, then
-              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from a data property to an accessor property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their default values.
+              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from a data property to an accessor property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their <emu-xref href="#table-default-attribute-values">default values</emu-xref>.
             1. Else,
-              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from an accessor property to a data property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their default values.
+              1. If _O_ is not *undefined*, convert the property named _P_ of object _O_ from an accessor property to a data property. Preserve the existing values of the converted property's [[Configurable]] and [[Enumerable]] attributes and set the rest of the property's attributes to their <emu-xref href="#table-default-attribute-values">default values</emu-xref>.
           1. Else if IsDataDescriptor(_current_) and IsDataDescriptor(_Desc_) are both *true*, then
             1. If _current_.[[Configurable]] is *false* and _current_.[[Writable]] is *false*, then
               1. If _Desc_.[[Writable]] is present and _Desc_.[[Writable]] is *true*, return *false*.
@@ -8459,7 +8487,7 @@
       <emu-alg>
         1. Let _len_ be the ExpectedArgumentCount of _ParameterList_.
         1. Perform ! SetFunctionLength(_F_, _len_).
-        1. If the source text matching _Body_ is strict mode code, let _Strict_ be *true*; else, let _Strict_ be *false*.
+        1. If the source text matching _Body_ is strict mode code, let _Strict_ be *true*; else let _Strict_ be *false*.
         1. Set _F_.[[Strict]] to _Strict_.
         1. Set _F_.[[Environment]] to _Scope_.
         1. Set _F_.[[FormalParameters]] to _ParameterList_.
@@ -8714,7 +8742,7 @@
               1. Perform ! _lexEnvRec_.CreateMutableBinding(_dn_, *false*).
         1. For each Parse Node _f_ in _functionsToInitialize_, do
           1. Let _fn_ be the sole element of the BoundNames of _f_.
-          1. Let _fo_ be the result of performing InstantiateFunctionObject for _f_ with argument _lexEnv_.
+          1. Let _fo_ be InstantiateFunctionObject of _f_ with argument _lexEnv_.
           1. Perform ! _varEnvRec_.SetMutableBinding(_fn_, _fo_, *false*).
         1. Return NormalCompletion(~empty~).
       </emu-alg>
@@ -9271,7 +9299,7 @@
           <p>The abstract operation MakeArgGetter called with String _name_ and Environment Record _env_ creates a built-in function object that when executed returns the value bound for _name_ in _env_. It performs the following steps:</p>
           <emu-alg>
             1. Let _steps_ be the steps of an ArgGetter function as specified below.
-            1. Let _getter_ be CreateBuiltinFunction(_steps_, &laquo; [[Name]], [[Env]] &raquo;).
+            1. Let _getter_ be ! CreateBuiltinFunction(_steps_, &laquo; [[Name]], [[Env]] &raquo;).
             1. Set _getter_.[[Name]] to _name_.
             1. Set _getter_.[[Env]] to _env_.
             1. Return _getter_.
@@ -9293,7 +9321,7 @@
           <p>The abstract operation MakeArgSetter called with String _name_ and Environment Record _env_ creates a built-in function object that when executed sets the value bound for _name_ in _env_. It performs the following steps:</p>
           <emu-alg>
             1. Let _steps_ be the steps of an ArgSetter function as specified below.
-            1. Let _setter_ be CreateBuiltinFunction(_steps_, &laquo; [[Name]], [[Env]] &raquo;).
+            1. Let _setter_ be ! CreateBuiltinFunction(_steps_, &laquo; [[Name]], [[Env]] &raquo;).
             1. Set _setter_.[[Name]] to _name_.
             1. Set _setter_.[[Env]] to _env_.
             1. Return _setter_.
@@ -9880,7 +9908,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"setPrototypeOf"`).
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[SetPrototypeOf]](_V_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _V_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _V_ &raquo;)).
         1. If _booleanTrapResult_ is *false*, return *false*.
         1. Let _extensibleTarget_ be ? IsExtensible(_target_).
         1. If _extensibleTarget_ is *true*, return *true*.
@@ -9912,7 +9940,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"isExtensible"`).
         1. If _trap_ is *undefined*, then
           1. Return ? IsExtensible(_target_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_ &raquo;)).
         1. Let _targetResult_ be ? IsExtensible(_target_).
         1. If SameValue(_booleanTrapResult_, _targetResult_) is *false*, throw a *TypeError* exception.
         1. Return _booleanTrapResult_.
@@ -9941,7 +9969,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"preventExtensions"`).
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[PreventExtensions]]().
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_ &raquo;)).
         1. If _booleanTrapResult_ is *true*, then
           1. Let _extensibleTarget_ be ? IsExtensible(_target_).
           1. If _extensibleTarget_ is *true*, throw a *TypeError* exception.
@@ -10026,7 +10054,7 @@
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[DefineOwnProperty]](_P_, _Desc_).
         1. Let _descObj_ be FromPropertyDescriptor(_Desc_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_, _descObj_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_, _descObj_ &raquo;)).
         1. If _booleanTrapResult_ is *false*, return *false*.
         1. Let _targetDesc_ be ? _target_.[[GetOwnProperty]](_P_).
         1. Let _extensibleTarget_ be ? IsExtensible(_target_).
@@ -10072,7 +10100,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"has"`).
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[HasProperty]](_P_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_ &raquo;)).
         1. If _booleanTrapResult_ is *false*, then
           1. Let _targetDesc_ be ? _target_.[[GetOwnProperty]](_P_).
           1. If _targetDesc_ is not *undefined*, then
@@ -10143,7 +10171,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"set"`).
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[Set]](_P_, _V_, _Receiver_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_, _V_, _Receiver_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_, _V_, _Receiver_ &raquo;)).
         1. If _booleanTrapResult_ is *false*, return *false*.
         1. Let _targetDesc_ be ? _target_.[[GetOwnProperty]](_P_).
         1. If _targetDesc_ is not *undefined* and _targetDesc_.[[Configurable]] is *false*, then
@@ -10181,7 +10209,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"deleteProperty"`).
         1. If _trap_ is *undefined*, then
           1. Return ? _target_.[[Delete]](_P_).
-        1. Let _booleanTrapResult_ be ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_ &raquo;)).
+        1. Let _booleanTrapResult_ be ! ToBoolean(? Call(_trap_, _handler_, &laquo; _target_, _P_ &raquo;)).
         1. If _booleanTrapResult_ is *false*, return *false*.
         1. Let _targetDesc_ be ? _target_.[[GetOwnProperty]](_P_).
         1. If _targetDesc_ is *undefined*, return *true*.
@@ -10273,7 +10301,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"apply"`).
         1. If _trap_ is *undefined*, then
           1. Return ? Call(_target_, _thisArgument_, _argumentsList_).
-        1. Let _argArray_ be CreateArrayFromList(_argumentsList_).
+        1. Let _argArray_ be ! CreateArrayFromList(_argumentsList_).
         1. Return ? Call(_trap_, _handler_, &laquo; _target_, _thisArgument_, _argArray_ &raquo;).
       </emu-alg>
       <emu-note>
@@ -10293,7 +10321,7 @@
         1. Let _trap_ be ? GetMethod(_handler_, `"construct"`).
         1. If _trap_ is *undefined*, then
           1. Return ? Construct(_target_, _argumentsList_, _newTarget_).
-        1. Let _argArray_ be CreateArrayFromList(_argumentsList_).
+        1. Let _argArray_ be ! CreateArrayFromList(_argumentsList_).
         1. Let _newObj_ be ? Call(_trap_, _handler_, &laquo; _target_, _argArray_, _newTarget_ &raquo;).
         1. If Type(_newObj_) is not Object, throw a *TypeError* exception.
         1. Return _newObj_.
@@ -11448,7 +11476,7 @@
             The SV of <emu-grammar>DoubleStringCharacter :: &lt;PS&gt;</emu-grammar> is the code unit 0x2029 (PARAGRAPH SEPARATOR).
           </li>
           <li>
-            The SV of <emu-grammar>DoubleStringCharacter :: `\` EscapeSequence</emu-grammar> is the SV of the |EscapeSequence|.
+            The SV of <emu-grammar>DoubleStringCharacter :: `\` EscapeSequence</emu-grammar> is the SV of |EscapeSequence|.
           </li>
           <li>
             The SV of <emu-grammar>DoubleStringCharacter :: LineContinuation</emu-grammar> is the empty code unit sequence.
@@ -11463,22 +11491,22 @@
             The SV of <emu-grammar>SingleStringCharacter :: &lt;PS&gt;</emu-grammar> is the code unit 0x2029 (PARAGRAPH SEPARATOR).
           </li>
           <li>
-            The SV of <emu-grammar>SingleStringCharacter :: `\` EscapeSequence</emu-grammar> is the SV of the |EscapeSequence|.
+            The SV of <emu-grammar>SingleStringCharacter :: `\` EscapeSequence</emu-grammar> is the SV of |EscapeSequence|.
           </li>
           <li>
             The SV of <emu-grammar>SingleStringCharacter :: LineContinuation</emu-grammar> is the empty code unit sequence.
           </li>
           <li>
-            The SV of <emu-grammar>EscapeSequence :: CharacterEscapeSequence</emu-grammar> is the SV of the |CharacterEscapeSequence|.
+            The SV of <emu-grammar>EscapeSequence :: CharacterEscapeSequence</emu-grammar> is the SV of |CharacterEscapeSequence|.
           </li>
           <li>
             The SV of <emu-grammar>EscapeSequence :: `0`</emu-grammar> is the code unit 0x0000 (NULL).
           </li>
           <li>
-            The SV of <emu-grammar>EscapeSequence :: HexEscapeSequence</emu-grammar> is the SV of the |HexEscapeSequence|.
+            The SV of <emu-grammar>EscapeSequence :: HexEscapeSequence</emu-grammar> is the SV of |HexEscapeSequence|.
           </li>
           <li>
-            The SV of <emu-grammar>EscapeSequence :: UnicodeEscapeSequence</emu-grammar> is the SV of the |UnicodeEscapeSequence|.
+            The SV of <emu-grammar>EscapeSequence :: UnicodeEscapeSequence</emu-grammar> is the SV of |UnicodeEscapeSequence|.
           </li>
           <li>
             The SV of <emu-grammar>CharacterEscapeSequence :: SingleEscapeCharacter</emu-grammar> is the code unit whose value is determined by the |SingleEscapeCharacter| according to <emu-xref href="#table-34"></emu-xref>.
@@ -11632,7 +11660,7 @@
         </emu-table>
         <ul>
           <li>
-            The SV of <emu-grammar>CharacterEscapeSequence :: NonEscapeCharacter</emu-grammar> is the SV of the |NonEscapeCharacter|.
+            The SV of <emu-grammar>CharacterEscapeSequence :: NonEscapeCharacter</emu-grammar> is the SV of |NonEscapeCharacter|.
           </li>
           <li>
             The SV of <emu-grammar>NonEscapeCharacter :: SourceCharacter but not one of EscapeCharacter or LineTerminator</emu-grammar> is the UTF16Encoding of the code point value of |SourceCharacter|.
@@ -11885,16 +11913,16 @@
             The TRV of <emu-grammar>TemplateCharacter :: LineTerminatorSequence</emu-grammar> is the TRV of |LineTerminatorSequence|.
           </li>
           <li>
-            The TRV of <emu-grammar>EscapeSequence :: CharacterEscapeSequence</emu-grammar> is the TRV of the |CharacterEscapeSequence|.
+            The TRV of <emu-grammar>EscapeSequence :: CharacterEscapeSequence</emu-grammar> is the TRV of |CharacterEscapeSequence|.
           </li>
           <li>
             The TRV of <emu-grammar>EscapeSequence :: `0`</emu-grammar> is the code unit 0x0030 (DIGIT ZERO).
           </li>
           <li>
-            The TRV of <emu-grammar>EscapeSequence :: HexEscapeSequence</emu-grammar> is the TRV of the |HexEscapeSequence|.
+            The TRV of <emu-grammar>EscapeSequence :: HexEscapeSequence</emu-grammar> is the TRV of |HexEscapeSequence|.
           </li>
           <li>
-            The TRV of <emu-grammar>EscapeSequence :: UnicodeEscapeSequence</emu-grammar> is the TRV of the |UnicodeEscapeSequence|.
+            The TRV of <emu-grammar>EscapeSequence :: UnicodeEscapeSequence</emu-grammar> is the TRV of |UnicodeEscapeSequence|.
           </li>
           <li>
             The TRV of <emu-grammar>NotEscapeSequence :: `0` DecimalDigit</emu-grammar> is the sequence consisting of the code unit 0x0030 (DIGIT ZERO) followed by the code units of the TRV of |DecimalDigit|.
@@ -11930,10 +11958,10 @@
             The TRV of <emu-grammar>DecimalDigit :: one of `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`</emu-grammar> is the SV of the |SourceCharacter| that is that single code point.
           </li>
           <li>
-            The TRV of <emu-grammar>CharacterEscapeSequence :: SingleEscapeCharacter</emu-grammar> is the TRV of the |SingleEscapeCharacter|.
+            The TRV of <emu-grammar>CharacterEscapeSequence :: SingleEscapeCharacter</emu-grammar> is the TRV of |SingleEscapeCharacter|.
           </li>
           <li>
-            The TRV of <emu-grammar>CharacterEscapeSequence :: NonEscapeCharacter</emu-grammar> is the SV of the |NonEscapeCharacter|.
+            The TRV of <emu-grammar>CharacterEscapeSequence :: NonEscapeCharacter</emu-grammar> is the SV of |NonEscapeCharacter|.
           </li>
           <li>
             The TRV of <emu-grammar>SingleEscapeCharacter :: one of `'` `"` `\` `b` `f` `n` `r` `t` `v`</emu-grammar> is the SV of the |SourceCharacter| that is that single code point.
@@ -12620,8 +12648,7 @@
         </emu-alg>
         <emu-grammar>ElementList : ElementList `,` Elision? AssignmentExpression</emu-grammar>
         <emu-alg>
-          1. Let _postIndex_ be the result of performing ArrayAccumulation for |ElementList| with arguments _array_ and _nextIndex_.
-          1. ReturnIfAbrupt(_postIndex_).
+          1. Let _postIndex_ be ? ArrayAccumulation of |ElementList| with arguments _array_ and _nextIndex_.
           1. Let _padding_ be the ElisionWidth of |Elision|; if |Elision| is not present, use the numeric value zero.
           1. Let _initResult_ be the result of evaluating |AssignmentExpression|.
           1. Let _initValue_ be ? GetValue(_initResult_).
@@ -12631,8 +12658,7 @@
         </emu-alg>
         <emu-grammar>ElementList : ElementList `,` Elision? SpreadElement</emu-grammar>
         <emu-alg>
-          1. Let _postIndex_ be the result of performing ArrayAccumulation for |ElementList| with arguments _array_ and _nextIndex_.
-          1. ReturnIfAbrupt(_postIndex_).
+          1. Let _postIndex_ be ? ArrayAccumulation of |ElementList| with arguments _array_ and _nextIndex_.
           1. Let _padding_ be the ElisionWidth of |Elision|; if |Elision| is not present, use the numeric value zero.
           1. Return the result of performing ArrayAccumulation for |SpreadElement| with arguments _array_ and _postIndex_ + _padding_.
         </emu-alg>
@@ -12667,8 +12693,7 @@
         <emu-grammar>ArrayLiteral : `[` ElementList `]`</emu-grammar>
         <emu-alg>
           1. Let _array_ be ! ArrayCreate(0).
-          1. Let _len_ be the result of performing ArrayAccumulation for |ElementList| with arguments _array_ and 0.
-          1. ReturnIfAbrupt(_len_).
+          1. Let _len_ be ? ArrayAccumulation of |ElementList| with arguments _array_ and 0.
           1. Perform Set(_array_, `"length"`, ToUint32(_len_), *false*).
           1. NOTE: The above Set cannot fail because of the nature of the object returned by ArrayCreate.
           1. Return _array_.
@@ -12676,8 +12701,7 @@
         <emu-grammar>ArrayLiteral : `[` ElementList `,` Elision? `]`</emu-grammar>
         <emu-alg>
           1. Let _array_ be ! ArrayCreate(0).
-          1. Let _len_ be the result of performing ArrayAccumulation for |ElementList| with arguments _array_ and 0.
-          1. ReturnIfAbrupt(_len_).
+          1. Let _len_ be ? ArrayAccumulation of |ElementList| with arguments _array_ and 0.
           1. Let _padding_ be the ElisionWidth of |Elision|; if |Elision| is not present, use the numeric value zero.
           1. Perform Set(_array_, `"length"`, ToUint32(_padding_ + _len_), *false*).
           1. NOTE: The above Set cannot fail because of the nature of the object returned by ArrayCreate.
@@ -12821,7 +12845,7 @@
         </emu-alg>
         <emu-grammar>LiteralPropertyName : StringLiteral</emu-grammar>
         <emu-alg>
-          1. Return the String value whose code units are the SV of the |StringLiteral|.
+          1. Return the String value whose code units are the SV of |StringLiteral|.
         </emu-alg>
         <emu-grammar>LiteralPropertyName : NumericLiteral</emu-grammar>
         <emu-alg>
@@ -12872,7 +12896,7 @@
         </emu-alg>
         <emu-grammar>LiteralPropertyName : StringLiteral</emu-grammar>
         <emu-alg>
-          1. Return the String value whose code units are the SV of the |StringLiteral|.
+          1. Return the String value whose code units are the SV of |StringLiteral|.
         </emu-alg>
         <emu-grammar>LiteralPropertyName : NumericLiteral</emu-grammar>
         <emu-alg>
@@ -12917,7 +12941,7 @@
           1. Let _propKey_ be the result of evaluating |PropertyName|.
           1. ReturnIfAbrupt(_propKey_).
           1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true*, then
-            1. Let _propValue_ be the result of performing NamedEvaluation for |AssignmentExpression| with argument _propKey_.
+            1. Let _propValue_ be NamedEvaluation of |AssignmentExpression| with argument _propKey_.
           1. Else,
             1. Let _exprValueRef_ be the result of evaluating |AssignmentExpression|.
             1. Let _propValue_ be ? GetValue(_exprValueRef_).
@@ -13105,8 +13129,7 @@
           1. Let _siteObj_ be GetTemplateObject(_templateLiteral_).
           1. Let _firstSubRef_ be the result of evaluating |Expression|.
           1. Let _firstSub_ be ? GetValue(_firstSubRef_).
-          1. Let _restSub_ be SubstitutionEvaluation of |TemplateSpans|.
-          1. ReturnIfAbrupt(_restSub_).
+          1. Let _restSub_ be ? SubstitutionEvaluation of |TemplateSpans|.
           1. Assert: _restSub_ is a List.
           1. Return a List whose first element is _siteObj_, whose second elements is _firstSub_, and whose subsequent elements are the elements of _restSub_, in order. _restSub_ may contain no elements.
         </emu-alg>
@@ -13170,8 +13193,7 @@
         </emu-alg>
         <emu-grammar>TemplateMiddleList : TemplateMiddleList TemplateMiddle Expression</emu-grammar>
         <emu-alg>
-          1. Let _preceding_ be the result of SubstitutionEvaluation of |TemplateMiddleList|.
-          1. ReturnIfAbrupt(_preceding_).
+          1. Let _preceding_ be ? SubstitutionEvaluation of |TemplateMiddleList|.
           1. Let _nextRef_ be the result of evaluating |Expression|.
           1. Let _next_ be ? GetValue(_nextRef_).
           1. Append _next_ as the last element of the List _preceding_.
@@ -13609,8 +13631,7 @@
             1. Let _constructor_ be ? GetValue(_ref_).
             1. If _arguments_ is ~empty~, let _argList_ be a new empty List.
             1. Else,
-              1. Let _argList_ be ArgumentListEvaluation of _arguments_.
-              1. ReturnIfAbrupt(_argList_).
+              1. Let _argList_ be ? ArgumentListEvaluation of _arguments_.
             1. If IsConstructor(_constructor_) is *false*, throw a *TypeError* exception.
             1. Return ? Construct(_constructor_, _argList_).
           </emu-alg>
@@ -13666,8 +13687,7 @@
               1. Let _thisValue_ be _refEnv_.WithBaseObject().
           1. Else,
             1. Let _thisValue_ be *undefined*.
-          1. Let _argList_ be ArgumentListEvaluation of _arguments_.
-          1. ReturnIfAbrupt(_argList_).
+          1. Let _argList_ be ? ArgumentListEvaluation of _arguments_.
           1. If Type(_func_) is not Object, throw a *TypeError* exception.
           1. If IsCallable(_func_) is *false*, throw a *TypeError* exception.
           1. If _tailPosition_ is *true*, perform PrepareForTailCall().
@@ -13707,8 +13727,7 @@
           1. Let _newTarget_ be GetNewTarget().
           1. Assert: Type(_newTarget_) is Object.
           1. Let _func_ be ? GetSuperConstructor().
-          1. Let _argList_ be ArgumentListEvaluation of |Arguments|.
-          1. ReturnIfAbrupt(_argList_).
+          1. Let _argList_ be ? ArgumentListEvaluation of |Arguments|.
           1. Let _result_ be ? Construct(_func_, _argList_, _newTarget_).
           1. Let _thisER_ be GetThisEnvironment().
           1. Return ? _thisER_.BindThisValue(_result_).
@@ -13775,8 +13794,7 @@
         </emu-alg>
         <emu-grammar>ArgumentList : ArgumentList `,` AssignmentExpression</emu-grammar>
         <emu-alg>
-          1. Let _precedingArgs_ be ArgumentListEvaluation of |ArgumentList|.
-          1. ReturnIfAbrupt(_precedingArgs_).
+          1. Let _precedingArgs_ be ? ArgumentListEvaluation of |ArgumentList|.
           1. Let _ref_ be the result of evaluating |AssignmentExpression|.
           1. Let _arg_ be ? GetValue(_ref_).
           1. Append _arg_ to the end of _precedingArgs_.
@@ -13784,8 +13802,7 @@
         </emu-alg>
         <emu-grammar>ArgumentList : ArgumentList `,` `...` AssignmentExpression</emu-grammar>
         <emu-alg>
-          1. Let _precedingArgs_ be ArgumentListEvaluation of |ArgumentList|.
-          1. ReturnIfAbrupt(_precedingArgs_).
+          1. Let _precedingArgs_ be ? ArgumentListEvaluation of |ArgumentList|.
           1. Let _spreadRef_ be the result of evaluating |AssignmentExpression|.
           1. Let _iteratorRecord_ be ? GetIterator(? GetValue(_spreadRef_)).
           1. Repeat,
@@ -14270,7 +14287,7 @@
         <emu-grammar>UnaryExpression : `!` UnaryExpression</emu-grammar>
         <emu-alg>
           1. Let _expr_ be the result of evaluating |UnaryExpression|.
-          1. Let _oldValue_ be ToBoolean(? GetValue(_expr_)).
+          1. Let _oldValue_ be ! ToBoolean(? GetValue(_expr_)).
           1. If _oldValue_ is *true*, return *false*.
           1. Return *true*.
         </emu-alg>
@@ -14702,7 +14719,7 @@
         1. If Type(_target_) is not Object, throw a *TypeError* exception.
         1. Let _instOfHandler_ be ? GetMethod(_target_, @@hasInstance).
         1. If _instOfHandler_ is not *undefined*, then
-          1. Return ToBoolean(? Call(_instOfHandler_, _target_, &laquo; _V_ &raquo;)).
+          1. Return ! ToBoolean(? Call(_instOfHandler_, _target_, &laquo; _V_ &raquo;)).
         1. If IsCallable(_target_) is *false*, throw a *TypeError* exception.
         1. Return ? OrdinaryHasInstance(_target_, _V_).
       </emu-alg>
@@ -14951,7 +14968,7 @@
       <emu-alg>
         1. Let _lref_ be the result of evaluating |LogicalANDExpression|.
         1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
+        1. Let _lbool_ be ! ToBoolean(_lval_).
         1. If _lbool_ is *false*, return _lval_.
         1. Let _rref_ be the result of evaluating |BitwiseORExpression|.
         1. Return ? GetValue(_rref_).
@@ -14960,7 +14977,7 @@
       <emu-alg>
         1. Let _lref_ be the result of evaluating |LogicalORExpression|.
         1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
+        1. Let _lbool_ be ! ToBoolean(_lval_).
         1. If _lbool_ is *true*, return _lval_.
         1. Let _rref_ be the result of evaluating |LogicalANDExpression|.
         1. Return ? GetValue(_rref_).
@@ -15003,7 +15020,7 @@
       <emu-grammar>ConditionalExpression : LogicalORExpression `?` AssignmentExpression `:` AssignmentExpression</emu-grammar>
       <emu-alg>
         1. Let _lref_ be the result of evaluating |LogicalORExpression|.
-        1. Let _lval_ be ToBoolean(? GetValue(_lref_)).
+        1. Let _lval_ be ! ToBoolean(? GetValue(_lref_)).
         1. If _lval_ is *true*, then
           1. Let _trueRef_ be the result of evaluating the first |AssignmentExpression|.
           1. Return ? GetValue(_trueRef_).
@@ -15095,7 +15112,7 @@
           1. Let _lref_ be the result of evaluating |LeftHandSideExpression|.
           1. ReturnIfAbrupt(_lref_).
           1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) and IsIdentifierRef of |LeftHandSideExpression| are both *true*, then
-            1. Let _rval_ be the result of performing NamedEvaluation for |AssignmentExpression| with argument GetReferencedName(_lref_).
+            1. Let _rval_ be NamedEvaluation of |AssignmentExpression| with argument GetReferencedName(_lref_).
           1. Else,
             1. Let _rref_ be the result of evaluating |AssignmentExpression|.
             1. Let _rval_ be ? GetValue(_rref_).
@@ -15222,7 +15239,7 @@
         <emu-grammar>ArrayAssignmentPattern : `[` Elision `]`</emu-grammar>
         <emu-alg>
           1. Let _iteratorRecord_ be ? GetIterator(_value_).
-          1. Let _result_ be the result of performing IteratorDestructuringAssignmentEvaluation of |Elision| with _iteratorRecord_ as the argument.
+          1. Let _result_ be IteratorDestructuringAssignmentEvaluation of |Elision| with argument _iteratorRecord_.
           1. If _iteratorRecord_.[[Done]] is *false*, return ? IteratorClose(_iteratorRecord_, _result_).
           1. Return _result_.
         </emu-alg>
@@ -15230,25 +15247,25 @@
         <emu-alg>
           1. Let _iteratorRecord_ be ? GetIterator(_value_).
           1. If |Elision| is present, then
-            1. Let _status_ be the result of performing IteratorDestructuringAssignmentEvaluation of |Elision| with _iteratorRecord_ as the argument.
+            1. Let _status_ be IteratorDestructuringAssignmentEvaluation of |Elision| with argument _iteratorRecord_.
             1. If _status_ is an abrupt completion, then
               1. Assert: _iteratorRecord_.[[Done]] is *true*.
               1. Return Completion(_status_).
-          1. Let _result_ be the result of performing IteratorDestructuringAssignmentEvaluation of |AssignmentRestElement| with _iteratorRecord_ as the argument.
+          1. Let _result_ be IteratorDestructuringAssignmentEvaluation of |AssignmentRestElement| with argument _iteratorRecord_.
           1. If _iteratorRecord_.[[Done]] is *false*, return ? IteratorClose(_iteratorRecord_, _result_).
           1. Return _result_.
         </emu-alg>
         <emu-grammar>ArrayAssignmentPattern : `[` AssignmentElementList `]`</emu-grammar>
         <emu-alg>
           1. Let _iteratorRecord_ be ? GetIterator(_value_).
-          1. Let _result_ be the result of performing IteratorDestructuringAssignmentEvaluation of |AssignmentElementList| using _iteratorRecord_ as the argument.
+          1. Let _result_ be IteratorDestructuringAssignmentEvaluation of |AssignmentElementList| with argument _iteratorRecord_.
           1. If _iteratorRecord_.[[Done]] is *false*, return ? IteratorClose(_iteratorRecord_, _result_).
           1. Return _result_.
         </emu-alg>
         <emu-grammar>ArrayAssignmentPattern : `[` AssignmentElementList `,` Elision? AssignmentRestElement? `]`</emu-grammar>
         <emu-alg>
           1. Let _iteratorRecord_ be ? GetIterator(_value_).
-          1. Let _status_ be the result of performing IteratorDestructuringAssignmentEvaluation of |AssignmentElementList| using _iteratorRecord_ as the argument.
+          1. Let _status_ be IteratorDestructuringAssignmentEvaluation of |AssignmentElementList| with argument _iteratorRecord_.
           1. If _status_ is an abrupt completion, then
             1. If _iteratorRecord_.[[Done]] is *false*, return ? IteratorClose(_iteratorRecord_, _status_).
             1. Return Completion(_status_).
@@ -15272,8 +15289,8 @@
         <emu-grammar>ObjectAssignmentPattern : `{` AssignmentPropertyList `,` AssignmentRestProperty `}`</emu-grammar>
         <emu-alg>
           1. Perform ? RequireObjectCoercible(_value_).
-          1. Let _excludedNames_ be the result of performing ? PropertyDestructuringAssignmentEvaluation for |AssignmentPropertyList| using _value_ as the argument.
-          1. Return the result of performing RestDestructuringAssignmentEvaluation of |AssignmentRestProperty| with _value_ and _excludedNames_ as the arguments.
+          1. Let _excludedNames_ be ? PropertyDestructuringAssignmentEvaluation of |AssignmentPropertyList| with argument _value_.
+          1. Return the result of performing RestDestructuringAssignmentEvaluation of |AssignmentRestProperty| with arguments _value_ and _excludedNames_.
         </emu-alg>
       </emu-clause>
 
@@ -15286,8 +15303,8 @@
 
         <emu-grammar>AssignmentPropertyList : AssignmentPropertyList `,` AssignmentProperty</emu-grammar>
         <emu-alg>
-          1. Let _propertyNames_ be the result of performing ? PropertyDestructuringAssignmentEvaluation for |AssignmentPropertyList| using _value_ as the argument.
-          1. Let _nextNames_ be the result of performing ? PropertyDestructuringAssignmentEvaluation for |AssignmentProperty| using _value_ as the argument.
+          1. Let _propertyNames_ be ? PropertyDestructuringAssignmentEvaluation of |AssignmentPropertyList| with argument _value_.
+          1. Let _nextNames_ be ? PropertyDestructuringAssignmentEvaluation of |AssignmentProperty| with argument _value_.
           1. Append each item in _nextNames_ to the end of _propertyNames_.
           1. Return _propertyNames_.
         </emu-alg>
@@ -15387,7 +15404,7 @@
           1. If _iteratorRecord_.[[Done]] is *true*, let _value_ be *undefined*.
           1. If |Initializer| is present and _value_ is *undefined*, then
             1. If IsAnonymousFunctionDefinition(|Initializer|) and IsIdentifierRef of |DestructuringAssignmentTarget| are both *true*, then
-              1. Let _v_ be the result of performing NamedEvaluation for |Initializer| with argument GetReferencedName(_lref_).
+              1. Let _v_ be NamedEvaluation of |Initializer| with argument GetReferencedName(_lref_).
             1. Else,
               1. Let _defaultValue_ be the result of evaluating |Initializer|.
               1. Let _v_ be ? GetValue(_defaultValue_).
@@ -15437,7 +15454,7 @@
           1. Let _v_ be ? GetV(_value_, _propertyName_).
           1. If |Initializer| is present and _v_ is *undefined*, then
             1. If IsAnonymousFunctionDefinition(|Initializer|) and IsIdentifierRef of |DestructuringAssignmentTarget| are both *true*, then
-              1. Let _rhsValue_ be the result of performing NamedEvaluation for |Initializer| with argument GetReferencedName(_lref_).
+              1. Let _rhsValue_ be NamedEvaluation of |Initializer| with argument GetReferencedName(_lref_).
             1. Else,
               1. Let _defaultValue_ be the result of evaluating |Initializer|.
               1. Let _rhsValue_ be ? GetValue(_defaultValue_).
@@ -15666,7 +15683,7 @@
       <emu-see-also-para op="LabelledEvaluation"></emu-see-also-para>
       <emu-grammar>BreakableStatement : IterationStatement</emu-grammar>
       <emu-alg>
-        1. Let _stmtResult_ be the result of performing LabelledEvaluation of |IterationStatement| with argument _labelSet_.
+        1. Let _stmtResult_ be LabelledEvaluation of |IterationStatement| with argument _labelSet_.
         1. If _stmtResult_.[[Type]] is ~break~, then
           1. If _stmtResult_.[[Target]] is ~empty~, then
             1. If _stmtResult_.[[Value]] is ~empty~, set _stmtResult_ to NormalCompletion(*undefined*).
@@ -16054,7 +16071,7 @@
               1. Perform ! _envRec_.CreateMutableBinding(_dn_, *false*).
           1. If _d_ is a |FunctionDeclaration|, a |GeneratorDeclaration|, an |AsyncFunctionDeclaration|, or an |AsyncGeneratorDeclaration|, then
             1. Let _fn_ be the sole element of the BoundNames of _d_.
-            1. Let _fo_ be the result of performing InstantiateFunctionObject for _d_ with argument _env_.
+            1. Let _fo_ be InstantiateFunctionObject of _d_ with argument _env_.
             1. Perform _envRec_.InitializeBinding(_fn_, _fo_).
       </emu-alg>
     </emu-clause>
@@ -16172,7 +16189,7 @@
           1. Let _bindingId_ be StringValue of |BindingIdentifier|.
           1. Let _lhs_ be ResolveBinding(_bindingId_).
           1. If IsAnonymousFunctionDefinition(|Initializer|) is *true*, then
-            1. Let _value_ be the result of performing NamedEvaluation for |Initializer| with argument _bindingId_.
+            1. Let _value_ be NamedEvaluation of |Initializer| with argument _bindingId_.
           1. Else,
             1. Let _rhs_ be the result of evaluating |Initializer|.
             1. Let _value_ be ? GetValue(_rhs_).
@@ -16273,7 +16290,7 @@
           1. Let _bindingId_ be StringValue of |BindingIdentifier|.
           1. Let _lhs_ be ? ResolveBinding(_bindingId_).
           1. If IsAnonymousFunctionDefinition(|Initializer|) is *true*, then
-            1. Let _value_ be the result of performing NamedEvaluation for |Initializer| with argument _bindingId_.
+            1. Let _value_ be NamedEvaluation of |Initializer| with argument _bindingId_.
           1. Else,
             1. Let _rhs_ be the result of evaluating |Initializer|.
             1. Let _value_ be ? GetValue(_rhs_).
@@ -16521,7 +16538,7 @@
         <emu-grammar>BindingPattern : ArrayBindingPattern</emu-grammar>
         <emu-alg>
           1. Let _iteratorRecord_ be ? GetIterator(_value_).
-          1. Let _result_ be IteratorBindingInitialization for |ArrayBindingPattern| using _iteratorRecord_ and _environment_ as arguments.
+          1. Let _result_ be IteratorBindingInitialization of |ArrayBindingPattern| with arguments _iteratorRecord_ and _environment_.
           1. If _iteratorRecord_.[[Done]] is *false*, return ? IteratorClose(_iteratorRecord_, _result_).
           1. Return _result_.
         </emu-alg>
@@ -16547,8 +16564,8 @@
 
         <emu-grammar>ObjectBindingPattern : `{` BindingPropertyList `,` BindingRestProperty `}`</emu-grammar>
         <emu-alg>
-          1. Let _excludedNames_ be the result of performing ? PropertyBindingInitialization of |BindingPropertyList| using _value_ and _environment_ as arguments.
-          1. Return the result of performing RestBindingInitialization of |BindingRestProperty| with _value_, _environment_, and _excludedNames_ as the arguments.
+          1. Let _excludedNames_ be ? PropertyBindingInitialization of |BindingPropertyList| with arguments _value_ and _environment_.
+          1. Return the result of performing RestBindingInitialization of |BindingRestProperty| with arguments _value_, _environment_, and _excludedNames_.
         </emu-alg>
       </emu-clause>
 
@@ -16560,8 +16577,8 @@
 
         <emu-grammar>BindingPropertyList : BindingPropertyList `,` BindingProperty</emu-grammar>
         <emu-alg>
-          1. Let _boundNames_ be the result of performing ? PropertyBindingInitialization for |BindingPropertyList| using _value_ and _environment_ as arguments.
-          1. Let _nextNames_ be the result of performing ? PropertyBindingInitialization for |BindingProperty| using _value_ and _environment_ as arguments.
+          1. Let _boundNames_ be ? PropertyBindingInitialization of |BindingPropertyList| with arguments _value_ and _environment_.
+          1. Let _nextNames_ be ? PropertyBindingInitialization of |BindingProperty| with arguments _value_ and _environment_.
           1. Append each item in _nextNames_ to the end of _boundNames_.
           1. Return _boundNames_.
         </emu-alg>
@@ -16921,7 +16938,7 @@
       <emu-grammar>IfStatement : `if` `(` Expression `)` Statement `else` Statement</emu-grammar>
       <emu-alg>
         1. Let _exprRef_ be the result of evaluating |Expression|.
-        1. Let _exprValue_ be ToBoolean(? GetValue(_exprRef_)).
+        1. Let _exprValue_ be ! ToBoolean(? GetValue(_exprRef_)).
         1. If _exprValue_ is *true*, then
           1. Let _stmtCompletion_ be the result of evaluating the first |Statement|.
         1. Else,
@@ -16931,7 +16948,7 @@
       <emu-grammar>IfStatement : `if` `(` Expression `)` Statement</emu-grammar>
       <emu-alg>
         1. Let _exprRef_ be the result of evaluating |Expression|.
-        1. Let _exprValue_ be ToBoolean(? GetValue(_exprRef_)).
+        1. Let _exprValue_ be ! ToBoolean(? GetValue(_exprRef_)).
         1. If _exprValue_ is *false*, then
           1. Return NormalCompletion(*undefined*).
         1. Else,
@@ -17084,7 +17101,7 @@
             1. If _stmtResult_.[[Value]] is not ~empty~, set _V_ to _stmtResult_.[[Value]].
             1. Let _exprRef_ be the result of evaluating |Expression|.
             1. Let _exprValue_ be ? GetValue(_exprRef_).
-            1. If ToBoolean(_exprValue_) is *false*, return NormalCompletion(_V_).
+            1. If ! ToBoolean(_exprValue_) is *false*, return NormalCompletion(_V_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -17150,7 +17167,7 @@
           1. Repeat,
             1. Let _exprRef_ be the result of evaluating |Expression|.
             1. Let _exprValue_ be ? GetValue(_exprRef_).
-            1. If ToBoolean(_exprValue_) is *false*, return NormalCompletion(_V_).
+            1. If ! ToBoolean(_exprValue_) is *false*, return NormalCompletion(_V_).
             1. Let _stmtResult_ be the result of evaluating |Statement|.
             1. If LoopContinues(_stmtResult_, _labelSet_) is *false*, return Completion(UpdateEmpty(_stmtResult_, _V_)).
             1. If _stmtResult_.[[Value]] is not ~empty~, set _V_ to _stmtResult_.[[Value]].
@@ -17276,7 +17293,7 @@
           1. Let _oldEnv_ be the running execution context's LexicalEnvironment.
           1. Let _loopEnv_ be NewDeclarativeEnvironment(_oldEnv_).
           1. Let _loopEnvRec_ be _loopEnv_'s EnvironmentRecord.
-          1. Let _isConst_ be the result of performing IsConstantDeclaration of |LexicalDeclaration|.
+          1. Let _isConst_ be IsConstantDeclaration of |LexicalDeclaration|.
           1. Let _boundNames_ be the BoundNames of |LexicalDeclaration|.
           1. For each element _dn_ of _boundNames_, do
             1. If _isConst_ is *true*, then
@@ -17305,7 +17322,7 @@
             1. If _test_ is not ~[empty]~, then
               1. Let _testRef_ be the result of evaluating _test_.
               1. Let _testValue_ be ? GetValue(_testRef_).
-              1. If ToBoolean(_testValue_) is *false*, return NormalCompletion(_V_).
+              1. If ! ToBoolean(_testValue_) is *false*, return NormalCompletion(_V_).
             1. Let _result_ be the result of evaluating _stmt_.
             1. If LoopContinues(_result_, _labelSet_) is *false*, return Completion(UpdateEmpty(_result_, _V_)).
             1. If _result_.[[Value]] is not ~empty~, set _V_ to _result_.[[Value]].
@@ -17742,14 +17759,14 @@
                 1. Let _status_ be PutValue(_lhsRef_, _nextValue_).
             1. Else,
               1. If _lhsKind_ is ~assignment~, then
-                1. Let _status_ be the result of performing DestructuringAssignmentEvaluation of _assignmentPattern_ using _nextValue_ as the argument.
+                1. Let _status_ be DestructuringAssignmentEvaluation of _assignmentPattern_ with argument _nextValue_.
               1. Else if _lhsKind_ is ~varBinding~, then
                 1. Assert: _lhs_ is a |ForBinding|.
-                1. Let _status_ be the result of performing BindingInitialization for _lhs_ passing _nextValue_ and *undefined* as the arguments.
+                1. Let _status_ be BindingInitialization of _lhs_ with arguments _nextValue_ and *undefined*.
               1. Else,
                 1. Assert: _lhsKind_ is ~lexicalBinding~.
                 1. Assert: _lhs_ is a |ForDeclaration|.
-                1. Let _status_ be the result of performing BindingInitialization for _lhs_ passing _nextValue_ and _iterationEnv_ as arguments.
+                1. Let _status_ be BindingInitialization of _lhs_ with arguments _nextValue_ and _iterationEnv_.
             1. If _status_ is an abrupt completion, then
               1. Set the running execution context's LexicalEnvironment to _oldEnv_.
               1. If _iteratorKind_ is ~async~, return ? AsyncIteratorClose(_iteratorRecord_, _status_).
@@ -18204,7 +18221,7 @@
       <emu-alg>
         1. If the first |CaseClauses| is present, let _names_ be the LexicallyDeclaredNames of the first |CaseClauses|.
         1. Else, let _names_ be a new empty List.
-        1. Append to _names_ the elements of the LexicallyDeclaredNames of the |DefaultClause|.
+        1. Append to _names_ the elements of the LexicallyDeclaredNames of |DefaultClause|.
         1. If the second |CaseClauses| is not present, return _names_.
         1. Return the result of appending to _names_ the elements of the LexicallyDeclaredNames of the second |CaseClauses|.
       </emu-alg>
@@ -18237,7 +18254,7 @@
       <emu-alg>
         1. If the first |CaseClauses| is present, let _declarations_ be the LexicallyScopedDeclarations of the first |CaseClauses|.
         1. Else, let _declarations_ be a new empty List.
-        1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of the |DefaultClause|.
+        1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of |DefaultClause|.
         1. If the second |CaseClauses| is not present, return _declarations_.
         1. Return the result of appending to _declarations_ the elements of the LexicallyScopedDeclarations of the second |CaseClauses|.
       </emu-alg>
@@ -18274,7 +18291,7 @@
       <emu-alg>
         1. If the first |CaseClauses| is present, let _names_ be the VarDeclaredNames of the first |CaseClauses|.
         1. Else, let _names_ be a new empty List.
-        1. Append to _names_ the elements of the VarDeclaredNames of the |DefaultClause|.
+        1. Append to _names_ the elements of the VarDeclaredNames of |DefaultClause|.
         1. If the second |CaseClauses| is not present, return _names_.
         1. Return the result of appending to _names_ the elements of the VarDeclaredNames of the second |CaseClauses|.
       </emu-alg>
@@ -18311,7 +18328,7 @@
       <emu-alg>
         1. If the first |CaseClauses| is present, let _declarations_ be the VarScopedDeclarations of the first |CaseClauses|.
         1. Else, let _declarations_ be a new empty List.
-        1. Append to _declarations_ the elements of the VarScopedDeclarations of the |DefaultClause|.
+        1. Append to _declarations_ the elements of the VarScopedDeclarations of |DefaultClause|.
         1. If the second |CaseClauses| is not present, return _declarations_.
         1. Return the result of appending to _declarations_ the elements of the VarScopedDeclarations of the second |CaseClauses|.
       </emu-alg>
@@ -18418,7 +18435,7 @@
         1. Let _blockEnv_ be NewDeclarativeEnvironment(_oldEnv_).
         1. Perform BlockDeclarationInstantiation(|CaseBlock|, _blockEnv_).
         1. Set the running execution context's LexicalEnvironment to _blockEnv_.
-        1. Let _R_ be the result of performing CaseBlockEvaluation of |CaseBlock| with argument _switchValue_.
+        1. Let _R_ be CaseBlockEvaluation of |CaseBlock| with argument _switchValue_.
         1. Set the running execution context's LexicalEnvironment to _oldEnv_.
         1. Return _R_.
       </emu-alg>
@@ -18902,7 +18919,7 @@
         1. For each element _argName_ of the BoundNames of |CatchParameter|, do
           1. Perform ! _catchEnvRec_.CreateMutableBinding(_argName_, *false*).
         1. Set the running execution context's LexicalEnvironment to _catchEnv_.
-        1. Let _status_ be the result of performing BindingInitialization for |CatchParameter| passing _thrownValue_ and _catchEnv_ as arguments.
+        1. Let _status_ be BindingInitialization of |CatchParameter| with arguments _thrownValue_ and _catchEnv_.
         1. If _status_ is an abrupt completion, then
           1. Set the running execution context's LexicalEnvironment to _oldEnv_.
           1. Return Completion(_status_).
@@ -19229,7 +19246,7 @@
       <p>The abstract operation IsAnonymousFunctionDefinition determines if its argument is a function definition that does not bind a name. The argument _expr_ is the result of parsing an |AssignmentExpression| or |Initializer|. The following steps are taken:</p>
       <emu-alg>
         1. If IsFunctionDefinition of _expr_ is *false*, return *false*.
-        1. Let _hasName_ be the result of HasName of _expr_.
+        1. Let _hasName_ be HasName of _expr_.
         1. If _hasName_ is *true*, return *false*.
         1. Return *true*.
       </emu-alg>
@@ -19373,7 +19390,7 @@
         1. Let _paramVarEnv_ be NewDeclarativeEnvironment(_originalEnv_).
         1. Set the VariableEnvironment of _currentContext_ to _paramVarEnv_.
         1. Set the LexicalEnvironment of _currentContext_ to _paramVarEnv_.
-        1. Let _result_ be the result of performing IteratorBindingInitialization for |BindingElement| using _iteratorRecord_ and _environment_ as the arguments.
+        1. Let _result_ be IteratorBindingInitialization of |BindingElement| with arguments _iteratorRecord_ and _environment_.
         1. Set the VariableEnvironment of _currentContext_ to _originalEnv_.
         1. Set the LexicalEnvironment of _currentContext_ to _originalEnv_.
         1. Return _result_.
@@ -19391,7 +19408,7 @@
         1. Let _paramVarEnv_ be NewDeclarativeEnvironment(_originalEnv_).
         1. Set the VariableEnvironment of _currentContext_ to _paramVarEnv_.
         1. Set the LexicalEnvironment of _currentContext_ to _paramVarEnv_.
-        1. Let _result_ be the result of performing IteratorBindingInitialization for |BindingRestElement| using _iteratorRecord_ and _environment_ as the arguments.
+        1. Let _result_ be IteratorBindingInitialization of |BindingRestElement| with arguments _iteratorRecord_ and _environment_.
         1. Set the VariableEnvironment of _currentContext_ to _originalEnv_.
         1. Set the LexicalEnvironment of _currentContext_ to _originalEnv_.
         1. Return _result_.
@@ -19859,7 +19876,7 @@
 
     <emu-clause id="sec-runtime-semantics-definemethod">
       <h1>Runtime Semantics: DefineMethod</h1>
-      <p>With parameters _object_ and optional parameter _functionPrototype_.</p>
+      <p>With parameter _object_ and optional parameter _functionPrototype_.</p>
       <emu-grammar>MethodDefinition : PropertyName `(` UniqueFormalParameters `)` `{` FunctionBody `}`</emu-grammar>
       <emu-alg>
         1. Let _propKey_ be the result of evaluating |PropertyName|.
@@ -19884,8 +19901,7 @@
       <emu-see-also-para op="PropertyDefinitionEvaluation"></emu-see-also-para>
       <emu-grammar>MethodDefinition : PropertyName `(` UniqueFormalParameters `)` `{` FunctionBody `}`</emu-grammar>
       <emu-alg>
-        1. Let _methodDef_ be DefineMethod of |MethodDefinition| with argument _object_.
-        1. ReturnIfAbrupt(_methodDef_).
+        1. Let _methodDef_ be ? DefineMethod of |MethodDefinition| with argument _object_.
         1. Perform SetFunctionName(_methodDef_.[[Closure]], _methodDef_.[[Key]]).
         1. Let _desc_ be the PropertyDescriptor { [[Value]]: _methodDef_.[[Closure]], [[Writable]]: *true*, [[Enumerable]]: _enumerable_, [[Configurable]]: *true* }.
         1. Return ? DefinePropertyOrThrow(_object_, _methodDef_.[[Key]], _desc_).
@@ -20679,7 +20695,7 @@
       <emu-see-also-para op="ComputedPropertyContains"></emu-see-also-para>
       <emu-grammar>ClassElementList : ClassElementList ClassElement</emu-grammar>
       <emu-alg>
-        1. Let _inList_ be the result of ComputedPropertyContains for |ClassElementList| with argument _symbol_.
+        1. Let _inList_ be ComputedPropertyContains of |ClassElementList| with argument _symbol_.
         1. If _inList_ is *true*, return *true*.
         1. Return the result of ComputedPropertyContains for |ClassElement| with argument _symbol_.
       </emu-alg>
@@ -20832,8 +20848,7 @@
               <pre><code class="javascript">constructor() {}</code></pre>
               using the syntactic grammar with the goal symbol |MethodDefinition[~Yield, ~Await]|.
         1. Set the running execution context's LexicalEnvironment to _classScope_.
-        1. Let _constructorInfo_ be the result of performing DefineMethod for _constructor_ with arguments _proto_ and _constructorParent_ as the optional _functionPrototype_ argument.
-        1. Assert: _constructorInfo_ is not an abrupt completion.
+        1. Let _constructorInfo_ be DefineMethod of _constructor_ with arguments _proto_ and _constructorParent_
         1. Let _F_ be _constructorInfo_.[[Closure]].
         1. If |ClassHeritage_opt| is present, set _F_.[[ConstructorKind]] to `"derived"`.
         1. Perform MakeConstructor(_F_, *false*, _proto_).
@@ -20845,9 +20860,9 @@
         1. Else, let _methods_ be NonConstructorMethodDefinitions of |ClassBody|.
         1. For each |ClassElement| _m_ in order from _methods_, do
           1. If IsStatic of _m_ is *false*, then
-            1. Let _status_ be the result of performing PropertyDefinitionEvaluation for _m_ with arguments _proto_ and *false*.
+            1. Let _status_ be PropertyDefinitionEvaluation of _m_ with arguments _proto_ and *false*.
           1. Else,
-            1. Let _status_ be the result of performing PropertyDefinitionEvaluation for _m_ with arguments _F_ and *false*.
+            1. Let _status_ be PropertyDefinitionEvaluation of _m_ with arguments _F_ and *false*.
           1. If _status_ is an abrupt completion, then
             1. Set the running execution context's LexicalEnvironment to _lex_.
             1. Return Completion(_status_).
@@ -20863,8 +20878,7 @@
       <emu-grammar>ClassDeclaration : `class` BindingIdentifier ClassTail</emu-grammar>
       <emu-alg>
         1. Let _className_ be StringValue of |BindingIdentifier|.
-        1. Let _value_ be the result of ClassDefinitionEvaluation of |ClassTail| with arguments _className_ and _className_.
-        1. ReturnIfAbrupt(_value_).
+        1. Let _value_ be ? ClassDefinitionEvaluation of |ClassTail| with arguments _className_ and _className_.
         1. Set _value_.[[SourceText]] to the source text matched by |ClassDeclaration|.
         1. Let _env_ be the running execution context's LexicalEnvironment.
         1. Perform ? InitializeBoundName(_className_, _value_, _env_).
@@ -20872,8 +20886,7 @@
       </emu-alg>
       <emu-grammar>ClassDeclaration : `class` ClassTail</emu-grammar>
       <emu-alg>
-        1. Let _value_ be the result of ClassDefinitionEvaluation of |ClassTail| with arguments *undefined* and `"default"`.
-        1. ReturnIfAbrupt(_value_).
+        1. Let _value_ be ? ClassDefinitionEvaluation of |ClassTail| with arguments *undefined* and `"default"`.
         1. Set _value_.[[SourceText]] to the source text matched by |ClassDeclaration|.
         1. Return _value_.
       </emu-alg>
@@ -20887,7 +20900,10 @@
       <p>With parameter _name_.</p>
       <emu-grammar>ClassExpression : `class` ClassTail</emu-grammar>
       <emu-alg>
-        1. Return the result of ClassDefinitionEvaluation of |ClassTail| with arguments *undefined* and _name_.
+        1. Let _value_ be the result of ClassDefinitionEvaluation of |ClassTail| with arguments *undefined* and _name_.
+        1. ReturnIfAbrupt(_value_).
+        1. Set _value_.[[SourceText]] to the source text matched by |ClassExpression|.
+        1. Return _value_.
       </emu-alg>
     </emu-clause>
 
@@ -20905,8 +20921,7 @@
       <emu-alg>
         1. If |BindingIdentifier_opt| is not present, let _className_ be *undefined*.
         1. Else, let _className_ be StringValue of |BindingIdentifier|.
-        1. Let _value_ be the result of ClassDefinitionEvaluation of |ClassTail| with arguments _className_ and _className_.
-        1. ReturnIfAbrupt(_value_).
+        1. Let _value_ be ? ClassDefinitionEvaluation of |ClassTail| with arguments _className_ and _className_.
         1. Set _value_.[[SourceText]] to the source text matched by |ClassExpression|.
         1. Return _value_.
       </emu-alg>
@@ -21596,7 +21611,7 @@
           1. Let _has_ be *false*.
           1. If the first |CaseClauses| is present, let _has_ be HasCallInTailPosition of the first |CaseClauses| with argument _call_.
           1. If _has_ is *true*, return *true*.
-          1. Let _has_ be HasCallInTailPosition of the |DefaultClause| with argument _call_.
+          1. Let _has_ be HasCallInTailPosition of |DefaultClause| with argument _call_.
           1. If _has_ is *true*, return *true*.
           1. If the second |CaseClauses| is present, let _has_ be HasCallInTailPosition of the second |CaseClauses| with argument _call_.
           1. Return _has_.
@@ -21952,7 +21967,7 @@
               a Parse Node
             </td>
             <td>
-              The result of parsing the source text of this module using |Script| as the goal symbol.
+              The result of parsing the source text of this script using |Script| as the goal symbol.
             </td>
           </tr>
           <tr>
@@ -22070,7 +22085,7 @@
               1. Perform ? _envRec_.CreateMutableBinding(_dn_, *false*).
         1. For each Parse Node _f_ in _functionsToInitialize_, do
           1. Let _fn_ be the sole element of the BoundNames of _f_.
-          1. Let _fo_ be the result of performing InstantiateFunctionObject for _f_ with argument _env_.
+          1. Let _fo_ be InstantiateFunctionObject of _f_ with argument _env_.
           1. Perform ? _envRec_.CreateGlobalFunctionBinding(_fn_, _fo_, *false*).
         1. For each String _vn_ in _declaredVarNames_, in list order, do
           1. Perform ? _envRec_.CreateGlobalVarBinding(_vn_, *false*).
@@ -22821,7 +22836,7 @@
           <p>First consider the following simple module graph:</p>
 
           <emu-figure id="figure-module-graph-simple" caption="A simple module graph">
-            <img alt="A module graph in which module A depends on module B" width="121" height="211" src="img/module-graph-simple.svg">
+            <img alt="A module graph in which module A depends on module B, and module B depends on module C" width="121" height="211" src="img/module-graph-simple.svg">
           </emu-figure>
 
           <p>Let's first assume that there are no error conditions. When a host first calls _A_.Link(), this will complete successfully by assumption, and recursively link modules _B_ and _C_ as well, such that _A_.[[Status]] = _B_.[[Status]] = _C_.[[Status]] = `"linked"`. This preparatory step can be performed at any time. Later, when the host is ready to incur any possible side effects of the modules, it can call _A_.Evaluate(), which will complete successfully (again by assumption), recursively having evaluated first _C_ and then _B_. Each module's [[Status]] at this point will be `"evaluated"`.</p>
@@ -23481,7 +23496,7 @@
                 1. Else,
                   1. Perform ! _envRec_.CreateMutableBinding(_dn_, *false*).
                 1. If _d_ is a |FunctionDeclaration|, a |GeneratorDeclaration|, an |AsyncFunctionDeclaration|, or an |AsyncGeneratorDeclaration|, then
-                  1. Let _fo_ be the result of performing InstantiateFunctionObject for _d_ with argument _env_.
+                  1. Let _fo_ be InstantiateFunctionObject of _d_ with argument _env_.
                   1. Call _envRec_.InitializeBinding(_dn_, _fo_).
             1. Return NormalCompletion(~empty~).
           </emu-alg>
@@ -24251,8 +24266,7 @@
         </emu-alg>
         <emu-grammar>ExportDeclaration : `export` `default` ClassDeclaration</emu-grammar>
         <emu-alg>
-          1. Let _value_ be the result of BindingClassDeclarationEvaluation of |ClassDeclaration|.
-          1. ReturnIfAbrupt(_value_).
+          1. Let _value_ be BindingClassDeclarationEvaluation of |ClassDeclaration|.
           1. Let _className_ be the sole element of BoundNames of |ClassDeclaration|.
           1. If _className_ is `"*default*"`, then
             1. Let _env_ be the running execution context's LexicalEnvironment.
@@ -24262,7 +24276,7 @@
         <emu-grammar>ExportDeclaration : `export` `default` AssignmentExpression `;`</emu-grammar>
         <emu-alg>
           1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true*, then
-            1. Let _value_ be the result of performing NamedEvaluation for |AssignmentExpression| with argument `"default"`.
+            1. Let _value_ be NamedEvaluation of |AssignmentExpression| with argument `"default"`.
           1. Else,
             1. Let _rhs_ be the result of evaluating |AssignmentExpression|.
             1. Let _value_ be ? GetValue(_rhs_).
@@ -24544,7 +24558,7 @@
                 1. Perform ? _lexEnvRec_.CreateMutableBinding(_dn_, *false*).
           1. For each Parse Node _f_ in _functionsToInitialize_, do
             1. Let _fn_ be the sole element of the BoundNames of _f_.
-            1. Let _fo_ be the result of performing InstantiateFunctionObject for _f_ with argument _lexEnv_.
+            1. Let _fo_ be InstantiateFunctionObject of _f_ with argument _lexEnv_.
             1. If _varEnvRec_ is a global Environment Record, then
               1. Perform ? _varEnvRec_.CreateGlobalFunctionBinding(_fn_, _fo_, *true*).
             1. Else,
@@ -24600,8 +24614,7 @@
       <p>The `parseFloat` function produces a Number value dictated by interpretation of the contents of the _string_ argument as a decimal literal.</p>
       <p>The `parseFloat` function is the <dfn>%parseFloat%</dfn> intrinsic object. When the `parseFloat` function is called with one argument _string_, the following steps are taken:</p>
       <emu-alg>
-        1. Let _inputString_ be ? ToString(_string_).
-        1. Let _trimmedString_ be a substring of _inputString_ consisting of the leftmost code unit that is not a |StrWhiteSpaceChar| and all code units to the right of that code unit. (In other words, remove leading white space.) If _inputString_ does not contain any such code units, let _trimmedString_ be the empty string.
+        1. Let _trimmedString_ be ? TrimString(_string_, `"start"`).
         1. If neither _trimmedString_ nor any prefix of _trimmedString_ satisfies the syntax of a |StrDecimalLiteral| (see <emu-xref href="#sec-tonumber-applied-to-the-string-type"></emu-xref>), return *NaN*.
         1. Let _numberString_ be the longest prefix of _trimmedString_, which might be _trimmedString_ itself, that satisfies the syntax of a |StrDecimalLiteral|.
         1. Let _mathFloat_ be MV of _numberString_.
@@ -24620,8 +24633,7 @@
       <p>The `parseInt` function produces an integer value dictated by interpretation of the contents of the _string_ argument according to the specified _radix_. Leading white space in _string_ is ignored. If _radix_ is *undefined* or 0, it is assumed to be 10 except when the number begins with the code unit pairs `0x` or `0X`, in which case a radix of 16 is assumed. If _radix_ is 16, the number may also optionally begin with the code unit pairs `0x` or `0X`.</p>
       <p>The `parseInt` function is the <dfn>%parseInt%</dfn> intrinsic object. When the `parseInt` function is called, the following steps are taken:</p>
       <emu-alg>
-        1. Let _inputString_ be ? ToString(_string_).
-        1. Let _S_ be a newly created substring of _inputString_ consisting of the first code unit that is not a |StrWhiteSpaceChar| and all code units following that code unit. (In other words, remove leading white space.) If _inputString_ does not contain any such code unit, let _S_ be the empty string.
+        1. Let _S_ be ? TrimString(_string_, `"start"`).
         1. Let _sign_ be 1.
         1. If _S_ is not empty and the first code unit of _S_ is the code unit 0x002D (HYPHEN-MINUS), set _sign_ to -1.
         1. If _S_ is not empty and the first code unit of _S_ is the code unit 0x002B (PLUS SIGN) or the code unit 0x002D (HYPHEN-MINUS), remove the first code unit from _S_.
@@ -25322,7 +25334,7 @@
         <p>When the `entries` function is called with argument _O_, the following steps are taken:</p>
         <emu-alg>
           1. Let _obj_ be ? ToObject(_O_).
-          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, *"key+value"*).
+          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, `"key+value"`).
           1. Return CreateArrayFromList(_nameList_).
         </emu-alg>
       </emu-clause>
@@ -25346,7 +25358,7 @@
           1. Let _obj_ be ObjectCreate(%ObjectPrototype%).
           1. Assert: _obj_ is an extensible ordinary object with no own properties.
           1. Let _stepsDefine_ be the algorithm steps defined in <emu-xref href="#sec-create-data-property-on-object-functions" title></emu-xref>.
-          1. Let _adder_ be CreateBuiltinFunction(_stepsDefine_, &laquo; &raquo;).
+          1. Let _adder_ be ! CreateBuiltinFunction(_stepsDefine_, &laquo; &raquo;).
           1. Return ? AddEntriesFromIterable(_obj_, _iterable_, _adder_).
         </emu-alg>
         <emu-note>
@@ -25472,7 +25484,7 @@
         <p>When the `keys` function is called with argument _O_, the following steps are taken:</p>
         <emu-alg>
           1. Let _obj_ be ? ToObject(_O_).
-          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, *"key"*).
+          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, `"key"`).
           1. Return CreateArrayFromList(_nameList_).
         </emu-alg>
       </emu-clause>
@@ -25523,7 +25535,7 @@
         <p>When the `values` function is called with argument _O_, the following steps are taken:</p>
         <emu-alg>
           1. Let _obj_ be ? ToObject(_O_).
-          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, *"value"*).
+          1. Let _nameList_ be ? EnumerableOwnPropertyNames(_obj_, `"value"`).
           1. Return CreateArrayFromList(_nameList_).
         </emu-alg>
       </emu-clause>
@@ -25984,7 +25996,7 @@
         <h1>Boolean ( _value_ )</h1>
         <p>When `Boolean` is called with argument _value_, the following steps are taken:</p>
         <emu-alg>
-          1. Let _b_ be ToBoolean(_value_).
+          1. Let _b_ be ! ToBoolean(_value_).
           1. If NewTarget is *undefined*, return _b_.
           1. Let _O_ be ? OrdinaryCreateFromConstructor(NewTarget, `"%BooleanPrototype%"`, &laquo; [[BooleanData]] &raquo;).
           1. Set _O_.[[BooleanData]] to _b_.
@@ -28978,7 +28990,7 @@ THH:mm:ss.sss
             1. Let _yv_ be YearFromTime(_tv_).
             1. If _yv_ &ge; 0, let _yearSign_ be the empty string; otherwise, let _yearSign_ be `"-"`.
             1. Let _year_ be the String representation of abs(_yv_), formatted as a decimal number.
-            1. Let _paddedYear_ be ! StringPad(_year_, 4, *"0"*, *"start"*).
+            1. Let _paddedYear_ be ! StringPad(_year_, 4, `"0"`, `"start"`).
             1. Return the string-concatenation of _weekday_, the code unit 0x0020 (SPACE), _month_, the code unit 0x0020 (SPACE), _day_, the code unit 0x0020 (SPACE), _yearSign_, and _paddedYear_.
           </emu-alg>
           <emu-table id="sec-todatestring-day-names" caption="Names of days of the week">
@@ -29215,7 +29227,7 @@ THH:mm:ss.sss
           1. Let _yv_ be YearFromTime(_tv_).
           1. If _yv_ &ge; 0, let _yearSign_ be the empty string; otherwise, let _yearSign_ be `"-"`.
           1. Let _year_ be the String representation of abs(_yv_), formatted as a decimal number.
-          1. Let _paddedYear_ be ! StringPad(_year_, 4, *"0"*, *"start"*).
+          1. Let _paddedYear_ be ! StringPad(_year_, 4, `"0"`, `"start"`).
           1. Return the string-concatenation of _weekday_, `","`, the code unit 0x0020 (SPACE), _day_, the code unit 0x0020 (SPACE), _month_, the code unit 0x0020 (SPACE), _yearSign_, _paddedYear_, the code unit 0x0020 (SPACE), and TimeString(_tv_).
         </emu-alg>
       </emu-clause>
@@ -29345,7 +29357,7 @@ THH:mm:ss.sss
           1. Let _numberOfSubstitutions_ be the number of elements in _substitutions_.
           1. Let _cooked_ be ? ToObject(_template_).
           1. Let _raw_ be ? ToObject(? Get(_cooked_, `"raw"`)).
-          1. Let _literalSegments_ be ? ToLength(? Get(_raw_, `"length"`)).
+          1. Let _literalSegments_ be ? LengthOfArrayLike(_raw_).
           1. If _literalSegments_ &le; 0, return the empty string.
           1. Let _stringElements_ be a new empty List.
           1. Let _nextIndex_ be 0.
@@ -29660,7 +29672,7 @@ THH:mm:ss.sss
         <p>When the `padEnd` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? RequireObjectCoercible(*this* value).
-          1. Return ? StringPad(_O_, _maxLength_, _fillString_, *"end"*).
+          1. Return ? StringPad(_O_, _maxLength_, _fillString_, `"end"`).
         </emu-alg>
       </emu-clause>
 
@@ -29669,14 +29681,14 @@ THH:mm:ss.sss
         <p>When the `padStart` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? RequireObjectCoercible(*this* value).
-          1. Return ? StringPad(_O_, _maxLength_, _fillString_, *"start"*).
+          1. Return ? StringPad(_O_, _maxLength_, _fillString_, `"start"`).
         </emu-alg>
 
         <emu-clause id="sec-stringpad" aoid="StringPad">
           <h1>Runtime Semantics: StringPad ( _O_, _maxLength_, _fillString_, _placement_ )</h1>
           <p>When the abstract operation StringPad is called with arguments _O_, _maxLength_, _fillString_, and _placement_, the following steps are taken:</p>
           <emu-alg>
-            1. Assert: _placement_ is *"start"* or *"end"*.
+            1. Assert: _placement_ is `"start"` or `"end"`.
             1. Let _S_ be ? ToString(_O_).
             1. Let _intMaxLength_ be ? ToLength(_maxLength_).
             1. Let _stringLength_ be the length of _S_.
@@ -29686,14 +29698,14 @@ THH:mm:ss.sss
             1. If _filler_ is the empty String, return _S_.
             1. Let _fillLen_ be _intMaxLength_ - _stringLength_.
             1. Let _truncatedStringFiller_ be the String value consisting of repeated concatenations of _filler_ truncated to length _fillLen_.
-            1. If _placement_ is *"start"*, return the string-concatenation of _truncatedStringFiller_ and _S_.
+            1. If _placement_ is `"start"`, return the string-concatenation of _truncatedStringFiller_ and _S_.
             1. Else, return the string-concatenation of _S_ and _truncatedStringFiller_.
           </emu-alg>
           <emu-note>
             <p>The argument _maxLength_ will be clamped such that it can be no smaller than the length of _S_.</p>
           </emu-note>
           <emu-note>
-            <p>The argument _fillString_ defaults to *" "* (the String value consisting of the code unit 0x0020 SPACE).</p>
+            <p>The argument _fillString_ defaults to `" "` (the String value consisting of the code unit 0x0020 SPACE).</p>
           </emu-note>
         </emu-clause>
       </emu-clause>
@@ -30119,7 +30131,7 @@ THH:mm:ss.sss
         <p>This function interprets a String value as a sequence of UTF-16 encoded code points, as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref>.</p>
         <p>The following steps are taken:</p>
         <emu-alg>
-          1. Let _S_ be *this* value.
+          1. Let _S_ be the *this* value.
           1. Return ? TrimString(_S_, `"start+end"`).
         </emu-alg>
         <emu-note>
@@ -30148,7 +30160,7 @@ THH:mm:ss.sss
         <p>This function interprets a String value as a sequence of UTF-16 encoded code points, as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref>.</p>
         <p>The following steps are taken:</p>
         <emu-alg>
-          1. Let _S_ be *this* value.
+          1. Let _S_ be the *this* value.
           1. Return ? TrimString(_S_, `"end"`).
         </emu-alg>
         <emu-note>
@@ -30161,7 +30173,7 @@ THH:mm:ss.sss
         <p>This function interprets a String value as a sequence of UTF-16 encoded code points, as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref>.</p>
         <p>The following steps are taken:</p>
         <emu-alg>
-          1. Let _S_ be *this* value.
+          1. Let _S_ be the *this* value.
           1. Return ? TrimString(_S_, `"start"`).
         </emu-alg>
         <emu-note>
@@ -30896,7 +30908,7 @@ THH:mm:ss.sss
             A <em>Continuation</em> procedure is an internal closure (i.e. an internal procedure with some arguments already bound to values) that takes one State argument and returns a MatchResult result. If an internal closure references variables which are bound in the function that creates the closure, the closure uses the values that these variables had at the time the closure was created. The Continuation attempts to match the remaining portion (specified by the closure's already-bound arguments) of the pattern against _Input_, starting at the intermediate state given by its State argument. If the match succeeds, the Continuation returns the final State that it reached; if the match fails, the Continuation returns ~failure~.
           </li>
           <li>
-            A <em>Matcher</em> procedure is an internal closure that takes two arguments &mdash; a State and a Continuation &mdash; and returns a MatchResult result. A Matcher attempts to match a middle subpattern (specified by the closure's already-bound arguments) of the pattern against _Input_, starting at the intermediate state given by its State argument. The Continuation argument should be a closure that matches the rest of the pattern. After matching the subpattern of a pattern to obtain a new State, the Matcher then calls Continuation on that new State to test if the rest of the pattern can match as well. If it can, the Matcher returns the State returned by Continuation; if not, the Matcher may try different choices at its choice points, repeatedly calling Continuation until it either succeeds or all possibilities have been exhausted.
+            A <em>Matcher</em> procedure is an internal closure that takes two arguments&mdash;a State and a Continuation&mdash;and returns a MatchResult result. A Matcher attempts to match a middle subpattern (specified by the closure's already-bound arguments) of the pattern against _Input_, starting at the intermediate state given by its State argument. The Continuation argument should be a closure that matches the rest of the pattern. After matching the subpattern of a pattern to obtain a new State, the Matcher then calls Continuation on that new State to test if the rest of the pattern can match as well. If it can, the Matcher returns the State returned by Continuation; if not, the Matcher may try different choices at its choice points, repeatedly calling Continuation until it either succeeds or all possibilities have been exhausted.
           </li>
           <li>
             An <em>AssertionTester</em> procedure is an internal closure that takes a State argument and returns a Boolean result. The assertion tester tests a specific condition (specified by the closure's already-bound arguments) against the current place in _Input_ and returns *true* if the condition matched or *false* if not.
@@ -31723,8 +31735,14 @@ THH:mm:ss.sss
         <emu-alg>
           1. Return the set of all characters not included in the set returned by <emu-grammar>CharacterClassEscape :: `w`</emu-grammar> .
         </emu-alg>
-        <p>The production <emu-grammar>CharacterClassEscape :: `p{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the CharSet containing all Unicode code points included in the CharSet returned by |UnicodePropertyValueExpression|.</p>
-        <p>The production <emu-grammar>CharacterClassEscape :: `P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the CharSet containing all Unicode code points not included in the CharSet returned by |UnicodePropertyValueExpression|.</p>
+        <p>The production <emu-grammar>CharacterClassEscape :: `p{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates as follows:</p>
+        <emu-alg>
+          1. Return the CharSet containing all Unicode code points included in the CharSet returned by |UnicodePropertyValueExpression|.
+        </emu-alg>
+        <p>The production <emu-grammar>CharacterClassEscape :: `P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates as follows:</p>
+        <emu-alg>
+          1. Return the CharSet containing all Unicode code points not included in the CharSet returned by |UnicodePropertyValueExpression|.
+        </emu-alg>
         <p>The production <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar> evaluates as follows:</p>
         <emu-alg>
           1. Let _ps_ be SourceText of |UnicodePropertyName|.
@@ -32167,17 +32185,17 @@ THH:mm:ss.sss
           1. Let _R_ be the *this* value.
           1. If Type(_R_) is not Object, throw a *TypeError* exception.
           1. Let _result_ be the empty String.
-          1. Let _global_ be ToBoolean(? Get(_R_, `"global"`)).
+          1. Let _global_ be ! ToBoolean(? Get(_R_, `"global"`)).
           1. If _global_ is *true*, append the code unit 0x0067 (LATIN SMALL LETTER G) as the last code unit of _result_.
-          1. Let _ignoreCase_ be ToBoolean(? Get(_R_, `"ignoreCase"`)).
+          1. Let _ignoreCase_ be ! ToBoolean(? Get(_R_, `"ignoreCase"`)).
           1. If _ignoreCase_ is *true*, append the code unit 0x0069 (LATIN SMALL LETTER I) as the last code unit of _result_.
-          1. Let _multiline_ be ToBoolean(? Get(_R_, `"multiline"`)).
+          1. Let _multiline_ be ! ToBoolean(? Get(_R_, `"multiline"`)).
           1. If _multiline_ is *true*, append the code unit 0x006D (LATIN SMALL LETTER M) as the last code unit of _result_.
-          1. Let _dotAll_ be ToBoolean(? Get(_R_, `"dotAll"`)).
+          1. Let _dotAll_ be ! ToBoolean(? Get(_R_, `"dotAll"`)).
           1. If _dotAll_ is *true*, append the code unit 0x0073 (LATIN SMALL LETTER S) as the last code unit of _result_.
-          1. Let _unicode_ be ToBoolean(? Get(_R_, `"unicode"`)).
+          1. Let _unicode_ be ! ToBoolean(? Get(_R_, `"unicode"`)).
           1. If _unicode_ is *true*, append the code unit 0x0075 (LATIN SMALL LETTER U) as the last code unit of _result_.
-          1. Let _sticky_ be ToBoolean(? Get(_R_, `"sticky"`)).
+          1. Let _sticky_ be ! ToBoolean(? Get(_R_, `"sticky"`)).
           1. If _sticky_ is *true*, append the code unit 0x0079 (LATIN SMALL LETTER Y) as the last code unit of _result_.
           1. Return _result_.
         </emu-alg>
@@ -32220,12 +32238,12 @@ THH:mm:ss.sss
           1. Let _rx_ be the *this* value.
           1. If Type(_rx_) is not Object, throw a *TypeError* exception.
           1. Let _S_ be ? ToString(_string_).
-          1. Let _global_ be ToBoolean(? Get(_rx_, `"global"`)).
+          1. Let _global_ be ! ToBoolean(? Get(_rx_, `"global"`)).
           1. If _global_ is *false*, then
             1. Return ? RegExpExec(_rx_, _S_).
           1. Else,
             1. Assert: _global_ is *true*.
-            1. Let _fullUnicode_ be ToBoolean(? Get(_rx_, `"unicode"`)).
+            1. Let _fullUnicode_ be ! ToBoolean(? Get(_rx_, `"unicode"`)).
             1. Perform ? Set(_rx_, `"lastIndex"`, 0, *true*).
             1. Let _A_ be ! ArrayCreate(0).
             1. Let _n_ be 0.
@@ -32269,7 +32287,7 @@ THH:mm:ss.sss
           1. Else, let _fullUnicode_ be *false*.
           1. Return ! CreateRegExpStringIterator(_matcher_, _S_, _global_, _fullUnicode_).
         </emu-alg>
-        <p>The value of the *name* property of this function is *"[Symbol.matchAll]"*.</p>
+        <p>The value of the *name* property of this function is `"[Symbol.matchAll]"`.</p>
 
         <emu-clause id="sec-createregexpstringiterator" aoid="CreateRegExpStringIterator">
           <h1>CreateRegExpStringIterator ( _R_, _S_, _global_, _fullUnicode_ )</h1>
@@ -32316,9 +32334,9 @@ THH:mm:ss.sss
           1. Let _functionalReplace_ be IsCallable(_replaceValue_).
           1. If _functionalReplace_ is *false*, then
             1. Set _replaceValue_ to ? ToString(_replaceValue_).
-          1. Let _global_ be ToBoolean(? Get(_rx_, `"global"`)).
+          1. Let _global_ be ! ToBoolean(? Get(_rx_, `"global"`)).
           1. If _global_ is *true*, then
-            1. Let _fullUnicode_ be ToBoolean(? Get(_rx_, `"unicode"`)).
+            1. Let _fullUnicode_ be ! ToBoolean(? Get(_rx_, `"unicode"`)).
             1. Perform ? Set(_rx_, `"lastIndex"`, 0, *true*).
           1. Let _results_ be a new empty List.
           1. Let _done_ be *false*.
@@ -32337,7 +32355,7 @@ THH:mm:ss.sss
           1. Let _accumulatedResult_ be the empty String value.
           1. Let _nextSourcePosition_ be 0.
           1. For each _result_ in _results_, do
-            1. Let _nCaptures_ be ? ToLength(? Get(_result_, `"length"`)).
+            1. Let _nCaptures_ be ? LengthOfArrayLike(_result_).
             1. Set _nCaptures_ to max(_nCaptures_ - 1, 0).
             1. Let _matched_ be ? ToString(? Get(_result_, `"0"`)).
             1. Let _matchLength_ be the number of code units in _matched_.
@@ -32461,7 +32479,7 @@ THH:mm:ss.sss
                 1. Set _lengthA_ to _lengthA_ + 1.
                 1. If _lengthA_ = _lim_, return _A_.
                 1. Set _p_ to _e_.
-                1. Let _numberOfCaptures_ be ? ToLength(? Get(_z_, `"length"`)).
+                1. Let _numberOfCaptures_ be ? LengthOfArrayLike(_z_).
                 1. Set _numberOfCaptures_ to max(_numberOfCaptures_ - 1, 0).
                 1. Let _i_ be 1.
                 1. Repeat, while _i_ &le; _numberOfCaptures_,
@@ -32555,7 +32573,7 @@ THH:mm:ss.sss
 
     <emu-clause id="sec-regexp-string-iterator-objects">
       <h1>RegExp String Iterator Objects</h1>
-      <p>A RegExp String Iterator is an object, that represents a specific iteration over some specific String instance object, matching against some specific RegExp instance object. There is not a named constructor for RegExp String Iterator objects. Instead, RegExp String iterator objects are created by calling certain methods of RegExp instance objects.</p>
+      <p>A RegExp String Iterator is an object, that represents a specific iteration over some specific String instance object, matching against some specific RegExp instance object. There is not a named constructor for RegExp String Iterator objects. Instead, RegExp String Iterator objects are created by calling certain methods of RegExp instance objects.</p>
 
       <emu-clause id="sec-%regexpstringiteratorprototype%-object">
         <h1>The %RegExpStringIteratorPrototype% Object</h1>
@@ -32585,11 +32603,11 @@ THH:mm:ss.sss
               1. Return ! CreateIterResultObject(*undefined*, *true*).
             1. Else,
               1. If _global_ is *true*, then
-                1. Let _matchStr_ be ? ToString(? Get(_match_, *"0"*)).
+                1. Let _matchStr_ be ? ToString(? Get(_match_, `"0"`)).
                 1. If _matchStr_ is the empty string, then
-                  1. Let _thisIndex_ be ? ToLength(? Get(_R_, *"lastIndex"*)).
+                  1. Let _thisIndex_ be ? ToLength(? Get(_R_, `"lastIndex"`)).
                   1. Let _nextIndex_ be ! AdvanceStringIndex(_S_, _thisIndex_, _fullUnicode_).
-                  1. Perform ? Set(_R_, *"lastIndex"*, _nextIndex_, *true*).
+                  1. Perform ? Set(_R_, `"lastIndex"`, _nextIndex_, *true*).
                 1. Return ! CreateIterResultObject(_match_, *false*).
               1. Else,
                 1. Set _O_.[[Done]] to *true*.
@@ -32599,7 +32617,7 @@ THH:mm:ss.sss
 
         <emu-clause id="sec-%regexpstringiteratorprototype%-@@tostringtag">
           <h1>%RegExpStringIteratorPrototype% [ @@toStringTag ]</h1>
-          <p>The initial value of the _@@toStringTag_ property is the String value *"RegExp String Iterator"*.</p>
+          <p>The initial value of the @@toStringTag property is the String value `"RegExp String Iterator"`.</p>
           <p>This property has the attributes { [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }.</p>
         </emu-clause>
       </emu-clause>
@@ -32765,7 +32783,7 @@ THH:mm:ss.sss
               1. Set _k_ to _k_ + 1.
           1. NOTE: _items_ is not an Iterable so assume it is an array-like object.
           1. Let _arrayLike_ be ! ToObject(_items_).
-          1. Let _len_ be ? ToLength(? Get(_arrayLike_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_arrayLike_).
           1. If IsConstructor(_C_) is *true*, then
             1. Let _A_ be ? Construct(_C_, &laquo; _len_ &raquo;).
           1. Else,
@@ -32869,7 +32887,7 @@ THH:mm:ss.sss
             1. Let _spreadable_ be ? IsConcatSpreadable(_E_).
             1. If _spreadable_ is *true*, then
               1. Let _k_ be 0.
-              1. Let _len_ be ? ToLength(? Get(_E_, `"length"`)).
+              1. Let _len_ be ? LengthOfArrayLike(_E_).
               1. If _n_ + _len_ &gt; 2<sup>53</sup> - 1, throw a *TypeError* exception.
               1. Repeat, while _k_ &lt; _len_
                 1. Let _P_ be ! ToString(_k_).
@@ -32901,7 +32919,7 @@ THH:mm:ss.sss
           <emu-alg>
             1. If Type(_O_) is not Object, return *false*.
             1. Let _spreadable_ be ? Get(_O_, @@isConcatSpreadable).
-            1. If _spreadable_ is not *undefined*, return ToBoolean(_spreadable_).
+            1. If _spreadable_ is not *undefined*, return ! ToBoolean(_spreadable_).
             1. Return ? IsArray(_O_).
           </emu-alg>
         </emu-clause>
@@ -32921,7 +32939,7 @@ THH:mm:ss.sss
         <p>The following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _relativeTarget_ be ? ToInteger(_target_).
           1. If _relativeTarget_ &lt; 0, let _to_ be max((_len_ + _relativeTarget_), 0); else let _to_ be min(_relativeTarget_, _len_).
           1. Let _relativeStart_ be ? ToInteger(_start_).
@@ -32977,7 +32995,7 @@ THH:mm:ss.sss
         <p>When the `every` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _k_ be 0.
@@ -32986,7 +33004,7 @@ THH:mm:ss.sss
             1. Let _kPresent_ be ? HasProperty(_O_, _Pk_).
             1. If _kPresent_ is *true*, then
               1. Let _kValue_ be ? Get(_O_, _Pk_).
-              1. Let _testResult_ be ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+              1. Let _testResult_ be ! ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
               1. If _testResult_ is *false*, return *false*.
             1. Set _k_ to _k_ + 1.
           1. Return *true*.
@@ -33005,7 +33023,7 @@ THH:mm:ss.sss
         <p>The following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _relativeStart_ be ? ToInteger(_start_).
           1. If _relativeStart_ &lt; 0, let _k_ be max((_len_ + _relativeStart_), 0); else let _k_ be min(_relativeStart_, _len_).
           1. If _end_ is *undefined*, let _relativeEnd_ be _len_; else let _relativeEnd_ be ? ToInteger(_end_).
@@ -33033,7 +33051,7 @@ THH:mm:ss.sss
         <p>When the `filter` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _A_ be ? ArraySpeciesCreate(_O_, 0).
@@ -33044,7 +33062,7 @@ THH:mm:ss.sss
             1. Let _kPresent_ be ? HasProperty(_O_, _Pk_).
             1. If _kPresent_ is *true*, then
               1. Let _kValue_ be ? Get(_O_, _Pk_).
-              1. Let _selected_ be ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+              1. Let _selected_ be ! ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
               1. If _selected_ is *true*, then
                 1. Perform ? CreateDataPropertyOrThrow(_A_, ! ToString(_to_), _kValue_).
                 1. Set _to_ to _to_ + 1.
@@ -33069,14 +33087,14 @@ THH:mm:ss.sss
         <p>When the `find` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _k_ be 0.
           1. Repeat, while _k_ &lt; _len_
             1. Let _Pk_ be ! ToString(_k_).
             1. Let _kValue_ be ? Get(_O_, _Pk_).
-            1. Let _testResult_ be ToBoolean(? Call(_predicate_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+            1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
             1. If _testResult_ is *true*, return _kValue_.
             1. Set _k_ to _k_ + 1.
           1. Return *undefined*.
@@ -33098,14 +33116,14 @@ THH:mm:ss.sss
         <p>When the `findIndex` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_predicate_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _k_ be 0.
           1. Repeat, while _k_ &lt; _len_
             1. Let _Pk_ be ! ToString(_k_).
             1. Let _kValue_ be ? Get(_O_, _Pk_).
-            1. Let _testResult_ be ToBoolean(? Call(_predicate_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+            1. Let _testResult_ be ! ToBoolean(? Call(_predicate_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
             1. If _testResult_ is *true*, return _k_.
             1. Set _k_ to _k_ + 1.
           1. Return -1.
@@ -33120,7 +33138,7 @@ THH:mm:ss.sss
         <p>When the `flat` method is called with zero or one arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _sourceLen_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _sourceLen_ be ? LengthOfArrayLike(_O_).
           1. Let _depthNum_ be 1.
           1. If _depth_ is not *undefined*, then
             1. Set _depthNum_ to ? ToInteger(_depth_).
@@ -33132,6 +33150,12 @@ THH:mm:ss.sss
         <emu-clause id="sec-flattenintoarray" aoid="FlattenIntoArray">
           <h1>FlattenIntoArray ( _target_, _source_, _sourceLen_, _start_, _depth_ [ , _mapperFunction_, _thisArg_ ] )</h1>
           <emu-alg>
+            1. Assert: Type(_target_) is Object.
+            1. Assert: Type(_source_) is Object.
+            1. Assert: _sourceLen_ is an integer Number &ge; 0.
+            1. Assert: _start_ is an integer Number &ge; 0.
+            1. Assert: _depth_ is an integer Number, *+&infin;*, or *-&infin;*.
+            1. Assert: If _mapperFunction_ is present, then ! IsCallable(_mapperFunction_) is *true*, _thisArg_ is present, and _depth_ is *1*.
             1. Let _targetIndex_ be _start_.
             1. Let _sourceIndex_ be 0.
             1. Repeat, while _sourceIndex_ &lt; _sourceLen_
@@ -33140,13 +33164,12 @@ THH:mm:ss.sss
               1. If _exists_ is *true*, then
                 1. Let _element_ be ? Get(_source_, _P_).
                 1. If _mapperFunction_ is present, then
-                  1. Assert: _thisArg_ is present.
                   1. Set _element_ to ? Call(_mapperFunction_, _thisArg_, &laquo; _element_, _sourceIndex_, _source_ &raquo;).
                 1. Let _shouldFlatten_ be *false*.
                 1. If _depth_ &gt; 0, then
                   1. Set _shouldFlatten_ to ? IsArray(_element_).
                 1. If _shouldFlatten_ is *true*, then
-                  1. Let _elementLen_ be ? ToLength(? Get(_element_, `"length"`)).
+                  1. Let _elementLen_ be ? LengthOfArrayLike(_element_).
                   1. Set _targetIndex_ to ? FlattenIntoArray(_target_, _element_, _elementLen_, _targetIndex_, _depth_ - 1).
                 1. Else,
                   1. If _targetIndex_ &ge; 2<sup>53</sup> - 1, throw a *TypeError* exception.
@@ -33163,8 +33186,8 @@ THH:mm:ss.sss
         <p>When the `flatMap` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _sourceLen_ be ? ToLength(? Get(_O_, `"length"`)).
-          1. If IsCallable(_mapperFunction_) is *false*, throw a *TypeError* exception.
+          1. Let _sourceLen_ be ? LengthOfArrayLike(_O_).
+          1. If ! IsCallable(_mapperFunction_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _A_ be ? ArraySpeciesCreate(_O_, 0).
           1. Perform ? FlattenIntoArray(_A_, _O_, _sourceLen_, 0, 1, _mapperFunction_, _T_).
@@ -33183,7 +33206,7 @@ THH:mm:ss.sss
         <p>When the `forEach` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _k_ be 0.
@@ -33215,7 +33238,7 @@ THH:mm:ss.sss
 
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _len_ is 0, return *false*.
           1. Let _n_ be ? ToInteger(_fromIndex_).
           1. Assert: If _fromIndex_ is *undefined*, then _n_ is 0.
@@ -33249,7 +33272,7 @@ THH:mm:ss.sss
         <p>When the `indexOf` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _len_ is 0, return -1.
           1. Let _n_ be ? ToInteger(_fromIndex_).
           1. Assert: If _fromIndex_ is *undefined*, then _n_ is 0.
@@ -33281,7 +33304,7 @@ THH:mm:ss.sss
         <p>The `join` method takes one argument, _separator_, and performs the following steps:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _separator_ is *undefined*, let _sep_ be the single-element String `","`.
           1. Else, let _sep_ be ? ToString(_separator_).
           1. Let _R_ be the empty String.
@@ -33318,7 +33341,7 @@ THH:mm:ss.sss
         <p>When the `lastIndexOf` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _len_ is 0, return -1.
           1. If _fromIndex_ is present, let _n_ be ? ToInteger(_fromIndex_); else let _n_ be _len_ - 1.
           1. If _n_ &ge; 0, then
@@ -33351,7 +33374,7 @@ THH:mm:ss.sss
         <p>When the `map` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _A_ be ? ArraySpeciesCreate(_O_, _len_).
@@ -33379,7 +33402,7 @@ THH:mm:ss.sss
         <p>When the `pop` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _len_ is zero, then
             1. Perform ? Set(_O_, `"length"`, 0, *true*).
             1. Return *undefined*.
@@ -33405,7 +33428,7 @@ THH:mm:ss.sss
         <p>When the `push` method is called with zero or more arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _items_ be a List whose elements are, in left to right order, the arguments that were passed to this function invocation.
           1. Let _argCount_ be the number of elements in _items_.
           1. If _len_ + _argCount_ &gt; 2<sup>53</sup> - 1, throw a *TypeError* exception.
@@ -33433,7 +33456,7 @@ THH:mm:ss.sss
         <p>When the `reduce` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _len_ is 0 and _initialValue_ is not present, throw a *TypeError* exception.
           1. Let _k_ be 0.
@@ -33474,7 +33497,7 @@ THH:mm:ss.sss
         <p>When the `reduceRight` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _len_ is 0 and _initialValue_ is not present, throw a *TypeError* exception.
           1. Let _k_ be _len_ - 1.
@@ -33512,7 +33535,7 @@ THH:mm:ss.sss
         <p>When the `reverse` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _middle_ be floor(_len_ / 2).
           1. Let _lower_ be 0.
           1. Repeat, while _lower_ &ne; _middle_
@@ -33553,7 +33576,7 @@ THH:mm:ss.sss
         <p>When the `shift` method is called, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If _len_ is zero, then
             1. Perform ? Set(_O_, `"length"`, 0, *true*).
             1. Return *undefined*.
@@ -33587,7 +33610,7 @@ THH:mm:ss.sss
         <p>The following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _relativeStart_ be ? ToInteger(_start_).
           1. If _relativeStart_ &lt; 0, let _k_ be max((_len_ + _relativeStart_), 0); else let _k_ be min(_relativeStart_, _len_).
           1. If _end_ is *undefined*, let _relativeEnd_ be _len_; else let _relativeEnd_ be ? ToInteger(_end_).
@@ -33626,7 +33649,7 @@ THH:mm:ss.sss
         <p>When the `some` method is called with one or two arguments, the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. If IsCallable(_callbackfn_) is *false*, throw a *TypeError* exception.
           1. If _thisArg_ is present, let _T_ be _thisArg_; else let _T_ be *undefined*.
           1. Let _k_ be 0.
@@ -33635,7 +33658,7 @@ THH:mm:ss.sss
             1. Let _kPresent_ be ? HasProperty(_O_, _Pk_).
             1. If _kPresent_ is *true*, then
               1. Let _kValue_ be ? Get(_O_, _Pk_).
-              1. Let _testResult_ be ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+              1. Let _testResult_ be ! ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
               1. If _testResult_ is *true*, return *true*.
             1. Set _k_ to _k_ + 1.
           1. Return *false*.
@@ -33652,7 +33675,7 @@ THH:mm:ss.sss
         <emu-alg>
           1. If _comparefn_ is not *undefined* and IsCallable(_comparefn_) is *false*, throw a *TypeError* exception.
           1. Let _obj_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_obj_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_obj_).
         </emu-alg>
         <p>Within this specification of the `sort` method, an object, _obj_, is said to be <em>sparse</em> if the following algorithm returns *true*:</p>
         <emu-alg>
@@ -33786,7 +33809,7 @@ THH:mm:ss.sss
         <p>The following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _relativeStart_ be ? ToInteger(_start_).
           1. If _relativeStart_ &lt; 0, let _actualStart_ be max((_len_ + _relativeStart_), 0); else let _actualStart_ be min(_relativeStart_, _len_).
           1. If the number of actual arguments is 0, then
@@ -33868,7 +33891,7 @@ THH:mm:ss.sss
         <p>The following steps are taken:</p>
         <emu-alg>
           1. Let _array_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_array_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_array_).
           1. Let _separator_ be the String value for the list-separator String appropriate for the host environment's current locale (this is derived in an implementation-defined way).
           1. Let _R_ be the empty String.
           1. Let _k_ be 0.
@@ -33912,7 +33935,7 @@ THH:mm:ss.sss
         <p>When the `unshift` method is called with zero or more arguments _item1_, _item2_, etc., the following steps are taken:</p>
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
-          1. Let _len_ be ? ToLength(? Get(_O_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_O_).
           1. Let _argCount_ be the number of actual arguments.
           1. If _argCount_ &gt; 0, then
             1. If _len_ + _argCount_ &gt; 2<sup>53</sup> - 1, throw a *TypeError* exception.
@@ -34039,7 +34062,7 @@ THH:mm:ss.sss
               1. If IsDetachedBuffer(_a_.[[ViewedArrayBuffer]]) is *true*, throw a *TypeError* exception.
               1. Let _len_ be _a_.[[ArrayLength]].
             1. Else,
-              1. Let _len_ be ? ToLength(? Get(_a_, `"length"`)).
+              1. Let _len_ be ? LengthOfArrayLike(_a_).
             1. If _index_ &ge; _len_, then
               1. Set _O_.[[IteratedObject]] to *undefined*.
               1. Return CreateIterResultObject(*undefined*, *true*).
@@ -34050,7 +34073,7 @@ THH:mm:ss.sss
             1. If _itemKind_ is `"value"`, let _result_ be _elementValue_.
             1. Else,
               1. Assert: _itemKind_ is `"key+value"`.
-              1. Let _result_ be CreateArrayFromList(&laquo; _index_, _elementValue_ &raquo;).
+              1. Let _result_ be ! CreateArrayFromList(&laquo; _index_, _elementValue_ &raquo;).
             1. Return CreateIterResultObject(_result_, *false*).
           </emu-alg>
         </emu-clause>
@@ -34402,7 +34425,7 @@ THH:mm:ss.sss
             1. Return _targetObj_.
           1. NOTE: _source_ is not an Iterable so assume it is already an array-like object.
           1. Let _arrayLike_ be ! ToObject(_source_).
-          1. Let _len_ be ? ToLength(? Get(_arrayLike_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_arrayLike_).
           1. Let _targetObj_ be ? TypedArrayCreate(_C_, &laquo; _len_ &raquo;).
           1. Let _k_ be 0.
           1. Repeat, while _k_ &lt; _len_
@@ -34533,7 +34556,7 @@ THH:mm:ss.sss
         <p>The interpretation and use of the arguments of %TypedArray%`.prototype.copyWithin` are the same as for `Array.prototype.copyWithin` as defined in <emu-xref href="#sec-array.prototype.copywithin"></emu-xref>.</p>
         <p>The following steps are taken:</p>
         <emu-alg>
-          1. Let _O_ be *this* value.
+          1. Let _O_ be the *this* value.
           1. Perform ? ValidateTypedArray(_O_).
           1. Let _len_ be _O_.[[ArrayLength]].
           1. Let _relativeTarget_ be ? ToInteger(_target_).
@@ -34636,7 +34659,7 @@ THH:mm:ss.sss
           1. Repeat, while _k_ &lt; _len_
             1. Let _Pk_ be ! ToString(_k_).
             1. Let _kValue_ be ? Get(_O_, _Pk_).
-            1. Let _selected_ be ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
+            1. Let _selected_ be ! ToBoolean(? Call(_callbackfn_, _T_, &laquo; _kValue_, _k_, _O_ &raquo;)).
             1. If _selected_ is *true*, then
               1. Append _kValue_ to the end of _kept_.
               1. Set _captured_ to _captured_ + 1.
@@ -34782,7 +34805,7 @@ THH:mm:ss.sss
             1. Let _targetType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _targetName_.
             1. Let _targetByteOffset_ be _target_.[[ByteOffset]].
             1. Let _src_ be ? ToObject(_array_).
-            1. Let _srcLength_ be ? ToLength(? Get(_src_, `"length"`)).
+            1. Let _srcLength_ be ? LengthOfArrayLike(_src_).
             1. If _srcLength_ + _targetOffset_ &gt; _targetLength_, throw a *RangeError* exception.
             1. Let _targetByteIndex_ be _targetOffset_ &times; _targetElementSize_ + _targetByteOffset_.
             1. Let _k_ be 0.
@@ -35195,7 +35218,7 @@ THH:mm:ss.sss
             1. Return _O_.
           1. NOTE: _object_ is not an Iterable so assume it is already an array-like object.
           1. Let _arrayLike_ be _object_.
-          1. Let _len_ be ? ToLength(? Get(_arrayLike_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_arrayLike_).
           1. Perform ? AllocateTypedArrayBuffer(_O_, _len_).
           1. Let _k_ be 0.
           1. Repeat, while _k_ &lt; _len_
@@ -35631,7 +35654,7 @@ THH:mm:ss.sss
                 1. Else if _itemKind_ is `"value"`, let _result_ be _e_.[[Value]].
                 1. Else,
                   1. Assert: _itemKind_ is `"key+value"`.
-                  1. Let _result_ be CreateArrayFromList(&laquo; _e_.[[Key]], _e_.[[Value]] &raquo;).
+                  1. Let _result_ be ! CreateArrayFromList(&laquo; _e_.[[Key]], _e_.[[Value]] &raquo;).
                 1. Return CreateIterResultObject(_result_, *false*).
             1. Set _O_.[[Map]] to *undefined*.
             1. Return CreateIterResultObject(*undefined*, *true*).
@@ -36791,7 +36814,7 @@ THH:mm:ss.sss
           1. Perform ? RequireInternalSlot(_view_, [[DataView]]).
           1. Assert: _view_ has a [[ViewedArrayBuffer]] internal slot.
           1. Let _getIndex_ be ? ToIndex(_requestIndex_).
-          1. Set _isLittleEndian_ to ToBoolean(_isLittleEndian_).
+          1. Set _isLittleEndian_ to ! ToBoolean(_isLittleEndian_).
           1. Let _buffer_ be _view_.[[ViewedArrayBuffer]].
           1. If IsDetachedBuffer(_buffer_) is *true*, throw a *TypeError* exception.
           1. Let _viewOffset_ be _view_.[[ByteOffset]].
@@ -36812,7 +36835,7 @@ THH:mm:ss.sss
           1. Let _getIndex_ be ? ToIndex(_requestIndex_).
           1. If IsBigIntTypedArrayType(_type_) is *true*, let _numberValue_ be ? ToBigInt(_value_).
           1. Otherwise, let _numberValue_ be ? ToInteger(_value_).
-          1. Set _isLittleEndian_ to ToBoolean(_isLittleEndian_).
+          1. Set _isLittleEndian_ to ! ToBoolean(_isLittleEndian_).
           1. Let _buffer_ be _view_.[[ViewedArrayBuffer]].
           1. If IsDetachedBuffer(_buffer_) is *true*, throw a *TypeError* exception.
           1. Let _viewOffset_ be _view_.[[ByteOffset]].
@@ -37198,7 +37221,7 @@ THH:mm:ss.sss
         <h1>GetWaiterList ( _block_, _i_ )</h1>
         <p>A <dfn>WaiterList</dfn> is a semantic object that contains an ordered list of those agents that are waiting on a location (_block_, _i_) in shared memory; _block_ is a Shared Data Block and _i_ a byte offset into the memory of _block_.</p>
         <p>The agent cluster has a store of WaiterList objects; the store is indexed by (_block_, _i_). WaiterLists are agent-independent: a lookup in the store of WaiterLists by (_block_, _i_) will result in the same WaiterList object in any agent in the agent cluster.</p>
-        <p>Operations on a WaiterList -- adding and removing waiting agents, traversing the list of agents, suspending and notifying agents on the list -- may only be performed by agents that have entered the WaiterList's critical section.</p>
+        <p>Operations on a WaiterList&mdash;adding and removing waiting agents, traversing the list of agents, suspending and notifying agents on the list&mdash;may only be performed by agents that have entered the WaiterList's critical section.</p>
         <p>The abstract operation GetWaiterList takes two arguments, a Shared Data Block _block_ and a nonnegative integer _i_. It performs the following steps:</p>
         <emu-alg>
           1. Assert: _block_ is a Shared Data Block.
@@ -37257,7 +37280,7 @@ THH:mm:ss.sss
             1. Let _W_ be the first waiter in _S_.
             1. Add _W_ to the end of _L_.
             1. Remove _W_ from _S_.
-            1. Subtract 1 from _c_.
+            1. Set _c_ to _c_ - 1.
           1. Return _L_.
         </emu-alg>
       </emu-clause>
@@ -37502,7 +37525,7 @@ THH:mm:ss.sss
           1. Let _W_ be the first agent in _S_.
           1. Remove _W_ from the front of _S_.
           1. Perform NotifyWaiter(_WL_, _W_).
-          1. Add 1 to _n_.
+          1. Set _n_ to _n_ + 1.
         1. Perform LeaveCriticalSection(_WL_).
         1. Return _n_.
       </emu-alg>
@@ -37567,13 +37590,16 @@ THH:mm:ss.sss
       <emu-clause id="sec-internalizejsonproperty" aoid="InternalizeJSONProperty">
         <h1>Runtime Semantics: InternalizeJSONProperty ( _holder_, _name_ )</h1>
         <p>The abstract operation InternalizeJSONProperty is a recursive abstract operation that takes two parameters: a _holder_ object and the String _name_ of a property in that object. InternalizeJSONProperty uses the value of _reviver_ that was originally passed to the above parse function.</p>
+        <emu-note>
+          <p>This algorithm intentionally does not throw an exception if either [[Delete]] or CreateDataProperty return *false*.</p>
+        </emu-note>
         <emu-alg>
           1. Let _val_ be ? Get(_holder_, _name_).
           1. If Type(_val_) is Object, then
             1. Let _isArray_ be ? IsArray(_val_).
             1. If _isArray_ is *true*, then
               1. Let _I_ be 0.
-              1. Let _len_ be ? ToLength(? Get(_val_, `"length"`)).
+              1. Let _len_ be ? LengthOfArrayLike(_val_).
               1. Repeat, while _I_ &lt; _len_,
                 1. Let _newElement_ be ? InternalizeJSONProperty(_val_, ! ToString(_I_)).
                 1. If _newElement_ is *undefined*, then
@@ -37581,16 +37607,15 @@ THH:mm:ss.sss
                 1. Else,
                   1. Perform ? CreateDataProperty(_val_, ! ToString(_I_), _newElement_).
                   1. NOTE: This algorithm intentionally does not throw an exception if CreateDataProperty returns *false*.
-                1. Add 1 to _I_.
+                1. Set _I_ to _I_ + 1.
             1. Else,
-              1. Let _keys_ be ? EnumerableOwnPropertyNames(_val_, *"key"*).
+              1. Let _keys_ be ? EnumerableOwnPropertyNames(_val_, `"key"`).
               1. For each String _P_ in _keys_, do
                 1. Let _newElement_ be ? InternalizeJSONProperty(_val_, _P_).
                 1. If _newElement_ is *undefined*, then
                   1. Perform ? _val_.[[Delete]](_P_).
                 1. Else,
                   1. Perform ? CreateDataProperty(_val_, _P_, _newElement_).
-                  1. NOTE: This algorithm intentionally does not throw an exception if CreateDataProperty returns *false*.
           1. Return ? Call(_reviver_, _holder_, &laquo; _name_, _val_ &raquo;).
         </emu-alg>
         <p>It is not permitted for a conforming implementation of `JSON.parse` to extend the JSON grammars. If an implementation wishes to support a modified or extended JSON interchange format it must do so by defining a different parse function.</p>
@@ -37615,7 +37640,7 @@ THH:mm:ss.sss
             1. Let _isArray_ be ? IsArray(_replacer_).
             1. If _isArray_ is *true*, then
               1. Set _PropertyList_ to a new empty List.
-              1. Let _len_ be ? ToLength(? Get(_replacer_, `"length"`)).
+              1. Let _len_ be ? LengthOfArrayLike(_replacer_).
               1. Let _k_ be 0.
               1. Repeat, while _k_ &lt; _len_,
                 1. Let _v_ be ? Get(_replacer_, ! ToString(_k_)).
@@ -37857,7 +37882,7 @@ THH:mm:ss.sss
           1. If _PropertyList_ is not *undefined*, then
             1. Let _K_ be _PropertyList_.
           1. Else,
-            1. Let _K_ be ? EnumerableOwnPropertyNames(_value_, *"key"*).
+            1. Let _K_ be ? EnumerableOwnPropertyNames(_value_, `"key"`).
           1. Let _partial_ be a new empty List.
           1. For each element _P_ of _K_, do
             1. Let _strP_ be ? SerializeJSONProperty(_P_, _value_).
@@ -37893,7 +37918,7 @@ THH:mm:ss.sss
           1. Let _stepback_ be _indent_.
           1. Set _indent_ to the string-concatenation of _indent_ and _gap_.
           1. Let _partial_ be a new empty List.
-          1. Let _len_ be ? ToLength(? Get(_value_, `"length"`)).
+          1. Let _len_ be ? LengthOfArrayLike(_value_).
           1. Let _index_ be 0.
           1. Repeat, while _index_ &lt; _len_
             1. Let _strP_ be ? SerializeJSONProperty(! ToString(_index_), _value_).
@@ -38359,7 +38384,7 @@ THH:mm:ss.sss
           1. Let _valueWrapper_ be PromiseResolve(%Promise%, _value_).
           1. IfAbruptRejectPromise(_valueWrapper_, _promiseCapability_).
           1. Let _steps_ be the algorithm steps defined in <emu-xref href="#sec-async-from-sync-iterator-value-unwrap-functions" title></emu-xref>.
-          1. Let _onFulfilled_ be CreateBuiltinFunction(_steps_, &laquo; [[Done]] &raquo;).
+          1. Let _onFulfilled_ be ! CreateBuiltinFunction(_steps_, &laquo; [[Done]] &raquo;).
           1. Set _onFulfilled_.[[Done]] to _done_.
           1. Perform ! PerformPromiseThen(_valueWrapper_, _onFulfilled_, *undefined*, _promiseCapability_).
           1. Return _promiseCapability_.[[Promise]].
@@ -38983,10 +39008,10 @@ THH:mm:ss.sss
                 1. Set _generator_.[[AsyncGeneratorState]] to `"awaiting-return"`.
                 1. Let _promise_ be ? PromiseResolve(%Promise%, _completion_.[[Value]]).
                 1. Let _stepsFulfilled_ be the algorithm steps defined in <emu-xref href="#async-generator-resume-next-return-processor-fulfilled" title></emu-xref>.
-                1. Let _onFulfilled_ be CreateBuiltinFunction(_stepsFulfilled_, &laquo; [[Generator]] &raquo;).
+                1. Let _onFulfilled_ be ! CreateBuiltinFunction(_stepsFulfilled_, &laquo; [[Generator]] &raquo;).
                 1. Set _onFulfilled_.[[Generator]] to _generator_.
                 1. Let _stepsRejected_ be the algorithm steps defined in <emu-xref href="#async-generator-resume-next-return-processor-rejected" title></emu-xref>.
-                1. Let _onRejected_ be CreateBuiltinFunction(_stepsRejected_, &laquo; [[Generator]] &raquo;).
+                1. Let _onRejected_ be ! CreateBuiltinFunction(_stepsRejected_, &laquo; [[Generator]] &raquo;).
                 1. Set _onRejected_.[[Generator]] to _generator_.
                 1. Perform ! PerformPromiseThen(_promise_, _onFulfilled_, _onRejected_).
                 1. Return *undefined*.
@@ -39238,11 +39263,11 @@ THH:mm:ss.sss
         <emu-alg>
           1. Let _alreadyResolved_ be the Record { [[Value]]: *false* }.
           1. Let _stepsResolve_ be the algorithm steps defined in <emu-xref href="#sec-promise-resolve-functions" title></emu-xref>.
-          1. Let _resolve_ be CreateBuiltinFunction(_stepsResolve_, &laquo; [[Promise]], [[AlreadyResolved]] &raquo;).
+          1. Let _resolve_ be ! CreateBuiltinFunction(_stepsResolve_, &laquo; [[Promise]], [[AlreadyResolved]] &raquo;).
           1. Set _resolve_.[[Promise]] to _promise_.
           1. Set _resolve_.[[AlreadyResolved]] to _alreadyResolved_.
           1. Let _stepsReject_ be the algorithm steps defined in <emu-xref href="#sec-promise-reject-functions" title></emu-xref>.
-          1. Let _reject_ be CreateBuiltinFunction(_stepsReject_, &laquo; [[Promise]], [[AlreadyResolved]] &raquo;).
+          1. Let _reject_ be ! CreateBuiltinFunction(_stepsReject_, &laquo; [[Promise]], [[AlreadyResolved]] &raquo;).
           1. Set _reject_.[[Promise]] to _promise_.
           1. Set _reject_.[[AlreadyResolved]] to _alreadyResolved_.
           1. Return the Record { [[Resolve]]: _resolve_, [[Reject]]: _reject_ }.
@@ -39315,7 +39340,7 @@ THH:mm:ss.sss
           1. NOTE: _C_ is assumed to be a constructor function that supports the parameter conventions of the `Promise` constructor (see <emu-xref href="#sec-promise-executor"></emu-xref>).
           1. Let _promiseCapability_ be the PromiseCapability { [[Promise]]: *undefined*, [[Resolve]]: *undefined*, [[Reject]]: *undefined* }.
           1. Let _steps_ be the algorithm steps defined in <emu-xref href="#sec-getcapabilitiesexecutor-functions" title></emu-xref>.
-          1. Let _executor_ be CreateBuiltinFunction(_steps_, &laquo; [[Capability]] &raquo;).
+          1. Let _executor_ be ! CreateBuiltinFunction(_steps_, &laquo; [[Capability]] &raquo;).
           1. Set _executor_.[[Capability]] to _promiseCapability_.
           1. Let _promise_ be ? Construct(_C_, &laquo; _executor_ &raquo;).
           1. If IsCallable(_promiseCapability_.[[Resolve]]) is *false*, throw a *TypeError* exception.
@@ -39532,7 +39557,7 @@ THH:mm:ss.sss
                 1. Set _iteratorRecord_.[[Done]] to *true*.
                 1. Set _remainingElementsCount_.[[Value]] to _remainingElementsCount_.[[Value]] - 1.
                 1. If _remainingElementsCount_.[[Value]] is 0, then
-                  1. Let _valuesArray_ be CreateArrayFromList(_values_).
+                  1. Let _valuesArray_ be ! CreateArrayFromList(_values_).
                   1. Perform ? Call(_resultCapability_.[[Resolve]], *undefined*, &laquo; _valuesArray_ &raquo;).
                 1. Return _resultCapability_.[[Promise]].
               1. Let _nextValue_ be IteratorValue(_next_).
@@ -39541,7 +39566,7 @@ THH:mm:ss.sss
               1. Append *undefined* to _values_.
               1. Let _nextPromise_ be ? Call(_promiseResolve_, _constructor_, &laquo; _nextValue_ &raquo;).
               1. Let _steps_ be the algorithm steps defined in <emu-xref href="#sec-promise.all-resolve-element-functions" title></emu-xref>.
-              1. Let _resolveElement_ be CreateBuiltinFunction(_steps_, &laquo; [[AlreadyCalled]], [[Index]], [[Values]], [[Capability]], [[RemainingElements]] &raquo;).
+              1. Let _resolveElement_ be ! CreateBuiltinFunction(_steps_, &laquo; [[AlreadyCalled]], [[Index]], [[Values]], [[Capability]], [[RemainingElements]] &raquo;).
               1. Set _resolveElement_.[[AlreadyCalled]] to the Record { [[Value]]: *false* }.
               1. Set _resolveElement_.[[Index]] to _index_.
               1. Set _resolveElement_.[[Values]] to _values_.
@@ -39569,7 +39594,7 @@ THH:mm:ss.sss
             1. Set _values_[_index_] to _x_.
             1. Set _remainingElementsCount_.[[Value]] to _remainingElementsCount_.[[Value]] - 1.
             1. If _remainingElementsCount_.[[Value]] is 0, then
-              1. Let _valuesArray_ be CreateArrayFromList(_values_).
+              1. Let _valuesArray_ be ! CreateArrayFromList(_values_).
               1. Return ? Call(_promiseCapability_.[[Resolve]], *undefined*, &laquo; _valuesArray_ &raquo;).
             1. Return *undefined*.
           </emu-alg>
@@ -39721,11 +39746,11 @@ THH:mm:ss.sss
             1. Let _catchFinally_ be _onFinally_.
           1. Else,
             1. Let _stepsThenFinally_ be the algorithm steps defined in <emu-xref href="#sec-thenfinallyfunctions" title></emu-xref>.
-            1. Let _thenFinally_ be CreateBuiltinFunction(_stepsThenFinally_, &laquo; [[Constructor]], [[OnFinally]] &raquo;).
+            1. Let _thenFinally_ be ! CreateBuiltinFunction(_stepsThenFinally_, &laquo; [[Constructor]], [[OnFinally]] &raquo;).
             1. Set _thenFinally_.[[Constructor]] to _C_.
             1. Set _thenFinally_.[[OnFinally]] to _onFinally_.
             1. Let _stepsCatchFinally_ be the algorithm steps defined in <emu-xref href="#sec-catchfinallyfunctions" title></emu-xref>.
-            1. Let _catchFinally_ be CreateBuiltinFunction(_stepsCatchFinally_, &laquo; [[Constructor]], [[OnFinally]] &raquo;).
+            1. Let _catchFinally_ be ! CreateBuiltinFunction(_stepsCatchFinally_, &laquo; [[Constructor]], [[OnFinally]] &raquo;).
             1. Set _catchFinally_.[[Constructor]] to _C_.
             1. Set _catchFinally_.[[OnFinally]] to _onFinally_.
           1. Return ? Invoke(_promise_, `"then"`, &laquo; _thenFinally_, _catchFinally_ &raquo;).
@@ -40202,7 +40227,7 @@ THH:mm:ss.sss
         <emu-alg>
           1. Let _p_ be ? ProxyCreate(_target_, _handler_).
           1. Let _steps_ be the algorithm steps defined in <emu-xref href="#sec-proxy-revocation-functions" title></emu-xref>.
-          1. Let _revoker_ be CreateBuiltinFunction(_steps_, &laquo; [[RevocableProxy]] &raquo;).
+          1. Let _revoker_ be ! CreateBuiltinFunction(_steps_, &laquo; [[RevocableProxy]] &raquo;).
           1. Set _revoker_.[[RevocableProxy]] to _p_.
           1. Let _result_ be ObjectCreate(%ObjectPrototype%).
           1. Perform CreateDataProperty(_result_, `"proxy"`, _p_).
@@ -40873,7 +40898,7 @@ THH:mm:ss.sss
 
     <emu-note>
       <p>The following are guidelines for ECMAScript implementers generating machine code for shared memory accesses.</p>
-      <p>For architectures with memory models no weaker than those of ARM or Power, non-atomic stores and loads may be compiled to bare stores and loads on the target architecture. Atomic stores and loads may be compiled down to instructions that guarantee sequential consistency. If no such instructions exist, memory barriers are to be employed, such as placing barriers on both sides of a bare store or load. Read-modify-write operations may be compiled to read-modify-write instructions on the target architectrue, such as <code>LOCK</code>-prefixed instructions on x86, load-exclusive/store-exclusive instructions on ARM, and load-link/store-conditional instructions on Power.</p>
+      <p>For architectures with memory models no weaker than those of ARM or Power, non-atomic stores and loads may be compiled to bare stores and loads on the target architecture. Atomic stores and loads may be compiled down to instructions that guarantee sequential consistency. If no such instructions exist, memory barriers are to be employed, such as placing barriers on both sides of a bare store or load. Read-modify-write operations may be compiled to read-modify-write instructions on the target architecture, such as <code>LOCK</code>-prefixed instructions on x86, load-exclusive/store-exclusive instructions on ARM, and load-link/store-conditional instructions on Power.</p>
       <p>Specifically, the memory model is intended to allow code generation as follows.</p>
       <ul>
         <li>Every atomic operation in the program is assumed to be necessary.</li>
@@ -41389,19 +41414,19 @@ THH:mm:ss.sss
         <h1>Static Semantics</h1>
         <ul>
           <li>
-            The SV of <emu-grammar>EscapeSequence :: LegacyOctalEscapeSequence</emu-grammar> is the SV of the |LegacyOctalEscapeSequence|.
+            The SV of <emu-grammar>EscapeSequence :: LegacyOctalEscapeSequence</emu-grammar> is the SV of |LegacyOctalEscapeSequence|.
           </li>
           <li>
-            The SV of <emu-grammar>LegacyOctalEscapeSequence :: OctalDigit</emu-grammar> is the code unit whose value is the MV of the |OctalDigit|.
+            The SV of <emu-grammar>LegacyOctalEscapeSequence :: OctalDigit</emu-grammar> is the code unit whose value is the MV of |OctalDigit|.
           </li>
           <li>
-            The SV of <emu-grammar>LegacyOctalEscapeSequence :: ZeroToThree OctalDigit</emu-grammar> is the code unit whose value is (8 times the MV of the |ZeroToThree|) plus the MV of the |OctalDigit|.
+            The SV of <emu-grammar>LegacyOctalEscapeSequence :: ZeroToThree OctalDigit</emu-grammar> is the code unit whose value is (8 times the MV of |ZeroToThree|) plus the MV of |OctalDigit|.
           </li>
           <li>
-            The SV of <emu-grammar>LegacyOctalEscapeSequence :: FourToSeven OctalDigit</emu-grammar> is the code unit whose value is (8 times the MV of the |FourToSeven|) plus the MV of the |OctalDigit|.
+            The SV of <emu-grammar>LegacyOctalEscapeSequence :: FourToSeven OctalDigit</emu-grammar> is the code unit whose value is (8 times the MV of |FourToSeven|) plus the MV of |OctalDigit|.
           </li>
           <li>
-            The SV of <emu-grammar>LegacyOctalEscapeSequence :: ZeroToThree OctalDigit OctalDigit</emu-grammar> is the code unit whose value is (64 (that is, 8<sup>2</sup>) times the MV of the |ZeroToThree|) plus (8 times the MV of the first |OctalDigit|) plus the MV of the second |OctalDigit|.
+            The SV of <emu-grammar>LegacyOctalEscapeSequence :: ZeroToThree OctalDigit OctalDigit</emu-grammar> is the code unit whose value is (64 (that is, 8<sup>2</sup>) times the MV of |ZeroToThree|) plus (8 times the MV of the first |OctalDigit|) plus the MV of the second |OctalDigit|.
           </li>
           <li>
             The MV of <emu-grammar>ZeroToThree :: `0`</emu-grammar> is 0.
@@ -41628,7 +41653,7 @@ THH:mm:ss.sss
         </emu-alg>
         <emu-grammar>CharacterEscape :: LegacyOctalEscapeSequence</emu-grammar>
         <emu-alg>
-          1. Evaluate the SV of the |LegacyOctalEscapeSequence| (see <emu-xref href="#sec-additional-syntax-string-literals"></emu-xref>) to obtain a code unit _cu_.
+          1. Evaluate the SV of |LegacyOctalEscapeSequence| (see <emu-xref href="#sec-additional-syntax-string-literals"></emu-xref>) to obtain a code unit _cu_.
           1. Return the numeric value of _cu_.
         </emu-alg>
       </emu-annex>
@@ -42206,7 +42231,7 @@ THH:mm:ss.sss
         1. Else,
           1. Let _isProtoSetter_ be *false*.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and _isProtoSetter_ is *false*, then
-          1. Let _propValue_ be the result of performing NamedEvaluation for |AssignmentExpression| with argument _propKey_.
+          1. Let _propValue_ be NamedEvaluation of |AssignmentExpression| with argument _propKey_.
         1. Else,
           1. Let _exprValueRef_ be the result of evaluating |AssignmentExpression|.
           1. Let _propValue_ be ? GetValue(_exprValueRef_).
@@ -42299,7 +42324,7 @@ THH:mm:ss.sss
         <emu-alg>
           1. If _strict_ is *false*, then
             1. For each |FunctionDeclaration| _f_ that is directly contained in the |StatementList| of a |Block|, |CaseClause|, or |DefaultClause|, do
-              1. Let _F_ be StringValue of the |BindingIdentifier| of |FunctionDeclaration| _f_.
+              1. Let _F_ be StringValue of the |BindingIdentifier| of _f_.
               1. If replacing the |FunctionDeclaration| _f_ with a |VariableStatement| that has _F_ as a |BindingIdentifier| would not produce any Early Errors for _func_ and _F_ is not an element of _parameterNames_, then
                 1. NOTE: A var binding for _F_ is only instantiated here if it is neither a VarDeclaredName, the name of a formal parameter, or another |FunctionDeclaration|.
                 1. If _initializedBindings_ does not contain _F_ and _F_ is not `"arguments"`, then
@@ -42326,7 +42351,7 @@ THH:mm:ss.sss
             1. Append to _declaredFunctionOrVarNames_ the elements of _declaredFunctionNames_.
             1. Append to _declaredFunctionOrVarNames_ the elements of _declaredVarNames_.
             1. For each |FunctionDeclaration| _f_ that is directly contained in the |StatementList| of a |Block|, |CaseClause|, or |DefaultClause| Contained within _script_, do
-              1. Let _F_ be StringValue of the |BindingIdentifier| of |FunctionDeclaration| _f_.
+              1. Let _F_ be StringValue of the |BindingIdentifier| of _f_.
               1. If replacing the |FunctionDeclaration| _f_ with a |VariableStatement| that has _F_ as a |BindingIdentifier| would not produce any Early Errors for _script_, then
                 1. If _envRec_.HasLexicalDeclaration(_F_) is *false*, then
                   1. Let _fnDefinable_ be ? _envRec_.CanDeclareGlobalVar(_F_).
@@ -42354,7 +42379,7 @@ THH:mm:ss.sss
             1. Append to _declaredFunctionOrVarNames_ the elements of _declaredFunctionNames_.
             1. Append to _declaredFunctionOrVarNames_ the elements of _declaredVarNames_.
             1. For each |FunctionDeclaration| _f_ that is directly contained in the |StatementList| of a |Block|, |CaseClause|, or |DefaultClause| Contained within _body_, do
-              1. Let _F_ be StringValue of the |BindingIdentifier| of |FunctionDeclaration| _f_.
+              1. Let _F_ be StringValue of the |BindingIdentifier| of _f_.
               1. If replacing the |FunctionDeclaration| _f_ with a |VariableStatement| that has _F_ as a |BindingIdentifier| would not produce any Early Errors for _body_, then
                 1. Let _bindingExists_ be *false*.
                 1. Let _thisLex_ be _lexEnv_.
@@ -42525,7 +42550,7 @@ THH:mm:ss.sss
         1. Let _bindingId_ be StringValue of |BindingIdentifier|.
         1. Let _lhs_ be ? ResolveBinding(_bindingId_).
         1. If IsAnonymousFunctionDefinition(|Initializer|) is *true*, then
-          1. Let _value_ be the result of performing NamedEvaluation for |Initializer| with argument _bindingId_.
+          1. Let _value_ be NamedEvaluation of |Initializer| with argument _bindingId_.
         1. Else,
           1. Let _rhs_ be the result of evaluating |Initializer|.
           1. Let _value_ be ? GetValue(_rhs_).
@@ -42748,7 +42773,7 @@ THH:mm:ss.sss
       <i>IANA Time Zone Database</i>, available at &lt;<a href="https://www.iana.org/time-zones">https://www.iana.org/time-zones</a>&gt;
     </li>
     <li>
-      ISO 8601:2004(E) <i>Data elements and interchange formats &ndash; Information interchange</i> &mdash; <i>Representation of dates and times</i>
+      ISO 8601:2004(E) <i>Data elements and interchange formats &mdash; Information interchange &mdash; Representation of dates and times</i>
     </li>
     <li>
       <i>RFC 1738 &ldquo;Uniform Resource Locators (URL)&rdquo;</i>, available at &lt;<a href="https://tools.ietf.org/html/rfc1738">https://tools.ietf.org/html/rfc1738</a>&gt;

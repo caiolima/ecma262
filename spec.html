@@ -9497,7 +9497,6 @@
         <emu-alg>
           1. Assert: Type(_index_) is Number.
           1. Assert: _O_ is an Object that has [[ViewedArrayBuffer]], [[ArrayLength]], [[ByteOffset]], [[ContentType]] and [[TypedArrayName]] internal slots.
-          1. Let _arrayTypeName_ be the String value of _O_.[[TypedArrayName]].
           1. If _O_.[[ContentType]] is `"BigInt"`, let _numValue_ be ? ToBigInt(_value_).
           1. Otherwise, let _numValue_ be ? ToNumber(_value_).
           1. Let _buffer_ be _O_.[[ViewedArrayBuffer]].
@@ -34847,22 +34846,6 @@ THH:mm:ss.sss
           <emu-alg>
             1. If _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, return *true*.
             1. Return *false*.
-          </emu-alg>
-        </emu-clause>
-
-        <emu-clause id="sec-is-copyable-typed-array-types" aoid="IsCopyableTypedArrayTypes">
-          <h1>IsCopyableTypedArrayTypes ( _type_ , _otherType_ )</h1>
-          <p>The abstract operation IsCopyableTypedArrayTypes checks if it is possible to copy elements between TypedArray of types _type_ and _otherType_ :</p>
-          <emu-alg>
-            1. Assert: _type_ is one of String values of column Element Type in <emu-xref href="#table-49"></emu-xref>.
-            1. Assert: _otherType_ is one of String values of column Element Type in <emu-xref href="#table-49"></emu-xref>.
-            1. If IsBigIntTypedArrayType(_type_) is *true*, then
-              1. If if IsBigIntTypedArrayType(_otherType_), return *true*.
-              1. Return *false*.
-            1. Else if IsBigIntTypedArrayType(_otherType_), then
-              1. If IsBigIntTypedArrayType(_type_) is *true*, return *true*.
-              1. Return *false*.
-            1. Return *true*.
           </emu-alg>
         </emu-clause>
 

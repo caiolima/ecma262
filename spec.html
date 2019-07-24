@@ -11099,9 +11099,13 @@
       <emu-grammar type="definition">
         NumericLiteral ::
           DecimalLiteral
-          DecimalIntegerLiteral BigIntLiteralSuffix
+          DecimalBigIntegerLiteral
           NonDecimalIntegerLiteral
           NonDecimalIntegerLiteral BigIntLiteralSuffix
+
+        DecimalBigIntegerLiteral ::
+          `0` BigIntLiteralSuffix
+          NonZeroDigit DecimalDigits? BigIntLiteralSuffix
 
         NonDecimalIntegerLiteral ::
           BinaryIntegerLiteral
@@ -11361,10 +11365,28 @@
           Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
           </li>
         </ul>
-        <emu-grammar>NumericLiteral :: DecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
+        <emu-grammar>NumericLiteral :: DecimalBigIntegerLiteral</emu-grammar>
         <ul>
           <li>
-            Let the value of |NumericLiteral| be the MV of |DecimalIntegerLiteral| represented as BigInt.
+            Let the value of |NumericLiteral| be the value of |DecimalBigIntegerLiteral|.
+          </li>
+        </ul>
+        <emu-grammar>DecimalBigIntegerLiteral :: `0` BigIntLiteralSuffix</emu-grammar>
+        <ul>
+          <li>
+            Let the value of |DecimalBigIntegerLiteral| be `0` represented as BigInt.
+          </li>
+        </ul>
+        <emu-grammar>DecimalBigIntegerLiteral :: NonZeroDigit BigIntLiteralSuffix</emu-grammar>
+        <ul>
+          <li>
+            Let the value of |DecimalBigIntegerLiteral| be the the MV of |NonZeroDigit| represented as BigInt.
+          </li>
+        </ul>
+        <emu-grammar>DecimalBigIntegerLiteral :: NonZeroDigit DecimalDigits BigIntLiteralSuffix</emu-grammar>
+        <ul>
+          <li>
+            Let the value of |DecimalBigIntegerLiteral| be the (the MV of |NonZeroDigit| &times; 10<sub>ℝ</sub><sup>_n_</sup>) plus the MV of |DecimalDigits|, where _n_ is the mathematical integer number of code points in |DecimalDigits|, represented as BigInt.
           </li>
         </ul>
       </emu-clause>
@@ -41346,7 +41368,7 @@ THH:mm:ss.sss
       <emu-grammar type="definition">
         NumericLiteral ::
           DecimalLiteral
-          DecimalIntegerLiteral BigIntLiteralSuffix
+          DecimalBigIntegerLiteral
           NonDecimalIntegerLiteral
           NonDecimalIntegerLiteral BigIntLiteralSuffix
           LegacyOctalIntegerLiteral

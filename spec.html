@@ -34772,33 +34772,6 @@ THH:mm:ss.sss
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-isunsignedtypedarraytype" aoid="IsUnsignedTypedArrayType">
-          <h1>IsUnsignedTypedArrayType ( _type_ )</h1>
-          <p>The abstract operation IsUnsignedTypedArrayType verifies if the argument _type_ is an unsigned TypedArray type. This operation performs the following steps:</p>
-          <emu-alg>
-            1. If the first code unit of _type_ is the code unit 0x0055 (LATIN CAPITAL LETTER U) or _type_ is `"BigUint64"`, return *true*.
-            1. Return *false*.
-          </emu-alg>
-        </emu-clause>
-
-        <emu-clause id="sec-isbiginttypedarraytype" aoid="IsBigIntTypedArrayType">
-          <h1>IsBigIntTypedArrayType ( _type_ )</h1>
-          <p>The abstract operation IsBigIntTypedArrayType verifies if the argument _type_ is a BigInt TypedArray type. This operation performs the following steps:</p>
-          <emu-alg>
-            1. If _type_ is `"BigUint64"` or `"BigInt64"`, return *true*.
-            1. Return *false*.
-          </emu-alg>
-        </emu-clause>
-
-        <emu-clause id="sec-isunclampedintegertypedarraytype" aoid="IsUnclampedIntegerTypedArrayType">
-          <h1>IsUnclampedIntegerTypedArrayType ( _type_ )</h1>
-          <p>The abstract operation IsUnclampedIntegerTypedArrayType verifies if the argument _type_ is an Interger TypedArray type not including `"Uint8C"`. This operation performs the following steps:</p>
-          <emu-alg>
-            1. If _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, return *true*.
-            1. Return *false*.
-          </emu-alg>
-        </emu-clause>
-
         <emu-clause id="sec-%typedarray%.prototype.set-typedarray-offset">
           <h1>%TypedArray%.prototype.set ( _typedArray_ [ , _offset_ ] )</h1>
           <p>Sets multiple values in this _TypedArray_, reading the values from the _typedArray_ argument object. The optional _offset_ value indicates the first element index in this _TypedArray_ where values are written. If omitted, it is assumed to be 0.</p>
@@ -36294,16 +36267,6 @@ THH:mm:ss.sss
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-isnotearconfiguration" aoid="IsNoTearConfigration">
-        <h1>IsNoTearConfigration ( _type_, _order_ )</h1>
-        <p>The abstract operation IsNoTearConfigration with arguments _type_ and _order_ performs the following steps:</p>
-        <emu-alg>
-          1. If IsUnclampedIntegerTypedArrayType(_type_) is *true*, return *true*.
-          1. If IsBigIntTypedArrayType(_type_) is *true* and _order_ is not `"Init"` or `"Unordered"`, return *true*.
-          1. Return *false*.
-        </emu-alg>
-      </emu-clause>
-
       <emu-clause id="sec-detacharraybuffer" aoid="DetachArrayBuffer">
         <h1>DetachArrayBuffer ( _arrayBuffer_ [ , _key_ ] )</h1>
         <p>The abstract operation DetachArrayBuffer with argument _arrayBuffer_ and optional argument _key_ performs the following steps:</p>
@@ -36333,6 +36296,43 @@ THH:mm:ss.sss
           1. Let _targetBlock_ be _targetBuffer_.[[ArrayBufferData]].
           1. Perform CopyDataBlockBytes(_targetBlock_, 0, _srcBlock_, _srcByteOffset_, _srcLength_).
           1. Return _targetBuffer_.
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-isunsignedtypedarraytype" aoid="IsUnsignedTypedArrayType">
+        <h1>IsUnsignedTypedArrayType ( _type_ )</h1>
+        <p>The abstract operation IsUnsignedTypedArrayType verifies if the argument _type_ is an unsigned TypedArray type. This operation performs the following steps:</p>
+        <emu-alg>
+          1. If the first code unit of _type_ is the code unit 0x0055 (LATIN CAPITAL LETTER U) or _type_ is `"BigUint64"`, return *true*.
+          1. Return *false*.
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-isunclampedintegertypedarraytype" aoid="IsUnclampedIntegerTypedArrayType">
+        <h1>IsUnclampedIntegerTypedArrayType ( _type_ )</h1>
+        <p>The abstract operation IsUnclampedIntegerTypedArrayType verifies if the argument _type_ is an Interger TypedArray type not including `"Uint8C"`. This operation performs the following steps:</p>
+        <emu-alg>
+          1. If _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, return *true*.
+          1. Return *false*.
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-isbiginttypedarraytype" aoid="IsBigIntTypedArrayType">
+        <h1>IsBigIntTypedArrayType ( _type_ )</h1>
+        <p>The abstract operation IsBigIntTypedArrayType verifies if the argument _type_ is a BigInt TypedArray type. This operation performs the following steps:</p>
+        <emu-alg>
+          1. If _type_ is `"BigUint64"` or `"BigInt64"`, return *true*.
+          1. Return *false*.
+        </emu-alg>
+      </emu-clause>
+
+      <emu-clause id="sec-isnotearconfiguration" aoid="IsNoTearConfigration">
+        <h1>IsNoTearConfigration ( _type_, _order_ )</h1>
+        <p>The abstract operation IsNoTearConfigration with arguments _type_ and _order_ performs the following steps:</p>
+        <emu-alg>
+          1. If IsUnclampedIntegerTypedArrayType(_type_) is *true*, return *true*.
+          1. If IsBigIntTypedArrayType(_type_) is *true* and _order_ is not `"Init"` or `"Unordered"`, return *true*.
+          1. Return *false*.
         </emu-alg>
       </emu-clause>
 

@@ -1420,7 +1420,7 @@
         <h1>The Number Type</h1>
         <p>The Number type has exactly 18437736874454810627<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> + 3<sub>ℝ</sub></emu-eqn>) values, representing the double-precision 64-bit format IEEE 754-2008 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) distinct &ldquo;Not-a-Number&rdquo; values of the IEEE Standard are represented in ECMAScript as a single special *NaN* value. (Note that the *NaN* value is produced by the program expression `NaN`.) In some implementations, external code might be able to detect a difference between various Not-a-Number values, but such behaviour is implementation-dependent; to ECMAScript code, all *NaN* values are indistinguishable from each other.</p>
         <emu-note>
-            <p>The bit pattern that might be observed in an ArrayBuffer (see <emu-xref href="#sec-arraybuffer-objects"></emu-xref>) or a SharedArrayBuffer (see <emu-xref href="#sec-sharedarraybuffer-objects"></emu-xref>) after a Number value has been stored into it is not necessarily the same as the internal representation of that Number value used by the ECMAScript implementation.</p>
+          <p>The bit pattern that might be observed in an ArrayBuffer (see <emu-xref href="#sec-arraybuffer-objects"></emu-xref>) or a SharedArrayBuffer (see <emu-xref href="#sec-sharedarraybuffer-objects"></emu-xref>) after a Number value has been stored into it is not necessarily the same as the internal representation of that Number value used by the ECMAScript implementation.</p>
         </emu-note>
         <p>There are two other special values, called *positive Infinity* and *negative Infinity*. For brevity, these values are also referred to for expository purposes by the symbols *+&infin;* and *-&infin;*, respectively. (Note that these two infinite Number values are produced by the program expressions `+Infinity` (or simply `Infinity`) and `-Infinity`.)</p>
         <p>The other 18437736874454810624<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup></emu-eqn>) values are called the finite numbers. Half of these are positive numbers and half are negative numbers; for every finite positive Number value there is a corresponding negative value having the same magnitude.</p>
@@ -1428,12 +1428,12 @@
         <p>The 18437736874454810622<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) finite nonzero values are of two kinds:</p>
         <p>18428729675200069632<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>64<sub>ℝ</sub></sup> - 2<sub>ℝ</sub><sup>54<sub>ℝ</sub></sup></emu-eqn>) of them are normalized, having the form</p>
         <div class="math-display">
-            _s_ &times; _m_ &times; 2<sup>_e_</sup>
+          _s_ &times; _m_ &times; 2<sup>_e_</sup>
         </div>
         <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> but not less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is a mathematical integer ranging from -1074<sub>ℝ</sub> to 971<sub>ℝ</sub>, inclusive.</p>
         <p>The remaining 9007199254740990<sub>ℝ</sub> (that is, <emu-eqn>2<sub>ℝ</sub><sup>53<sub>ℝ</sub></sup> - 2<sub>ℝ</sub></emu-eqn>) values are denormalized, having the form</p>
         <div class="math-display">
-            _s_ &times; _m_ &times; 2<sup>_e_</sup>
+          _s_ &times; _m_ &times; 2<sup>_e_</sup>
         </div>
         <p>where _s_ is +1<sub>ℝ</sub> or -1<sub>ℝ</sub>, _m_ is a positive mathematical integer less than 2<sub>ℝ</sub><sup>52<sub>ℝ</sub></sup>, and _e_ is -1074<sub>ℝ</sub>.</p>
         <p>Note that all the positive and negative mathematical integers whose magnitude is no greater than 2<sup>53</sup> are representable in the Number type (indeed, the mathematical integer 0 has two representations, *+0* and *-0*).</p>
@@ -11342,7 +11342,7 @@
         <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
         <ul>
           <li>
-          Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
+            Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
           </li>
         </ul>
         <emu-grammar>NumericLiteral :: DecimalBigIntegerLiteral</emu-grammar>

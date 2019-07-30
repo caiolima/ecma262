@@ -1741,7 +1741,7 @@
             1. If _x_ is *+0* or *-0*, return the String `"0"`.
             1. If _x_ is less than zero, return the string-concatenation of `"-"` and ! Number::toString(-_x_).
             1. If _x_ is *+&infin;*, return the String `"Infinity"`.
-            1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _x_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
+            1. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _x_, and _k_ is as small as possible. Note that _k_ is the number of digits in the decimal representation of _s_, that _s_ is not divisible by 10<sub>ℝ</sub>, and that the least significant digit of _s_ is not necessarily uniquely determined by these criteria.
             1. If _k_ &le; _n_ &le; 21, return the string-concatenation of:
               * the code units of the _k_ digits of the decimal representation of _s_ (in order, with no leading zeroes)
               * _n_ - _k_ occurrences of the code unit 0x0030 (DIGIT ZERO)
@@ -1781,7 +1781,7 @@
           <emu-note>
             <p>For implementations that provide more accurate conversions than required by the rules above, it is recommended that the following alternative version of step 5 be used as a guideline:</p>
             <emu-alg>
-              5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for _s_ &times; 10<sup>_n_ - _k_</sup> is _x_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which _s_ &times; 10<sup>_n_ - _k_</sup> is closest in value to _x_. If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10.
+              5. Otherwise, let _n_, _k_, and _s_ be integers such that _k_ &ge; 1, 10<sup>_k_ - 1</sup> &le; _s_ &lt; 10<sup>_k_</sup>, the Number value for ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is _x_, and _k_ is as small as possible. If there are multiple possibilities for _s_, choose the value of _s_ for which ℝ(_s_) &times; 10<sub>ℝ</sub><sup>ℝ(_n_) - ℝ(_k_)</sup> is closest in value to ℝ(_x_). If there are two such possible values of _s_, choose the one that is even. Note that _k_ is the number of digits in the decimal representation of _s_ and that _s_ is not divisible by 10<sub>ℝ</sub>.
             </emu-alg>
           </emu-note>
           <emu-note>
@@ -9527,7 +9527,7 @@
           1. If _index_ &lt; 0 or _index_ &ge; _length_, return *false*.
           1. Let _offset_ be _O_.[[ByteOffset]].
           1. Let _arrayTypeName_ be the String value of _O_.[[TypedArrayName]].
-          1. Let _elementSize_ be the Number value of the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
+          1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
           1. Let _indexedPosition_ be (_index_ &times; _elementSize_) + _offset_.
           1. Let _elementType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
           1. Perform SetValueInBuffer(_buffer_, _indexedPosition_, _elementType_, _numValue_, *true*, `"Unordered"`).
@@ -37378,7 +37378,7 @@ THH:mm:ss.sss
           1. Let _arrayTypeName_ be _typedArray_.[[TypedArrayName]].
           1. If _typedArray_.[[ContentType]] is `"BigInt"`, let _v_ be ? ToBigInt(_v_).
           1. Otherwise, let _v_ be ? ToInteger(_value_).
-          1. Let _elementSize_ be the Number value of the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
+          1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
           1. Let _elementType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
           1. Let _offset_ be _typedArray_.[[ByteOffset]].
           1. Let _indexedPosition_ be (_i_ &times; _elementSize_) + _offset_.
@@ -37436,7 +37436,7 @@ THH:mm:ss.sss
         1. Let _elementType_ be the String value of the Element Type value in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
         1. Let _isLittleEndian_ be the value of the [[LittleEndian]] field of the surrounding agent's Agent Record.
         1. Let _expectedBytes_ be NumericToRawBytes(_elementType_, _expected_, _isLittleEndian_).
-        1. Let _elementSize_ be the Number value of the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
+        1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
         1. Let _offset_ be _typedArray_.[[ByteOffset]].
         1. Let _indexedPosition_ be (_i_ &times; _elementSize_) + _offset_.
         1. Let `compareExchange` denote a semantic function of two List of byte values arguments that returns the second argument if the first argument is element-wise equal to _expectedBytes_.
@@ -37529,7 +37529,7 @@ THH:mm:ss.sss
         1. If _B_ is *false*, throw a *TypeError* exception.
         1. Let _block_ be _buffer_.[[ArrayBufferData]].
         1. Let _offset_ be _typedArray_.[[ByteOffset]].
-        1. Let _elementSize_ be the Number value of the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
+        1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
         1. Let _indexedPosition_ be (_i_ &times; _elementSize_) + _offset_.
         1. Let _WL_ be GetWaiterList(_block_, _indexedPosition_).
         1. Perform EnterCriticalSection(_WL_).
@@ -37562,7 +37562,7 @@ THH:mm:ss.sss
           1. Let _c_ be max(_intCount_, 0).
         1. Let _block_ be _buffer_.[[ArrayBufferData]].
         1. Let _offset_ be _typedArray_.[[ByteOffset]].
-        1. Let _elementSize_ be the Number value of the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
+        1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for _arrayTypeName_.
         1. Let _indexedPosition_ be (_i_ &times; _elementSize_) + _offset_.
         1. Let _WL_ be GetWaiterList(_block_, _indexedPosition_).
         1. Let _n_ be 0.

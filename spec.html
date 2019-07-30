@@ -36321,27 +36321,27 @@ THH:mm:ss.sss
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-isunsignedtypedarraytype" aoid="IsUnsignedTypedArrayType">
-        <h1>IsUnsignedTypedArrayType ( _type_ )</h1>
-        <p>The abstract operation IsUnsignedTypedArrayType verifies if the argument _type_ is an unsigned TypedArray type. This operation performs the following steps:</p>
+      <emu-clause id="sec-isunsignedelementtype" aoid="IsUnsignedElementType">
+        <h1>IsUnsignedElementType ( _type_ )</h1>
+        <p>The abstract operation IsUnsignedElementType verifies if the argument _type_ is an unsigned TypedArray element type. This operation performs the following steps:</p>
         <emu-alg>
           1. If the first code unit of _type_ is the code unit 0x0055 (LATIN CAPITAL LETTER U) or _type_ is `"BigUint64"`, return *true*.
           1. Return *false*.
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-isunclampedintegertypedarraytype" aoid="IsUnclampedIntegerTypedArrayType">
-        <h1>IsUnclampedIntegerTypedArrayType ( _type_ )</h1>
-        <p>The abstract operation IsUnclampedIntegerTypedArrayType verifies if the argument _type_ is an Interger TypedArray type not including `"Uint8C"`. This operation performs the following steps:</p>
+      <emu-clause id="sec-isunclampedintegerelementtype" aoid="IsUnclampedIntegerElementType">
+        <h1>IsUnclampedIntegerElementType ( _type_ )</h1>
+        <p>The abstract operation IsUnclampedIntegerElementType verifies if the argument _type_ is an Interger TypedArray element type not including `"Uint8C"`. This operation performs the following steps:</p>
         <emu-alg>
           1. If _type_ is `"Int8"`, `"Uint8"`, `"Int16"`, `"Uint16"`, `"Int32"`, or `"Uint32"`, return *true*.
           1. Return *false*.
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-isbiginttypedarraytype" aoid="IsBigIntTypedArrayType">
-        <h1>IsBigIntTypedArrayType ( _type_ )</h1>
-        <p>The abstract operation IsBigIntTypedArrayType verifies if the argument _type_ is a BigInt TypedArray type. This operation performs the following steps:</p>
+      <emu-clause id="sec-isbigintelementtype" aoid="IsBigIntElementType">
+        <h1>IsBigIntElementType ( _type_ )</h1>
+        <p>The abstract operation IsBigIntElementType verifies if the argument _type_ is a BigInt TypedArray element type. This operation performs the following steps:</p>
         <emu-alg>
           1. If _type_ is `"BigUint64"` or `"BigInt64"`, return *true*.
           1. Return *false*.
@@ -36352,8 +36352,8 @@ THH:mm:ss.sss
         <h1>IsNoTearConfigration ( _type_, _order_ )</h1>
         <p>The abstract operation IsNoTearConfigration with arguments _type_ and _order_ performs the following steps:</p>
         <emu-alg>
-          1. If IsUnclampedIntegerTypedArrayType(_type_) is *true*, return *true*.
-          1. If IsBigIntTypedArrayType(_type_) is *true* and _order_ is not `"Init"` or `"Unordered"`, return *true*.
+          1. If IsUnclampedIntegerElementType(_type_) is *true*, return *true*.
+          1. If IsBigIntElementType(_type_) is *true* and _order_ is not `"Init"` or `"Unordered"`, return *true*.
           1. Return *false*.
         </emu-alg>
       </emu-clause>
@@ -36372,11 +36372,11 @@ THH:mm:ss.sss
             1. Let _value_ be the byte elements of _rawBytes_ concatenated and interpreted as a little-endian bit string encoding of an IEEE 754-2008 binary64 value.
             1. If _value_ is an IEEE 754-2008 binary64 NaN value, return the *NaN* Number value.
             1. Return the Number value that corresponds to _value_.
-          1. If IsUnsignedTypedArrayType(_type_) is *true*, then
+          1. If IsUnsignedElementType(_type_) is *true*, then
             1. Let _intValue_ be the byte elements of _rawBytes_ concatenated and interpreted as a bit string encoding of an unsigned little-endian binary number.
           1. Else,
             1. Let _intValue_ be the byte elements of _rawBytes_ concatenated and interpreted as a bit string encoding of a binary little-endian 2's complement number of bit length _elementSize_ &times; 8.
-          1. If IsBigIntTypedArrayType(_type_) is *true*, return the BigInt value that corresponds to _intValue_.
+          1. If IsBigIntElementType(_type_) is *true*, return the BigInt value that corresponds to _intValue_.
           1. Otherwise, return the Number value that corresponds to _intValue_.
         </emu-alg>
       </emu-clause>
@@ -36432,7 +36432,7 @@ THH:mm:ss.sss
           1. Assert: IsDetachedBuffer(_arrayBuffer_) is *false*.
           1. Assert: There are sufficient bytes in _arrayBuffer_ starting at _byteIndex_ to represent a value of _type_.
           1. Assert: _byteIndex_ is an integer value &ge; 0.
-          1. Assert: Type(_value_) is BigInt if IsBigIntTypedArrayType(_type_) is *true*; otherwise, Type(_value_) is Number.
+          1. Assert: Type(_value_) is BigInt if IsBigIntElementType(_type_) is *true*; otherwise, Type(_value_) is Number.
           1. Let _block_ be _arrayBuffer_.[[ArrayBufferData]].
           1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for Element Type _type_.
           1. If _isLittleEndian_ is not present, set _isLittleEndian_ to the value of the [[LittleEndian]] field of the surrounding agent's Agent Record.
@@ -36454,7 +36454,7 @@ THH:mm:ss.sss
           1. Assert: IsSharedArrayBuffer(_arrayBuffer_) is *true*.
           1. Assert: There are sufficient bytes in _arrayBuffer_ starting at _byteIndex_ to represent a value of _type_.
           1. Assert: _byteIndex_ is an integer value &ge; 0.
-          1. Assert: Type(_value_) is BigInt if IsBigIntTypedArrayType(_type_) is *true*; otherwise, Type(_value_) is Number.
+          1. Assert: Type(_value_) is BigInt if IsBigIntElementType(_type_) is *true*; otherwise, Type(_value_) is Number.
           1. Let _block_ be _arrayBuffer_.[[ArrayBufferData]].
           1. Let _elementSize_ be the Element Size value specified in <emu-xref href="#table-49"></emu-xref> for Element Type _type_.
           1. If _isLittleEndian_ is not present, set _isLittleEndian_ to the value of the [[LittleEndian]] field of the surrounding agent's Agent Record.
@@ -36788,7 +36788,7 @@ THH:mm:ss.sss
           1. Perform ? RequireInternalSlot(_view_, [[DataView]]).
           1. Assert: _view_ has a [[ViewedArrayBuffer]] internal slot.
           1. Let _getIndex_ be ? ToIndex(_requestIndex_).
-          1. If IsBigIntTypedArrayType(_type_) is *true*, let _numberValue_ be ? ToBigInt(_value_).
+          1. If IsBigIntElementType(_type_) is *true*, let _numberValue_ be ? ToBigInt(_value_).
           1. Otherwise, let _numberValue_ be ? ToInteger(_value_).
           1. Set _isLittleEndian_ to ! ToBoolean(_isLittleEndian_).
           1. Let _buffer_ be _view_.[[ViewedArrayBuffer]].
@@ -37171,7 +37171,7 @@ THH:mm:ss.sss
           1. If _waitable_ is *true*, then
             1. If _typeName_ is not `"Int32Array"` or `"BigInt64Array"`, throw a *TypeError* exception.
           1. Else,
-            1. If IsUnclampedIntegerTypedArrayType(_type_) is *false* and IsBigIntTypedArrayType(_type_) is *false*, throw a *TypeError* exception.
+            1. If IsUnclampedIntegerElementType(_type_) is *false* and IsBigIntElementType(_type_) is *false*, throw a *TypeError* exception.
           1. Assert: _typedArray_ has a [[ViewedArrayBuffer]] internal slot.
           1. Let _buffer_ be _typedArray_.[[ViewedArrayBuffer]].
           1. If IsSharedArrayBuffer(_buffer_) is *false*, throw a *TypeError* exception.

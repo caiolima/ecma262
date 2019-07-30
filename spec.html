@@ -1459,7 +1459,7 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-numeric-types-number-exponentiate">
+        <emu-clause id="sec-numeric-types-number-exponentiate" oldids="sec-applying-the-exp-operator">
           <h1>Number::exponentiate ( _base_, _exponent_ )</h1>
           <p>
             Returns an implementation-dependent approximation of the result of raising _base_ to the power _exponent_.
@@ -1494,7 +1494,7 @@
           </emu-note>
         </emu-clause>
 
-        <emu-clause id="sec-numeric-types-number-multiply">
+        <emu-clause id="sec-numeric-types-number-multiply" oldids="sec-applying-the-mul-operator">
           <h1>Number::multiply ( _x_, _y_ )</h1>
           <p>The `*` |MultiplicativeOperator| performs multiplication, producing the product of _x_ and _y_. Multiplication is commutative. Multiplication is not always associative in ECMAScript, because of finite precision.</p>
           <p>The result of a floating-point multiplication is governed by the rules of IEEE 754-2008 binary double-precision arithmetic:</p>
@@ -1520,7 +1520,7 @@
           </ul>
         </emu-clause>
 
-        <emu-clause id="sec-numeric-types-number-divide">
+        <emu-clause id="sec-numeric-types-number-divide" oldids="sec-applying-the-div-operator">
           <h1>Number::divide ( _x_, _y_ )</h1>
           <p>The `/` |MultiplicativeOperator| performs division, producing the quotient of _x_ and _y_. _x_ is the dividend and _y_ is the divisor. ECMAScript does not perform integer division. The operands and result of all division operations are double-precision floating-point numbers. The result of division is determined by the specification of IEEE 754-2008 arithmetic:</p>
           <ul>
@@ -1554,7 +1554,7 @@
           </ul>
         </emu-clause>
 
-        <emu-clause id="sec-numeric-types-number-remainder">
+        <emu-clause id="sec-numeric-types-number-remainder" oldids="sec-applying-the-mod-operator">
           <h1>Number::remainder ( _n_, _d_ )</h1>
           <p>The `%` |MultiplicativeOperator| yields the remainder of its operands from an implied division; _n_ is the dividend and _d_ is the divisor.</p>
           <emu-note>
@@ -1584,7 +1584,7 @@
           </ul>
         </emu-clause>
 
-        <emu-clause id="sec-numeric-types-number-add">
+        <emu-clause id="sec-numeric-types-number-add" oldids="sec-applying-the-additive-operators-to-numbers">
           <h1>Number::add ( _x_, _y_ )</h1>
           <p>The `+` operator performs addition when applied to _x_ and _y_, producing the sum of the operands.</p>
           <p>Addition is a commutative operation, but not always associative.</p>
@@ -5377,7 +5377,7 @@
       </emu-note>
     </emu-clause>
 
-    <emu-clause id="sec-samevaluenonnumeric" aoid="SameValueNonNumeric">
+    <emu-clause id="sec-samevaluenonnumeric" aoid="SameValueNonNumeric" oldids="sec-samevaluenonnumber">
       <h1>SameValueNonNumeric ( _x_, _y_ )</h1>
       <p>The internal comparison abstract operation SameValueNonNumeric(_x_, _y_), where neither _x_ nor _y_ are numeric type values, produces *true* or *false*. Such a comparison is performed as follows:</p>
       <emu-alg>
@@ -36358,7 +36358,7 @@ THH:mm:ss.sss
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-rawbytestonumeric" aoid="RawBytesToNumeric">
+      <emu-clause id="sec-rawbytestonumeric" aoid="RawBytesToNumeric" oldids="sec-rawbytestonumber">
         <h1>RawBytesToNumeric ( _type_, _rawBytes_, _isLittleEndian_ )</h1>
         <p>The abstract operation RawBytesToNumeric takes three parameters, a String _type_, a List _rawBytes_, and a Boolean _isLittleEndian_. This operation performs the following steps:</p>
         <emu-alg>
@@ -36405,7 +36405,7 @@ THH:mm:ss.sss
         </emu-alg>
       </emu-clause>
 
-      <emu-clause id="sec-numerictorawbytes" aoid="NumericToRawBytes">
+      <emu-clause id="sec-numerictorawbytes" aoid="NumericToRawBytes" oldids="sec-numbertorawbytes">
         <h1>NumericToRawBytes ( _type_, _value_, _isLittleEndian_ )</h1>
         <p>The abstract operation NumericToRawBytes takes three parameters, a String _type_, a BigInt or a Number _value_, and a Boolean _isLittleEndian_. This operation performs the following steps:</p>
         <emu-alg>

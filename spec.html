@@ -1914,6 +1914,37 @@
           </emu-alg>
         </emu-clause>
 
+        <emu-clause id="sec-binaryandop" aoid="BinaryAnd">
+          <h1>BinaryAnd ( _x_, _y_ )</h1>
+          <emu-alg>
+            1. Assert: _x_ is 0 or 1.
+            1. Assert: _y_ is 0 or 1.
+            1. If _x_ is 1 and _y_ is 1, return 1.
+            1. Else, return 0.
+          </emu-alg>
+        </emu-clause>
+
+        <emu-clause id="sec-binaryorop" aoid="BinaryOr">
+          <h1>BinaryOr ( _x_, _y_ )</h1>
+          <emu-alg>
+            1. Assert: _x_ is 0 or 1.
+            1. Assert: _y_ is 0 or 1.
+            1. If _x_ is 1 or _y_ is 1, return 1.
+            1. Else, return 0.
+          </emu-alg>
+        </emu-clause>
+
+        <emu-clause id="sec-binaryxorop" aoid="BinaryXor">
+          <h1>BinaryXor ( _x_, _y_ )</h1>
+          <emu-alg>
+            1. Assert: _x_ is 0 or 1.
+            1. Assert: _y_ is 0 or 1.
+            1. If _x_ is 1 and _y_ is 0, return 1.
+            1. Else if _x_ is 0 and _y_ is 1, return 1.
+            1. Else, return 0.
+          </emu-alg>
+        </emu-clause>
+
         <emu-clause id="sec-bigintbitwiseop" aoid="BigIntBitwiseOp">
           <h1>BigIntBitwiseOp ( _op_, _x_, _y_ )</h1>
           <emu-alg>
@@ -1935,21 +1966,21 @@
         <emu-clause id="sec-numeric-types-bigint-bitwiseAND">
           <h1>BigInt::bitwiseAND ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`&amp;`, _x_, _y_).
+            1. Return BigIntBitwiseOp(BinaryAnd, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseXOR">
           <h1>BigInt::bitwiseXOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`^`, _x_, _y_).
+            1. Return BigIntBitwiseOp(BinaryXor, _x_, _y_).
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-bitwiseOR">
           <h1>BigInt::bitwiseOR ( _x_, _y_ )</h1>
           <emu-alg>
-            1. Return BigIntBitwiseOp(`|`, _x_, _y_).
+            1. Return BigIntBitwiseOp(BinaryOr, _x_, _y_).
           </emu-alg>
         </emu-clause>
 

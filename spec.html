@@ -11332,8 +11332,16 @@
         </ul>
       </emu-clause>
 
-      <emu-clause id="sec-numeric-literal-static-semantics-number-value">
-        <h1>Static Semantics: Number Value</h1>
+      <emu-clause id="sec-numericvalue">
+        <h1>Static Semantics: NumericValue</h1>
+        <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar>
+        <emu-alg>
+          1. Return the Number value that results from rounding the MV of |DecimalLiteral| as described below.
+        </emu-alg>
+        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral</emu-grammar>
+        <emu-alg>
+          1. Return the Number value that results from rounding the MV of |NonDecimalIntegerLiteral| as described below.
+        </emu-alg>
         <p>Once the exact MV for a numeric literal has been determined, it is then rounded to a value of the Number type. If the MV is 0<sub>ℝ</sub>, then the rounded value is *+0*; otherwise, the rounded value must be the Number value for the MV (as specified in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>), unless the literal is a |DecimalLiteral| and the literal has more than 20 significant digits, in which case the Number value may be either the Number value for the MV of a literal produced by replacing each significant digit after the 20th with a `0` digit or the Number value for the MV of a literal produced by replacing each significant digit after the 20th with a `0` digit and then incrementing the literal at the 20th significant digit position. A digit is <em>significant</em> if it is not part of an |ExponentPart| and</p>
         <ul>
           <li>
@@ -11344,45 +11352,24 @@
           </li>
         </ul>
 
-        <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral</emu-grammar>
-        <p>The MV is rounded to a value of the Number type.</p>
-
-        <emu-grammar>NumericLiteral :: DecimalLiteral</emu-grammar>
-        <p>The MV is rounded to a value of the Number type.</p>
-      </emu-clause>
-
-      <emu-clause id="sec-numeric-literal-static-semantics-bigint-value">
-        <h1>Static Semantics: BigInt Value</h1>
         <emu-grammar>NumericLiteral :: NonDecimalIntegerLiteral BigIntLiteralSuffix</emu-grammar>
-        <ul>
-          <li>
-            Let the value of |NumericLiteral| be the MV of |NonDecimalIntegerLiteral| represented as BigInt.
-          </li>
-        </ul>
-        <emu-grammar>NumericLiteral :: DecimalBigIntegerLiteral</emu-grammar>
-        <ul>
-          <li>
-            Let the value of |NumericLiteral| be the value of |DecimalBigIntegerLiteral|.
-          </li>
-        </ul>
+        <emu-alg>
+          1. Return the BigInt value that represents the MV of |NonDecimalIntegerLiteral|.
+        </emu-alg>
         <emu-grammar>DecimalBigIntegerLiteral :: `0` BigIntLiteralSuffix</emu-grammar>
-        <ul>
-          <li>
-            Let the value of |DecimalBigIntegerLiteral| be `0` represented as BigInt.
-          </li>
-        </ul>
+        <emu-alg>
+          1. Return the BigInt value that represents 0<sub>ℝ</sub>.
+        </emu-alg>
         <emu-grammar>DecimalBigIntegerLiteral :: NonZeroDigit BigIntLiteralSuffix</emu-grammar>
-        <ul>
-          <li>
-            Let the value of |DecimalBigIntegerLiteral| be the the MV of |NonZeroDigit| represented as BigInt.
-          </li>
-        </ul>
+        <emu-alg>
+          1. Return the BigInt value that represents the MV of |NonZeroDigit|.
+        </emu-alg>
         <emu-grammar>DecimalBigIntegerLiteral :: NonZeroDigit DecimalDigits BigIntLiteralSuffix</emu-grammar>
-        <ul>
-          <li>
-            Let the value of |DecimalBigIntegerLiteral| be the (the MV of |NonZeroDigit| &times; 10<sub>ℝ</sub><sup>_n_</sup>) plus the MV of |DecimalDigits|, where _n_ is the mathematical integer number of code points in |DecimalDigits|, represented as BigInt.
-          </li>
-        </ul>
+        <emu-alg>
+          1. Let _n_ be the mathematical integer number of code points in |DecimalDigits|.
+          1. Let _mv_ be (the MV of |NonZeroDigit| &times; 10<sub>ℝ</sub><sup>_n_</sup>) plus the MV of |DecimalDigits|.
+          1. Return the BigInt value that represents _mv_.
+        </emu-alg>
       </emu-clause>
 
     </emu-clause>
@@ -12615,7 +12602,7 @@
         </emu-alg>
         <emu-grammar>Literal : NumericLiteral</emu-grammar>
         <emu-alg>
-          1. Return the Number value represented by |NumericLiteral| as defined in <emu-xref href="#sec-literals-numeric-literals"></emu-xref>.
+          1. Return the NumericValue of |NumericLiteral| as defined in <emu-xref href="#sec-literals-numeric-literals"></emu-xref>.
         </emu-alg>
         <emu-grammar>Literal : StringLiteral</emu-grammar>
         <emu-alg>
@@ -12884,7 +12871,7 @@
         </emu-alg>
         <emu-grammar>LiteralPropertyName : NumericLiteral</emu-grammar>
         <emu-alg>
-          1. Let _nbr_ be the result of forming the value of the |NumericLiteral|.
+          1. Let _nbr_ be the NumericValue of |NumericLiteral|.
           1. Return ! ToString(_nbr_).
         </emu-alg>
         <emu-grammar>ComputedPropertyName : `[` AssignmentExpression `]`</emu-grammar>
@@ -12935,7 +12922,7 @@
         </emu-alg>
         <emu-grammar>LiteralPropertyName : NumericLiteral</emu-grammar>
         <emu-alg>
-          1. Let _nbr_ be the result of forming the value of the |NumericLiteral|.
+          1. Let _nbr_ be the NumericValue of |NumericLiteral|.
           1. Return ! ToString(_nbr_).
         </emu-alg>
         <emu-grammar>ComputedPropertyName : `[` AssignmentExpression `]`</emu-grammar>

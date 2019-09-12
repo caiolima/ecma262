@@ -1807,7 +1807,7 @@
           <h1>BigInt::unaryMinus ( _x_ )</h1>
           <emu-alg>
             1. If _x_ is *0n*, return *0n*.
-            1. Return a BigInt representing the mathematical value of negating _x_.
+            1. Return the BigInt value that represents the mathematical value of negating _x_.
           </emu-alg>
         </emu-clause>
 
@@ -1821,13 +1821,13 @@
           <emu-alg>
             1. If _exponent_ &lt; *0n*, throw a *RangeError* exception.
             1. If _base_ is *0n* and _exponent_ is *0n*, return *1n*.
-            1. Return a BigInt representing the mathematical value of _base_ raised to the power _exponent_.
+            1. Return the BigInt value that represents the mathematical value of _base_ raised to the power _exponent_.
           </emu-alg>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-multiply">
           <h1>BigInt::multiply ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the result of multiplying _x_ and _y_.</p>
+          <p>The abstract operation BigInt::multiply with two arguments _x_ and _y_ of type BigInt returns the BigInt value that represents the result of multiplying _x_ and _y_.</p>
           <emu-note>Even if the result has a much larger bit width than the input, the exact mathematical answer is given.</emu-note>
         </emu-clause>
 
@@ -1836,7 +1836,7 @@
           <emu-alg>
             1. If _y_ is *0n*, throw a *RangeError* exception.
             1. Let _quotient_ be the mathematical value of _x_ divided by _y_.
-            1. Return a BigInt representing _quotient_ rounded towards 0 to the next integral value.
+            1. Return the BigInt value that represents _quotient_ rounded towards 0 to the next integral value.
           </emu-alg>
         </emu-clause>
 
@@ -1853,7 +1853,7 @@
 
         <emu-clause id="sec-numeric-types-bigint-add">
           <h1>BigInt::add ( _x_, _y_ )</h1>
-          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of type BigInt returns a BigInt representing the sum of _x_ and _y_.</p>
+          <p>The abstract operation BigInt::add with two arguments _x_ and _y_ of type BigInt returns the BigInt value that represents the sum of _x_ and _y_.</p>
         </emu-clause>
 
         <emu-clause id="sec-numeric-types-bigint-subtract">
@@ -1866,8 +1866,8 @@
           <p>The abstract operation BigInt::leftShift with two arguments _x_ and _y_ of type BigInt performs the following steps:</p>
           <emu-alg>
             1. If _y_ &lt; *0n*, then
-              1. Return a BigInt representing _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
-            1. Return a BigInt representing _x_ &times; 2<sup>_y_</sup>.
+              1. Return the BigInt value that represents _x_ &divide; 2<sup>-_y_</sup>, rounding down to the nearest integer, including for negative numbers.
+            1. Return the BigInt value that represents _x_ &times; 2<sup>_y_</sup>.
           </emu-alg>
           <emu-note>Semantics here should be equivalent to a bitwise shift, treating the BigInt as an infinite length string of binary two's complement digits.</emu-note>
         </emu-clause>
@@ -26946,7 +26946,7 @@
           <emu-alg>
             1. Assert: Type(_number_) is Number.
             1. If IsInteger(_number_) is *false*, throw a *RangeError* exception.
-            1. Return a BigInt representing the mathematical value of _number_.
+            1. Return the BigInt value that represents the mathematical value of _number_.
           </emu-alg>
         </emu-clause>
       </emu-clause>
@@ -26963,7 +26963,7 @@
         <emu-alg>
           1. Let _bits_ be ? ToIndex(_bits_).
           1. Let _bigint_ be ? ToBigInt(_bigint_).
-          1. Let _mod_ be a BigInt representing _bigint_ modulo 2<sup>_bits_</sup>.
+          1. Let _mod_ be the BigInt value that represents _bigint_ modulo 2<sup>_bits_</sup>.
           1. If _mod_ &ge; 2<sup>_bits_ - 1</sup>, return _mod_ - 2<sup>_bits_</sup>; otherwise, return _mod_.
         </emu-alg>
       </emu-clause>
@@ -26974,7 +26974,7 @@
         <emu-alg>
           1. Let _bits_ be ? ToIndex(_bits_).
           1. Let _bigint_ be ? ToBigInt(_bigint_).
-          1. Return a BigInt representing _bigint_ modulo 2<sup>_bits_</sup>.
+          1. Return the BigInt value that represents _bigint_ modulo 2<sup>_bits_</sup>.
         </emu-alg>
       </emu-clause>
 

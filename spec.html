@@ -10520,7 +10520,7 @@
 
     <emu-clause id="sec-codepointat" aoid="CodePointAt">
       <h1>Static Semantics: CodePointAt ( _string_, _positionNumber_ )</h1>
-      <p>The abstract operation CodePointAt takes arguments _string_ (a String) and _positionNumber_ (non-negative integral Number). It interprets _string_ as a sequence of UTF-16 encoded code points, as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref>, and reads from it a single code point starting with the code unit at index _positionNumber_. It performs the following steps when called:</p>
+      <p>The abstract operation CodePointAt takes arguments _string_ (a String) and _positionNumber_ (a non-negative integral Number). It interprets _string_ as a sequence of UTF-16 encoded code points, as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref>, and reads from it a single code point starting with the code unit at index _positionNumber_. It performs the following steps when called:</p>
       <emu-alg>
         1. Let _size_ be the length of _string_.
         1. Let _position_ be the mathematical value of _positionNumber_.
@@ -27457,7 +27457,7 @@
             1. If _fractionDigits_ is not *undefined*, then
               1. Let _e_ and _n_ be integers such that 10<sup>ℝ(_f_)</sup> &le; _n_ &lt; 10<sup>ℝ(_f_) + 1</sup> and for which _n_ &times; 10<sup>_e_ - _n_</sup> - ℝ(_x_) is as close to zero as possible. If there are two such sets of _e_ and _n_, pick the _e_ and _n_ for which _n_ &times; 10<sup>_e_ - ℝ(_f_)</sup> is larger.
             1. Else,
-              1. [id="step-number-proto-toexponential-intermediate-values"] Let _e_, _n_ be integers, and _f_ be integral Number such that ℝ(_f_) &ge; 0, 10<sup>ℝ(_f_)</sup> &le; _n_ &lt; 10<sup>ℝ(_f_) + 1</sup>, the Number value for _n_ &times; 10<sup>_e_ - ℝ(_f_)</sup> is ℝ(_x_), and _f_ is as small as possible. Note that the decimal representation of _n_ has ℝ(_f_) + 1 digits, _n_ is not divisible by 10, and the least significant digit of _n_ is not necessarily uniquely determined by these criteria.
+              1. [id="step-number-proto-toexponential-intermediate-values"] Let _e_ and _n_ be integers, and _f_ be an integral Number such that ℝ(_f_) &ge; 0, 10<sup>ℝ(_f_)</sup> &le; _n_ &lt; 10<sup>ℝ(_f_) + 1</sup>, the Number value for _n_ &times; 10<sup>_e_ - ℝ(_f_)</sup> is ℝ(_x_), and _f_ is as small as possible. Note that the decimal representation of _n_ has ℝ(_f_) + 1 digits, _n_ is not divisible by 10, and the least significant digit of _n_ is not necessarily uniquely determined by these criteria.
             1. Let _m_ be the String value consisting of the digits of the decimal representation of _n_ (in order, with no leading zeroes).
           1. If ℝ(_f_) &ne; 0, then
             1. Let _a_ be the first code unit of _m_, and let _b_ be the remaining _f_ code units of _m_.
@@ -31789,7 +31789,7 @@ THH:mm:ss.sss
 
         <emu-clause id="sec-runtime-semantics-repeatmatcher-abstract-operation" aoid="RepeatMatcher">
           <h1>Runtime Semantics: RepeatMatcher ( _m_, _min_, _max_, _greedy_, _x_, _c_, _parenIndex_, _parenCount_ )</h1>
-          <p>The abstract operation RepeatMatcher takes arguments _m_ (a Matcher), _min_ (an integral Number), _max_ (integral Number or &infin;), _greedy_ (a Boolean), _x_ (a State), _c_ (a Continuation), _parenIndex_ (an integral Number), and _parenCount_ (an integral Number). It performs the following steps when called:</p>
+          <p>The abstract operation RepeatMatcher takes arguments _m_ (a Matcher), _min_ (an integral Number), _max_ (an integral Number or &infin;), _greedy_ (a Boolean), _x_ (a State), _c_ (a Continuation), _parenIndex_ (an integral Number), and _parenCount_ (an integral Number). It performs the following steps when called:</p>
           <emu-alg>
             1. If _max_ is *+0*<sub>𝔽</sub> or *-0*<sub>𝔽</sub>, return _c_(_x_).
             1. Let _d_ be a new Continuation with parameters (_y_) that captures _m_, _min_, _max_, _greedy_, _x_, _c_, _parenIndex_, and _parenCount_ and performs the following steps when called:
@@ -32971,7 +32971,7 @@ THH:mm:ss.sss
             1. Assert: 0 &le; _indexMV_ &le; 2<sup>53</sup> - 1 and ! IsInteger(_index_) is *true*.
             1. Assert: Type(_unicode_) is Boolean.
             1. If _unicode_ is *false*, return _index_ + 1<sub>𝔽</sub>.
-            1. Let _length_ be the Number value for  number of code units in _S_.
+            1. Let _length_ be the Number value for the number of code units in _S_.
             1. If ℝ(_index_) + 1 &ge; ℝ(_length_), return _index_ + 1<sub>𝔽</sub>.
             1. Let _cp_ be ! CodePointAt(_S_, _index_).
             1. Return _index_ + 𝔽(_cp_.[[CodeUnitCount]]).
@@ -34493,7 +34493,7 @@ THH:mm:ss.sss
         <p>Within this specification of the `sort` method, an object, _obj_, is said to be <em>sparse</em> if the following algorithm returns *true*:</p>
         <emu-alg>
           1. For each integer _i_ in the range 0 &le; _i_ &lt; _len_, do
-            1. Let _iNumber_ be Number value of _i_.
+            1. Let _iNumber_ be the Number value of _i_.
             1. Let _elem_ be _obj_.[[GetOwnProperty]](! ToString(_iNumber_)).
             1. If _elem_ is *undefined*, return *true*.
           1. Return *false*.
@@ -37628,7 +37628,7 @@ THH:mm:ss.sss
         <emu-alg>
           1. Perform ? RequireInternalSlot(_view_, [[DataView]]).
           1. Assert: _view_ has a [[ViewedArrayBuffer]] internal slot.
-          1. Let _getIndex_ be the mathematical value ? ToIndex(_requestIndex_).
+          1. Let _getIndex_ be the mathematical value of ? ToIndex(_requestIndex_).
           1. If ! IsBigIntElementType(_type_) is *true*, let _numberValue_ be ? ToBigInt(_value_).
           1. Otherwise, let _numberValue_ be ? ToNumber(_value_).
           1. Set _isLittleEndian_ to ! ToBoolean(_isLittleEndian_).

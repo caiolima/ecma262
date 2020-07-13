@@ -950,7 +950,7 @@
 
       <p>In the language of this specification, numerical values are distinguished among different numeric kinds using subscript suffixes. The subscript <sub><dfn id="𝔽">𝔽</dfn></sub> refers to Numbers, and the subscript <sub><dfn id="ℤ">ℤ</dfn></sub> refers to BigInts. Numeric values without a subscript suffix refer to mathematical values.</p>
       <p>Numeric operators such as +, &times;, =, and &ge; refer to those operations as determined by the type of the operands. When applied to mathematical values, the operators refer to the usual mathematical operations. When applied to Numbers, the operators refer to the relevant operations within IEEE 754-2019. When applied to BigInts, the operators refer to the usual mathematical operations applied to the mathematical value of the BigInt.</p>
-      <p>In general, when this specification refers to a numerical value, such as in the phrase, "the length of _y_" or "the integer represented by the four hexadecimal digits ...", without explicitly specifying a numeric kind, the phrase refers to a mathematical value. Phrases which refer to a Number or a BigInt value are explicitly annotated as such; for example, "the Number value of the number of code points in ..." or "the BigInt value of ...".</p>
+      <p>In general, when this specification refers to a numerical value, such as in the phrase, "the length of _y_" or "the integer represented by the four hexadecimal digits ...", without explicitly specifying a numeric kind, the phrase refers to a mathematical value. Phrases which refer to a Number or a BigInt value are explicitly annotated as such; for example, "the Number value for the number of code points in ..." or "the BigInt value for ...".</p>
       <p>Arithmetic or comparison operators applied to mixed-type operands (such as a Number and a mathematical value) are undefined and should be considered an editorial error in this specification.</p>
       <p>This specification denotes most numeric values in base 10; it also uses numeric values of the form 0x followed by digits 0-9 or A-F as base-16 values.</p>
       <p>Conversions between mathematical values and numbers are never implicit, and always explicit in this document. A conversion from a mathematical value to a Number is denoted as "the Number value for _x_" or 𝔽(_x_), and is defined in <emu-xref href="#sec-ecmascript-language-types-number-type"></emu-xref>. A conversion from a Number to a mathematical value is denoted as "the <dfn id="mathematical-value">mathematical value</dfn> of _x_", or ℝ(_x_). Note that the mathematical value of non-finite values is not defined, and the mathematical value of *+0*<sub>𝔽</sub> and *-0*<sub>𝔽</sub> is the mathematical value 0.</p>
@@ -5093,10 +5093,10 @@
         1. If ℝ(_number_) &le; 0, return *+0*<sub>𝔽</sub>.
         1. If ℝ(_number_) &ge; 255, return *255*<sub>𝔽</sub>.
         1. Let _f_ be floor(ℝ(_number_)).
-        1. If _f_ + 0.5 &lt; ℝ(_number_), return the Number value of _f_ + 1.
-        1. If ℝ(_number_) &lt; _f_ + 0.5, return the Number value of _f_.
-        1. If _f_ is odd, return the Number value of _f_ + 1.
-        1. Return the Number value of _f_.
+        1. If _f_ + 0.5 &lt; ℝ(_number_), return the Number value for _f_ + 1.
+        1. If ℝ(_number_) &lt; _f_ + 0.5, return the Number value for _f_.
+        1. If _f_ is odd, return the Number value for _f_ + 1.
+        1. Return the Number value for _f_.
       </emu-alg>
       <emu-note>
         <p>Unlike the other ECMAScript integer conversion abstract operation, ToUint8Clamp rounds rather than truncates non-integer values and does not convert *+&infin;* to 0. ToUint8Clamp does &ldquo;round half to even&rdquo; tie-breaking. This differs from `Math.round` which does &ldquo;round half up&rdquo; tie-breaking.</p>
@@ -34493,7 +34493,7 @@ THH:mm:ss.sss
         <p>Within this specification of the `sort` method, an object, _obj_, is said to be <em>sparse</em> if the following algorithm returns *true*:</p>
         <emu-alg>
           1. For each integer _i_ in the range 0 &le; _i_ &lt; _len_, do
-            1. Let _iNumber_ be the Number value of _i_.
+            1. Let _iNumber_ be the Number value for _i_.
             1. Let _elem_ be _obj_.[[GetOwnProperty]](! ToString(_iNumber_)).
             1. If _elem_ is *undefined*, return *true*.
           1. Return *false*.
@@ -34750,7 +34750,7 @@ THH:mm:ss.sss
         <emu-alg>
           1. Let _O_ be ? ToObject(*this* value).
           1. Let _len_ be ? LengthOfArrayLike(_O_).
-          1. Let _argCount_ be the Number value representing the amount of actual arguments.
+          1. Let _argCount_ be the Number value for the amount of actual arguments.
           1. If ℝ(_argCount_) &gt; 0, then
             1. If ℝ(_len_) + ℝ(_argCount_) &gt; 2<sup>53</sup> - 1, throw a *TypeError* exception.
             1. Let _k_ be _len_.

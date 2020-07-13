@@ -11302,13 +11302,13 @@
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` ExponentPart</emu-grammar> is the MV of |DecimalIntegerLiteral| &times; 10<sup>_e_</sup>, where _e_ is the MV of |ExponentPart|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits ExponentPart</emu-grammar> is (the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>)) &times; 10<sup>_e_</sup>, where _n_ is the integer number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
+            The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral `.` DecimalDigits ExponentPart</emu-grammar> is (the MV of |DecimalIntegerLiteral| plus (the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>)) &times; 10<sup>_e_</sup>, where _n_ is the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalLiteral :: `.` DecimalDigits</emu-grammar> is the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>, where _n_ is the integer number of code points in |DecimalDigits|.
+            The MV of <emu-grammar>DecimalLiteral :: `.` DecimalDigits</emu-grammar> is the MV of |DecimalDigits| &times; 10<sup>-_n_</sup>, where _n_ is the number of code points in |DecimalDigits|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalLiteral :: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| &times; 10<sup>_e_ - _n_</sup>, where _n_ is the integer number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
+            The MV of <emu-grammar>DecimalLiteral :: `.` DecimalDigits ExponentPart</emu-grammar> is the MV of |DecimalDigits| &times; 10<sup>_e_ - _n_</sup>, where _n_ is the number of code points in |DecimalDigits| and _e_ is the MV of |ExponentPart|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalLiteral :: DecimalIntegerLiteral</emu-grammar> is the MV of |DecimalIntegerLiteral|.
@@ -11323,7 +11323,7 @@
             The MV of <emu-grammar>DecimalIntegerLiteral :: NonZeroDigit</emu-grammar> is the MV of |NonZeroDigit|.
           </li>
           <li>
-            The MV of <emu-grammar>DecimalIntegerLiteral :: NonZeroDigit DecimalDigits</emu-grammar> is (the MV of |NonZeroDigit| &times; 10<sup>_n_</sup>) plus the MV of |DecimalDigits|, where _n_ is the integer number of code points in |DecimalDigits|.
+            The MV of <emu-grammar>DecimalIntegerLiteral :: NonZeroDigit DecimalDigits</emu-grammar> is (the MV of |NonZeroDigit| &times; 10<sup>_n_</sup>) plus the MV of |DecimalDigits|, where _n_ is the number of code points in |DecimalDigits|.
           </li>
           <li>
             The MV of <emu-grammar>DecimalDigits :: DecimalDigit</emu-grammar> is the MV of |DecimalDigit|.
@@ -11467,7 +11467,7 @@
         </emu-alg>
         <emu-grammar>DecimalBigIntegerLiteral :: NonZeroDigit DecimalDigits BigIntLiteralSuffix</emu-grammar>
         <emu-alg>
-          1. Let _n_ be the integer number of code points in |DecimalDigits|.
+          1. Let _n_ be the number of code points in |DecimalDigits|.
           1. Let _mv_ be (the MV of |NonZeroDigit| &times; 10) plus the MV of |DecimalDigits|.
           1. Return the BigInt value that represents _mv_.
         </emu-alg>
@@ -31367,7 +31367,7 @@ THH:mm:ss.sss
         </emu-alg>
         <emu-grammar>DecimalEscape :: NonZeroDigit DecimalDigits</emu-grammar>
         <emu-alg>
-          1. Let _n_ be the integer number of code points in |DecimalDigits|.
+          1. Let _n_ be the number of code points in |DecimalDigits|.
           1. Return the Number value for (the MV of |NonZeroDigit| &times; 10<sup>_n_</sup> plus the MV of |DecimalDigits|).
         </emu-alg>
         <p>The definitions of &ldquo;the MV of |NonZeroDigit|&rdquo; and &ldquo;the MV of |DecimalDigits|&rdquo; are in <emu-xref href="#sec-literals-numeric-literals"></emu-xref>.</p>

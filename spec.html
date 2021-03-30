@@ -3845,7 +3845,7 @@
           1. Let _env_ be the running execution context's PrivateEnvironment.
           1. Let _privateNameBinding_ be ? ResolveBinding(_privateIdentifier_, _env_).
           1. Let _privateName_ be ? GetValue(_privateNameBinding_).
-          1. Assert: _privateName_ is a Private Name.
+          1. Assert: _privateIdentifier_ is a Private Name.
           1. Return the Reference Record { [[Base]]: _baseValue_, [[ReferencedName]]: _privateName_, [[Strict]]: *true*, [[ThisValue]]: ~empty~ }.
         </emu-alg>
       </emu-clause>
@@ -20419,7 +20419,6 @@
         1. Let _scope_ be the LexicalEnvironment of the running execution context.
         1. Let _privateScope_ be the running execution context's PrivateEnvironment.
         1. Let _sourceText_ be the source text matched by |ArrowFunction|.
-        1. Let _privateScope_ be the PrivateEnvironment of the running execution context.
         1. [id="step-arrowfunction-evaluation-functioncreate"] Let _closure_ be OrdinaryFunctionCreate(%Function.prototype%, _sourceText_, |ArrowParameters|, |ConciseBody|, ~lexical-this~, _scope_, _privateScope_).
         1. Perform SetFunctionName(_closure_, _name_).
         1. Return _closure_.
